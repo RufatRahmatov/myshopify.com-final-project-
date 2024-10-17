@@ -2,7 +2,7 @@
 
 import React from "react";
 import Header from "../_components/header";
-// import Footer from "../_components/footer";
+import Footer from "../_components/footer";
 
 export default function Layouts({ children }: { children: React.ReactNode }) {
   return (
@@ -11,7 +11,7 @@ export default function Layouts({ children }: { children: React.ReactNode }) {
       <main>
         <div>{children}</div>
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }
