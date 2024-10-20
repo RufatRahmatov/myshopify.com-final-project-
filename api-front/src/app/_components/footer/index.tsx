@@ -16,7 +16,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-black text-white">
+    <footer className="bg-black text-white mt-10">
       <div className="hidden md:block max-w-7xl mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
           <div>
