@@ -1,31 +1,131 @@
 "use client";
-
 import { useState } from "react";
 import { Transition } from "@headlessui/react";
-import { BiSearch, BiUser, BiCart, BiMenu, BiX } from "react-icons/bi";
+import { BiMenu, BiX } from "react-icons/bi";
 import { IoIosArrowDown } from "react-icons/io";
-// import { RiSearchLine } from "react-icons/ri";
-// import { BsPerson } from "react-icons/bs";
+import { RiSearchLine } from "react-icons/ri";
+import { BsPerson } from "react-icons/bs";
+import { RiShoppingBag2Line } from "react-icons/ri";
+import { IoPersonOutline } from "react-icons/io5";
+
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [selectedLanguage, setSelectedLanguage] = useState("English");
+  const [selectedCurrency, setSelectedCurrency] = useState("USD");
+  const [textContent, setTextContent] = useState({
+    helpline: "Helpline Number: 123-456-7890",
+    orders: "Orders By Shop Our Spring Collection Sale!",
+    country: "United States",
+    language: "English",
+    home: "Home",
+    pages: "Pages",
+    template: "Template",
+    collection: "Collection",
+    contactLens: "Contact Lens",
+    eyeframes: "Eyeframes",
+  });
 
   const toggleDropdown = (name: string) => {
     setOpenDropdown(openDropdown === name ? null : name);
   };
 
+  const handleLanguageChange = (language: string) => {
+    setSelectedLanguage(language);
+    if (language === "Azərbaycan dili") {
+      setTextContent({
+        helpline: "Yardım Nömrəsi: 123-456-7890",
+        orders: "Yaz Kolleksiyası Satışından Alış-veriş edin!",
+        country: "Azərbaycan",
+        language: "Azərbaycan dili",
+        home: "Ana Səhifə",
+        pages: "Səhifələr",
+        template: "Şablonlar",
+        collection: "Kolleksiya",
+        contactLens: "Kontakt linzalar",
+        eyeframes: "Eynək çərçivələri",
+      });
+    } else {
+      setTextContent({
+        helpline: "Helpline Number: 123-456-7890",
+        orders: "Orders By Shop Our Spring Collection Sale!",
+        country: "United States",
+        language: "English",
+        home: "Home",
+        pages: "Pages",
+        template: "Template",
+        collection: "Collection",
+        contactLens: "Contact Lens",
+        eyeframes: "Eyeframes",
+      });
+    }
+  };
+
   return (
     <header className="w-full ">
       <div className="bg-black text-white text-sm flex justify-between px-4 py-2">
-        <div>Helpline Number: 123-456-7890</div>
-        <div>Orders By Shop Our Spring Collection Sale!</div>
+        <div>{textContent.helpline}</div>
+        <div>{textContent.orders}</div>
+        <div className="flex items-center space-x-4">
+          {/* Currency Dropdown */}
+          <div className="relative">
+            <button
+              onClick={() => toggleDropdown("Currency")}
+              className="inline-flex items-center"
+            >
+              {selectedCurrency} <IoIosArrowDown className="ml-1" />
+            </button>
+            {openDropdown === "Currency" && (
+              <div className="absolute right-0 mt-2 bg-white text-black py-2 px-4 shadow-lg rounded">
+                <div
+                  className="cursor-pointer"
+                  onClick={() => setSelectedCurrency("USD")}
+                >
+                  USD
+                </div>
+                <div
+                  className="cursor-pointer mt-1"
+                  onClick={() => setSelectedCurrency("AZN")}
+                >
+                  AZN
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Language Dropdown */}
+          <div className="relative">
+            <button
+              onClick={() => toggleDropdown("Language")}
+              className="inline-flex items-center"
+            >
+              {selectedLanguage} <IoIosArrowDown className="ml-1" />
+            </button>
+            {openDropdown === "Language" && (
+              <div className="absolute right-0 mt-2 bg-white text-black py-2 px-4 shadow-lg rounded">
+                <div
+                  className="cursor-pointer"
+                  onClick={() => handleLanguageChange("English")}
+                >
+                  English
+                </div>
+                <div
+                  className="cursor-pointer mt-1"
+                  onClick={() => handleLanguageChange("Azərbaycan dili")}
+                >
+                  Azərbaycan dili
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
 
       <nav className="bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
             <div className="flex-shrink-0">
-              <span className="text-2xl font-bold">Maxmod</span>
+              <span className="text-2xl font-bold mr-32">Maxmod</span>
             </div>
 
             <div className="hidden md:flex space-x-8">
@@ -34,17 +134,17 @@ const Header = () => {
                   href="#"
                   className="hover:border-b-2 hover:border-black  font-medium text-lg"
                 >
-                  Home
+                  {textContent.home}
                 </a>
               </div>
 
-              <div className="relative flex items-center gap-x-1 ">
+              <div className="relative flex items-center gap-x-1">
                 <span className="mx-1"></span>{" "}
                 <button
                   onClick={() => toggleDropdown("Pages")}
                   className="border-b-2 border-transparent hover:border-black font-medium text-lg inline-flex items-center"
                 >
-                  Pages
+                  {textContent.pages}
                 </button>
                 <IoIosArrowDown className="mt-1 cursor-pointer " />
                 {openDropdown === "Pages" && (
@@ -60,12 +160,12 @@ const Header = () => {
                 )}
               </div>
 
-              <div className="relative flex items-center gap-x-1 ">
+              <div className="relative flex items-center gap-x-1">
                 <button
                   onClick={() => toggleDropdown("Template")}
                   className="border-b-2 border-transparent hover:border-black  font-medium text-lg inline-flex items-center"
                 >
-                  Template
+                  {textContent.template}
                 </button>
                 <IoIosArrowDown className="mt-1 cursor-pointer" />
                 {openDropdown === "Template" && (
@@ -93,7 +193,7 @@ const Header = () => {
                   href="#"
                   className="border-b-2 border-transparent hover:border-black font-medium text-lg inline-flex items-center"
                 >
-                  Collection
+                  {textContent.collection}
                 </a>
                 <IoIosArrowDown className="mt-1 cursor-pointer" />
               </div>
@@ -102,24 +202,21 @@ const Header = () => {
                 href="#"
                 className="hover:border-b-2 hover:border-black  font-medium text-lg"
               >
-                Contact Lens
+                {textContent.contactLens}
               </a>
               <a
                 href="#"
                 className="hover:border-b-2 hover:border-black  font-medium text-lg"
               >
-                Eyeframes
+                {textContent.eyeframes}
               </a>
             </div>
 
             <div className="hidden md:flex items-center space-x-4">
-              <BiSearch className="text-xl cursor-pointer" />
-              <BiUser className="text-xl cursor-pointer" />
+              <RiSearchLine className="text-2xl cursor-pointer" />
+              <IoPersonOutline className="text-2xl cursor-pointer" />
               <div className="relative">
-                <BiCart className="text-xl cursor-pointer" />
-                <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                  20
-                </span>
+                <RiShoppingBag2Line className="text-2xl cursor-pointer" />
               </div>
             </div>
 
@@ -146,48 +243,45 @@ const Header = () => {
                 href="#"
                 className="block text-black px-3 py-2 rounded-md font-medium text-lg"
               >
-                Home
+                {textContent.home}
               </a>
               <a
                 href="#"
                 className="block text-black px-3 py-2 rounded-md font-medium text-lg"
               >
-                Pages
+                {textContent.pages}
               </a>
               <a
                 href="#"
                 className="block text-black px-3 py-2 rounded-md font-medium text-lg"
               >
-                Template
+                {textContent.template}
               </a>
               <a
                 href="#"
                 className="block text-black px-3 py-2 rounded-md font-medium text-lg"
               >
-                Collection
+                {textContent.collection}
               </a>
               <a
                 href="#"
                 className="block text-black px-3 py-2 rounded-md font-medium text-lg"
               >
-                Contact Lens
+                {textContent.contactLens}
               </a>
               <a
                 href="#"
                 className="block text-black px-3 py-2 rounded-md font-medium text-lg"
               >
-                Eyeframes
+                {textContent.eyeframes}
               </a>
             </div>
 
             <div className="flex justify-around pb-4 border-t border-gray-200">
-              {/* <BiSearch className="text-xl cursor-pointer" /> */}
-              {/* <BiUser className="text-xl cursor-pointer" /> */}
+              <RiSearchLine className="text-2xl cursor-pointer font-medium" />
+              <BsPerson className="text-xl cursor-pointer font-medium" />
               <div className="relative">
-                {/* <BiCart className="text-xl cursor-pointer" /> */}
-                {/* <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                  20
-                </span> */}
+                <RiShoppingBag2Line className="text-xl cursor-pointer font-medium " />
               </div>
             </div>
           </div>
