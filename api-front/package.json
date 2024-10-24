@@ -12,6 +12,7 @@
     "@headlessui/react": "^2.1.10",
     "axios": "^1.7.7",
     "next": "14.2.15",
+    "pagination": "^0.4.6",
     "query": "^0.2.0",
     "react": "^18.3.1",
     "react-dom": "^18",
@@ -20,6 +21,7 @@
     "sass": "^1.79.5",
     "scss": "^0.2.4",
     "strap": "^0.1.0",
+    "swiper": "^11.1.14",
     "toastify": "^2.0.1",
     "transition": "^0.1.1"
   },
