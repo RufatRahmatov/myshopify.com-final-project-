@@ -41,7 +41,7 @@ const categories = [
   },
 ];
 
-const Home = () => {
+const Featured = () => {
   const [isHovered, setIsHovered] = useState<string | null>(null);
 
   return (
@@ -98,4 +98,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Featured;
