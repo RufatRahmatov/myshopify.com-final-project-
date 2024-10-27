@@ -161,7 +161,7 @@ const Header = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
             <div className=" relative flex justify-start">
-              <span className=" absolute right-[182px] text-2xl font-bold bottom-[-11px]">
+              <span className=" absolute right-[189px] text-2xl font-bold bottom-[-11px]">
                 Maxmod
               </span>
             </div>

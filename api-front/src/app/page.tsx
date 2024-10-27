@@ -1,14 +1,13 @@
 "use client";
 
-// import Featured from "./_components/featuredcategory";
-// import Swiper from "swiper";
+import SwiperComponent from "./_components/swiper";
 import Layouts from "./_layouts/layout";
 
 export default function Page() {
   return (
     <Layouts>
       <main>
-        {/* <Swiper /> */}
+        <SwiperComponent />
         {/* <Featured /> */}
       </main>
     </Layouts>
