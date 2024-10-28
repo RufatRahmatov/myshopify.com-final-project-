@@ -4,7 +4,6 @@ import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-// Dinamik import ile Swiper'ı TypeScript dostu şekilde import ediyoruz.
 const SwiperReact = dynamic(
   () => import("swiper/react").then((mod) => mod.Swiper),
   { ssr: false }
@@ -21,11 +20,10 @@ const SwiperComponent = () => {
         pagination={{ clickable: true }}
         modules={[Pagination]}
         className="mySwiper"
-        effect="slide" // Slide efekti burada uygulanıyor, CSS'e gerek yok
-        loop={true} // Sonsuz döngü sağlar
-        speed={1000} // Geçiş hızı: 1000ms (1 saniye)
+        effect="slide"
+        loop={true}
+        speed={1000}
       >
-        {/* Slider 1 */}
         <SwiperSlide>
           <div className="relative w-full h-full">
             <img
@@ -33,7 +31,7 @@ const SwiperComponent = () => {
               alt="Sunglasses 1"
               className="w-full h-full object-cover"
             />
-            {/* İçerik */}
+
             <div className="absolute inset-0 bg-black bg-opacity-30 flex flex-col justify-center items-start p-8 text-white">
               <h1 className="text-4xl font-bold mb-4">
                 Perfect fit for every face
