@@ -280,7 +280,13 @@ const Header = () => {
                   leaveTo="opacity-0 -translate-y-4"
                   unmount={true}
                 >
-                  <div className="absolute left-[-790px] mt-3 w-[1908px] bg-white shadow-lg rounded p-8 flex space-x-16 z-50">
+                  <div
+                    className="
+        absolute left-[-795px] mt-3 
+        w-full md:w-[768px] lg:w-[1024px] xl:w-[1280px] 2xl:w-[1915px] 
+        bg-white shadow-lg rounded p-8 flex space-x-16 z-50
+      "
+                  >
                     <div className="relative left-[29px]">
                       <h2 className="text-[1.2rem]  font-medium mb-2 cursor-pointer">
                         Collection Templates
@@ -331,13 +337,104 @@ const Header = () => {
                 </Transition>
               </div>
 
-              <button
-                onClick={() => toggleDropdown("Collection")}
-                className="border-b-2 border-transparent hover:border-black font-medium text-lg inline-flex items-center"
-              >
-                {textContent.collection}
-                <IoIosArrowDown className="ml-1 mt-1 text-sm" />
-              </button>
+              <div className="relative dropdown">
+                <button
+                  onClick={() => toggleDropdown("Collection")}
+                  className="border-b-2 border-transparent hover:border-black font-medium text-lg inline-flex items-center"
+                >
+                  {textContent.collection}
+                  <IoIosArrowDown
+                    className={`ml-1 mt-1 text-sm transition-transform duration-300 ${
+                      openDropdown === "Collection" ? "rotate-180" : "rotate-0"
+                    }`}
+                  />
+                </button>
+
+                <Transition
+                  show={openDropdown === "Collection"}
+                  enter="transition ease-out duration-300 transform"
+                  enterFrom="opacity-0 -translate-y-4"
+                  enterTo="opacity-100 translate-y-0"
+                  leave="transition ease-in duration-200 transform"
+                  leaveFrom="opacity-100 translate-y-0"
+                  leaveTo="opacity-0 -translate-y-4"
+                  unmount={true}
+                >
+                  <div className="absolute left-[-908px] mt-3  w-full md:w-[768px] lg:w-[1024px] xl:w-[1280px] 2xl:w-[1900px] bg-white shadow-lg rounded p-8 grid grid-cols-4 gap-8 z-50">
+                    <div className="relative left-[24px]">
+                      <h2 className="text-[1.05rem] font-medium mb-3 text-black">
+                        EYEGLASSES STYLE
+                      </h2>
+                      <Link
+                        href="/eyeglasses"
+                        className="block font-medium text-[1.05rem] text-gray-600 hover:text-black transition ease-in-out duration-100 transform"
+                      >
+                        Eyeglasses
+                      </Link>
+                      <Link
+                        href="/computer-glasses"
+                        className="block font-medium text-[1.05rem] text-gray-600 hover:text-black transition ease-in-out duration-100 transform mt-2"
+                      >
+                        Computer glasses
+                      </Link>
+                    </div>
+
+                    <div className="relative left-[24px]">
+                      <h2 className="text-[1.05rem] font-medium mb-3 text-black">
+                        CATEGORY
+                      </h2>
+                      <Link
+                        href="/power-sunglasses"
+                        className="block font-medium text-[1.05rem] text-gray-600 hover:text-black transition ease-in-out duration-100 transform "
+                      >
+                        Power sunglasses
+                      </Link>
+                      <Link
+                        href="/kids-glasses"
+                        className="block font-medium text-[1.05rem] text-gray-600 hover:text-black transition ease-in-out duration-100 transform mt-2"
+                      >
+                        Kids glasses
+                      </Link>
+                    </div>
+
+                    <div className="relative left-[24px]">
+                      <h2 className="text-[1.05rem] font-medium mb-3 text-black">
+                        COLLECTION
+                      </h2>
+                      <Link
+                        href="/sunglasses"
+                        className="block font-medium text-[1.05rem] text-gray-600 hover:text-black transition ease-in-out duration-100 transform mt-2"
+                      >
+                        Sunglasses
+                      </Link>
+                      <Link
+                        href="/swimming-glasses"
+                        className="block font-medium text-[1.05rem] text-gray-600 hover:text-black transition ease-in-out duration-100 transform mt-2"
+                      >
+                        Swimming glasses
+                      </Link>
+                    </div>
+
+                    <div className="relative left-[24px]">
+                      <h2 className="text-[1.05rem] font-medium mb-3 text-black">
+                        SUNGLASSES
+                      </h2>
+                      <Link
+                        href="/optical-collection"
+                        className="block font-medium text-[1.05rem] text-gray-600 hover:text-black transition ease-in-out duration-100 transform mt-2"
+                      >
+                        Optical Collection
+                      </Link>
+                      <Link
+                        href="/eyewearlabs"
+                        className="block font-medium text-[1.05rem] text-gray-600 hover:text-black transition ease-in-out duration-100 transform mt-2"
+                      >
+                        Eyewearlabs
+                      </Link>
+                    </div>
+                  </div>
+                </Transition>
+              </div>
 
               <a
                 href="#"
