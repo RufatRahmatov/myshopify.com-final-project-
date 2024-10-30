@@ -76,9 +76,12 @@ const Header = () => {
   return (
     <header className="w-full">
       <div className="bg-black text-white text-sm flex justify-between px-4 py-3">
-        <div className="relative left-12">{textContent.helpline}</div>
-        <div className="">{textContent.orders}</div>
+        <div className="relative left-12 font-medium ">
+          {textContent.helpline}
+        </div>
+        <div className="font-medium">{textContent.orders}</div>
         <div className="flex items-center space-x-4">
+          {/* Currency Dropdown */}
           <div className="relative dropdown">
             <button
               onClick={() => toggleDropdown("Currency")}
@@ -100,15 +103,15 @@ const Header = () => {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 -translate-y-4"
             >
-              <div className="absolute right-0 mt-2 bg-black text-white py-2 px-4 shadow-lg rounded">
+              <div className="absolute right-0 mt-2 bg-black text-white py-2 px-4 shadow-lg rounded z-50">
                 <div
-                  className="cursor-pointer"
+                  className="cursor-pointer font-medium"
                   onClick={() => setSelectedCurrency("USD")}
                 >
                   USD
                 </div>
                 <div
-                  className="cursor-pointer mt-1"
+                  className="cursor-pointer mt-1 font-medium"
                   onClick={() => setSelectedCurrency("AZN")}
                 >
                   AZN
@@ -117,6 +120,7 @@ const Header = () => {
             </Transition>
           </div>
 
+          {/* Language Dropdown */}
           <div className="relative dropdown">
             <button
               onClick={() => toggleDropdown("Language")}
@@ -138,7 +142,7 @@ const Header = () => {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 -translate-y-4"
             >
-              <div className="absolute right-8 mt-2 bg-black text-gray-300 py-5 px-5 shadow-lg rounded font-medium">
+              <div className="absolute z-50 right-8 mt-2 bg-black text-gray-300 py-5 px-5 shadow-lg rounded font-medium">
                 <div
                   className="cursor-pointer border-b-2 border-transparent hover:border-white"
                   onClick={() => handleLanguageChange("English")}
@@ -160,8 +164,8 @@ const Header = () => {
       <nav className="bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
-            <div className=" relative flex justify-start">
-              <span className=" absolute right-[189px] text-2xl font-bold bottom-[-11px]">
+            <div className="relative flex justify-start">
+              <span className="absolute right-[189px] text-[1.6rem] font-bold bottom-[-15px]">
                 Maxmod
               </span>
             </div>
@@ -174,26 +178,69 @@ const Header = () => {
                 {textContent.home}
               </a>
 
+              {/* Pages Dropdown with Full Screen Menu */}
               <button
                 onClick={() => toggleDropdown("Pages")}
                 className="border-b-2 border-transparent hover:border-black font-medium text-lg inline-flex items-center"
               >
-                {textContent.pages} <IoIosArrowDown className="ml-1" />
+                {textContent.pages}
+                <IoIosArrowDown
+                  className={`ml-1 mt-1 text-sm transition-transform duration-300 ${
+                    openDropdown === "Pages" ? "rotate-180" : "rotate-0"
+                  }`}
+                />
               </button>
+
+              {/* Full Screen Transition for Pages */}
+              <Transition
+                show={openDropdown === "Pages"}
+                enter="transition ease-out duration-500 transform"
+                enterFrom="opacity-0 translate-x-full"
+                enterTo="opacity-100 translate-x-0"
+                leave="transition ease-in duration-300 transform"
+                leaveFrom="opacity-100 translate-x-0"
+                leaveTo="opacity-0 translate-x-full"
+              >
+                <div className="fixed inset-0 bg-white z-50 flex items-center justify-center">
+                  <div className="flex space-x-16 p-8 text-center">
+                    <div>
+                      <h2 className="text-xl font-bold mb-4">OTHER PAGES</h2>
+                      <p>About us</p>
+                      <p>Contact</p>
+                      <p>Search</p>
+                    </div>
+                    <div>
+                      <h2 className="text-xl font-bold mb-4">POLICY PAGES</h2>
+                      <p>Privacy Policy</p>
+                      <p>Refund Policy</p>
+                      <p>Terms of Service</p>
+                    </div>
+                    <div>
+                      <h2 className="text-xl font-bold mb-4">BUY THEME!</h2>
+                      <p>Documentation</p>
+                      <p>Get Support</p>
+                      <p>Create Shopify Account</p>
+                    </div>
+                  </div>
+                </div>
+              </Transition>
 
               <button
                 onClick={() => toggleDropdown("Template")}
                 className="border-b-2 border-transparent hover:border-black font-medium text-lg inline-flex items-center"
               >
-                {textContent.template} <IoIosArrowDown className="ml-1" />
+                {textContent.template}
+                <IoIosArrowDown className="ml-1 mt-1 text-sm" />
               </button>
 
-              <a
-                href="#"
-                className="hover:border-b-2 hover:border-black font-medium text-lg"
+              <button
+                onClick={() => toggleDropdown("Collection")}
+                className="border-b-2 border-transparent hover:border-black font-medium text-lg inline-flex items-center"
               >
                 {textContent.collection}
-              </a>
+                <IoIosArrowDown className="ml-1 mt-1 text-sm" />
+              </button>
+
               <a
                 href="#"
                 className="hover:border-b-2 hover:border-black font-medium text-lg"
@@ -229,56 +276,6 @@ const Header = () => {
             </div>
           </div>
         </div>
-
-        {/* Mobile Menu */}
-        {isOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <a
-                href="#"
-                className="block text-black px-3 py-2 rounded-md font-medium text-lg"
-              >
-                {textContent.home}
-              </a>
-              <a
-                href="#"
-                className="block text-black px-3 py-2 rounded-md font-medium text-lg"
-              >
-                {textContent.pages}
-              </a>
-              <a
-                href="#"
-                className="block text-black px-3 py-2 rounded-md font-medium text-lg"
-              >
-                {textContent.template}
-              </a>
-              <a
-                href="#"
-                className="block text-black px-3 py-2 rounded-md font-medium text-lg"
-              >
-                {textContent.collection}
-              </a>
-              <a
-                href="#"
-                className="block text-black px-3 py-2 rounded-md font-medium text-lg"
-              >
-                {textContent.contactLens}
-              </a>
-              <a
-                href="#"
-                className="block text-black px-3 py-2 rounded-md font-medium text-lg"
-              >
-                {textContent.eyeframes}
-              </a>
-            </div>
-
-            <div className="flex justify-around pb-4 border-t border-gray-200">
-              <RiSearchLine className="text-2xl cursor-pointer font-medium" />
-              <IoPersonOutline className="text-2xl cursor-pointer font-medium" />
-              <RiShoppingBag2Line className="text-2xl cursor-pointer font-medium" />
-            </div>
-          </div>
-        )}
       </nav>
     </header>
   );
