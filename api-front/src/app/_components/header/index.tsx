@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Transition } from "@headlessui/react";
 import { BiMenu, BiX } from "react-icons/bi";
@@ -76,13 +77,13 @@ const Header = () => {
   return (
     <header className="w-full">
       <div className="bg-black text-white text-sm flex justify-between px-4 py-3">
-        <div className="relative left-12 font-medium ">
+        <div className="relative left-12 font-medium">
           {textContent.helpline}
         </div>
         <div className="font-medium">{textContent.orders}</div>
+
         <div className="flex items-center space-x-4">
-          {/* Currency Dropdown */}
-          <div className="relative dropdown">
+          <div className="relative dropdown font-medium">
             <button
               onClick={() => toggleDropdown("Currency")}
               className="inline-flex items-center"
@@ -103,7 +104,7 @@ const Header = () => {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 -translate-y-4"
             >
-              <div className="absolute right-0 mt-2 bg-black text-white py-2 px-4 shadow-lg rounded z-50">
+              <div className="absolute right-0 mt-2 bg-black text-white py-2 px-4 shadow-lg rounded z-50 font-medium">
                 <div
                   className="cursor-pointer font-medium"
                   onClick={() => setSelectedCurrency("USD")}
@@ -114,17 +115,16 @@ const Header = () => {
                   className="cursor-pointer mt-1 font-medium"
                   onClick={() => setSelectedCurrency("AZN")}
                 >
-                  AZN
+                  India
                 </div>
               </div>
             </Transition>
           </div>
 
-          {/* Language Dropdown */}
           <div className="relative dropdown">
             <button
               onClick={() => toggleDropdown("Language")}
-              className="inline-flex items-center mr-12"
+              className="inline-flex items-center mr-12 font-medium"
             >
               {selectedLanguage}{" "}
               <IoIosArrowDown
@@ -165,12 +165,12 @@ const Header = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
             <div className="relative flex justify-start">
-              <span className="absolute right-[189px] text-[1.6rem] font-bold bottom-[-15px]">
+              <span className="absolute right-[179px] text-[1.6rem] font-bold bottom-[-15px]">
                 Maxmod
               </span>
             </div>
 
-            <div className="hidden md:flex space-x-8">
+            <div className="hidden md:flex space-x-8 ml-16">
               <a
                 href="#"
                 className="hover:border-b-2 hover:border-black font-medium text-lg"
@@ -178,60 +178,158 @@ const Header = () => {
                 {textContent.home}
               </a>
 
-              {/* Pages Dropdown with Full Screen Menu */}
-              <button
-                onClick={() => toggleDropdown("Pages")}
-                className="border-b-2 border-transparent hover:border-black font-medium text-lg inline-flex items-center"
-              >
-                {textContent.pages}
-                <IoIosArrowDown
-                  className={`ml-1 mt-1 text-sm transition-transform duration-300 ${
-                    openDropdown === "Pages" ? "rotate-180" : "rotate-0"
-                  }`}
-                />
-              </button>
-
-              {/* Full Screen Transition for Pages */}
-              <Transition
-                show={openDropdown === "Pages"}
-                enter="transition ease-out duration-500 transform"
-                enterFrom="opacity-0 translate-x-full"
-                enterTo="opacity-100 translate-x-0"
-                leave="transition ease-in duration-300 transform"
-                leaveFrom="opacity-100 translate-x-0"
-                leaveTo="opacity-0 translate-x-full"
-              >
-                <div className="fixed inset-0 bg-white z-50 flex items-center justify-center">
-                  <div className="flex space-x-16 p-8 text-center">
-                    <div>
-                      <h2 className="text-xl font-bold mb-4">OTHER PAGES</h2>
-                      <p>About us</p>
-                      <p>Contact</p>
-                      <p>Search</p>
+              <div className="relative dropdown">
+                {" "}
+                <button
+                  onClick={() => toggleDropdown("Pages")}
+                  className="border-b-2 border-transparent hover:border-black font-medium text-lg inline-flex items-center"
+                >
+                  {textContent.pages}
+                  <IoIosArrowDown
+                    className={`ml-1 mt-1 text-sm transition-transform duration-300 ${
+                      openDropdown === "Pages" ? "rotate-180" : "rotate-0"
+                    }`}
+                  />
+                </button>
+                <Transition
+                  show={openDropdown === "Pages"}
+                  enter="transition ease-out duration-200 transform"
+                  enterFrom="opacity-0 -translate-y-4"
+                  enterTo="opacity-100 translate-y-0"
+                  leave="transition ease-in duration-200 transform"
+                  leaveFrom="opacity-100 translate-y-0"
+                  leaveTo="opacity-0 -translate-y-4"
+                  unmount={true}
+                >
+                  <div className="absolute left-[-690px] mt-3 w-[1908px] bg-white shadow-lg rounded p-8 flex space-x-16 z-50">
+                    <div className="relative left-[29px]">
+                      <h2 className="text-[1.05rem]  font-medium mb-2 cursor-pointer">
+                        OTHER PAGES
+                      </h2>
+                      <Link
+                        href="/about-us"
+                        className=" block font-medium text-[1.05rem] text-gray-600 hover:text-black transition ease-in-out duration-100 transform"
+                      >
+                        About us
+                      </Link>
+                      <Link
+                        href="/contact"
+                        className="block font-medium text-[1.05rem] text-gray-600 hover:text-black transition ease-in-out duration-100 transform mt-2"
+                      >
+                        Contact
+                      </Link>
+                      <Link
+                        href="/search"
+                        className="block font-medium text-[1.05rem] text-gray-600 hover:text-black transition ease-in-out duration-100 transform mt-2"
+                      >
+                        Search
+                      </Link>
                     </div>
-                    <div>
-                      <h2 className="text-xl font-bold mb-4">POLICY PAGES</h2>
-                      <p>Privacy Policy</p>
-                      <p>Refund Policy</p>
-                      <p>Terms of Service</p>
+                    <div className="relative left-[300px]">
+                      <h2 className="text-[1.05rem]  font-medium mb-2">
+                        POLICY PAGES
+                      </h2>
+                      <p className="block font-medium text-[1.05rem] text-gray-600 hover:text-black transition ease-in-out duration-100 transform cursor-pointer">
+                        Privacy Policy
+                      </p>
+                      <p className="block font-medium text-[1.05rem] text-gray-600 hover:text-black transition ease-in-out duration-100 transform mt-2 cursor-pointer">
+                        Refund Policy
+                      </p>
+                      <p className="block font-medium text-[1.05rem] text-gray-600 hover:text-black transition ease-in-out duration-100 transform mt-2 cursor-pointer">
+                        Terms of Service
+                      </p>
                     </div>
-                    <div>
-                      <h2 className="text-xl font-bold mb-4">BUY THEME!</h2>
-                      <p>Documentation</p>
-                      <p>Get Support</p>
-                      <p>Create Shopify Account</p>
+                    <div className="relative left-[560px]">
+                      <h2 className="text-[1.05rem]  font-medium mb-2 cursor-pointer">
+                        BUY THEME!
+                      </h2>
+                      <p className="block font-medium text-[1.05rem] text-gray-600 hover:text-black transition ease-in-out duration-100 transform  cursor-pointer">
+                        Documentation
+                      </p>
+                      <p className="block font-medium text-[1.05rem] text-gray-600 hover:text-black transition ease-in-out duration-100 transform mt-2 cursor-pointer">
+                        Get Support
+                      </p>
+                      <p className="block font-medium text-[1.05rem] text-gray-600 hover:text-black transition ease-in-out duration-100 transform mt-2 cursor-pointer">
+                        Create Shopify Account
+                      </p>
                     </div>
                   </div>
-                </div>
-              </Transition>
+                </Transition>
+              </div>
 
-              <button
-                onClick={() => toggleDropdown("Template")}
-                className="border-b-2 border-transparent hover:border-black font-medium text-lg inline-flex items-center"
-              >
-                {textContent.template}
-                <IoIosArrowDown className="ml-1 mt-1 text-sm" />
-              </button>
+              <div className="relative dropdown">
+                <button
+                  onClick={() => toggleDropdown("Template")}
+                  className="border-b-2 border-transparent hover:border-black font-medium text-lg inline-flex items-center"
+                >
+                  {textContent.template}
+                  <IoIosArrowDown
+                    className={`ml-1 mt-1 text-sm transition-transform duration-300 ${
+                      openDropdown === "Template" ? "rotate-180" : "rotate-0"
+                    }`}
+                  />
+                </button>
+
+                <Transition
+                  show={openDropdown === "Template"}
+                  enter="transition ease-out duration-300 transform"
+                  enterFrom="opacity-0 -translate-y-4"
+                  enterTo="opacity-100 translate-y-0"
+                  leave="transition ease-in duration-200 transform"
+                  leaveFrom="opacity-100 translate-y-0"
+                  leaveTo="opacity-0 -translate-y-4"
+                  unmount={true}
+                >
+                  <div className="absolute left-[-790px] mt-3 w-[1908px] bg-white shadow-lg rounded p-8 flex space-x-16 z-50">
+                    <div className="relative left-[29px]">
+                      <h2 className="text-[1.2rem]  font-medium mb-2 cursor-pointer">
+                        Collection Templates
+                      </h2>
+                      <Link
+                        href="/layout"
+                        className=" block font-medium text-[1.05rem] text-gray-600 hover:text-black transition ease-in-out duration-100 transform"
+                      >
+                        Layout 01
+                      </Link>
+                      <Link
+                        href="/layout"
+                        className="block font-medium text-[1.05rem] text-gray-600 hover:text-black transition ease-in-out duration-100 transform mt-2"
+                      >
+                        Layout 02
+                      </Link>
+                      <Link
+                        href="/layout"
+                        className="block font-medium text-[1.05rem] text-gray-600 hover:text-black transition ease-in-out duration-100 transform mt-2"
+                      >
+                        Layout 03
+                      </Link>
+                    </div>
+                    <div className="relative left-[270px]">
+                      <h2 className="text-[1.2rem]  font-medium mb-2 cursor-pointer">
+                        Collection Templates
+                      </h2>
+                      <Link
+                        href="/layout"
+                        className=" block font-medium text-[1.05rem] text-gray-600 hover:text-black transition ease-in-out duration-100 transform"
+                      >
+                        Layout 01
+                      </Link>
+                      <Link
+                        href="/layout"
+                        className="block font-medium text-[1.05rem] text-gray-600 hover:text-black transition ease-in-out duration-100 transform mt-2"
+                      >
+                        Layout 02
+                      </Link>
+                      <Link
+                        href="/layout"
+                        className="block font-medium text-[1.05rem] text-gray-600 hover:text-black transition ease-in-out duration-100 transform mt-2"
+                      >
+                        Layout 03
+                      </Link>
+                    </div>
+                  </div>
+                </Transition>
+              </div>
 
               <button
                 onClick={() => toggleDropdown("Collection")}
