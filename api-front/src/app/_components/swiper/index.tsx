@@ -1,49 +1,44 @@
 "use client";
-import dynamic from "next/dynamic";
-import { Pagination } from "swiper/modules";
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
+import { Pagination } from "swiper/modules";
+import "tailwindcss/tailwind.css";
 
-const SwiperReact = dynamic(
-  () => import("swiper/react").then((mod) => mod.Swiper),
-  { ssr: false }
-);
-const SwiperSlide = dynamic(
-  () => import("swiper/react").then((mod) => mod.SwiperSlide),
-  { ssr: false }
-);
-
-const SwiperComponent = () => {
+const SliderComponent: React.FC = () => {
   return (
-    <div className="relative w-full h-screen overflow-hidden">
-      <SwiperReact
-        pagination={{ clickable: true }}
+    <div className="relative w-full h-screen  px-10 md:px-12 rounded-3xl overflow-hidden">
+      <Swiper
+        direction="horizontal"
+        pagination={{
+          clickable: true,
+          renderBullet: (index, className) =>
+            `<span class="${className} custom-bullet"></span>`,
+        }}
         modules={[Pagination]}
         className="mySwiper"
-        effect="slide"
+        spaceBetween={30}
         loop={true}
-        speed={1000}
+        speed={800}
       >
-        <SwiperSlide>
-          <div className="relative w-full h-full">
+        <SwiperSlide className="rounded-3xl">
+          <div className="relative flex items-center justify-center h-full border rounded-3xl overflow-hidden">
             <img
               src="https://maxmod-goggles.myshopify.com/cdn/shop/files/1.webp?v=1713438123&width=3840"
-              alt="Sunglasses 1"
+              alt="Slide 1"
               className="w-full h-full object-cover"
             />
-
-            <div className="absolute inset-0 bg-black bg-opacity-30 flex flex-col justify-center items-start p-8 text-white">
-              <h1 className="text-4xl font-bold mb-4">
-                Perfect fit for every face
-              </h1>
-              <h2 className="text-2xl font-semibold mb-8">
+            <div className="absolute bottom-20 left-12 text-white">
+              <p className="text-lg font-medium">Perfect fit for every face</p>
+              <h2 className="text-4xl font-bold mt-2">
                 SHOP YOUR OUTFIT SUNGLASSES
               </h2>
-              <div className="flex space-x-4">
-                <button className="px-6 py-2 bg-white text-black rounded">
+              <div className="mt-4 flex gap-2">
+                <button className="px-6 py-2 font-medium border-2 border-white rounded-full text-black bg-white hover:bg-[#737373] hover:text-white transition-all duration-300">
                   SHOP MENS
                 </button>
-                <button className="px-6 py-2 border border-white text-white rounded">
+                <button className="px-6 py-2 font-medium border-2 border-white rounded-full text-white bg-transparent hover:bg-white hover:text-black transition-all duration-300">
                   SHOP WOMENS
                 </button>
               </div>
@@ -51,57 +46,57 @@ const SwiperComponent = () => {
           </div>
         </SwiperSlide>
 
-        {/* Slider 2 */}
         <SwiperSlide>
-          <div className="relative w-full h-full">
+          <div className="relative flex items-center justify-center h-full border rounded-3xl overflow-hidden">
             <img
               src="https://maxmod-goggles.myshopify.com/cdn/shop/files/2.webp?v=1713438127&width=3840"
-              alt="Sunglasses 2"
+              alt="Slide 2"
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-black bg-opacity-30 flex flex-col justify-center items-start p-8 text-white">
-              <h1 className="text-4xl font-bold mb-4">
-                Protect your eyes in style
-              </h1>
-              <h2 className="text-2xl font-semibold mb-8">
+            <div className="absolute bottom-20 left-12 text-white">
+              <p className="text-lg font-light font-medium">
                 Ideal for any activity
+              </p>
+              <h2 className="text-4xl font-bold mt-2">
+                PROTECT YOUR EYES IN STYLE
               </h2>
-              <button className="px-6 py-2 bg-white text-black rounded">
-                SHOP WOMENS
-              </button>
-            </div>
-          </div>
-        </SwiperSlide>
-
-        {/* Slider 3 */}
-        <SwiperSlide>
-          <div className="relative w-full h-full">
-            <img
-              src="https://maxmod-goggles.myshopify.com/cdn/shop/files/3.webp?v=1713438128&width=3840"
-              alt="Sunglasses 3"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-30 flex flex-col justify-center items-start p-8 text-white">
-              <h1 className="text-4xl font-bold mb-4">
-                Explore our latest collection of goggles
-              </h1>
-              <h2 className="text-2xl font-semibold mb-8">
-                Comfort in every pair
-              </h2>
-              <div className="flex space-x-4">
-                <button className="px-6 py-2 bg-white text-black rounded">
-                  SHOP MENS
-                </button>
-                <button className="px-6 py-2 border border-white text-white rounded">
+              <div className="mt-4 flex ">
+                <button className="px-6 py-2 font-medium border-2 border-white rounded-full text-black bg-white hover:bg-transparent hover:text-white transition-all duration-300">
                   SHOP WOMENS
                 </button>
               </div>
             </div>
           </div>
         </SwiperSlide>
-      </SwiperReact>
+
+        <SwiperSlide>
+          <div className="relative flex items-center justify-center h-full border rounded-3xl overflow-hidden">
+            <img
+              src="https://maxmod-goggles.myshopify.com/cdn/shop/files/3.webp?v=1713438128&width=3840"
+              alt="Slide 3"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute bottom-20 left-12 text-white">
+              <p className="text-lg font-light font-medium">
+                Comfort in every pair
+              </p>
+              <h2 className="text-4xl font-bold mt-2">
+                EXPLORE OUR LATEST COLLECTION OF GOGGLES
+              </h2>
+              <div className="mt-4 flex gap-2">
+                <button className="px-6 py-2 font-medium border-2 border-white rounded-full text-black bg-white hover:bg-transparent hover:text-white transition-all duration-300">
+                  SHOP MENS
+                </button>
+                <button className="px-6 py-2 font-medium border-2 border-white rounded-full text-white bg-transparent hover:bg-white hover:text-black transition-all duration-300">
+                  SHOP WOMENS
+                </button>
+              </div>
+            </div>
+          </div>
+        </SwiperSlide>
+      </Swiper>
     </div>
   );
 };
 
-export default SwiperComponent;
+export default SliderComponent;
