@@ -46,7 +46,7 @@ const Register: React.FC = () => {
         <div className="min-h-screen flex items-center justify-center mb-24">
           <form
             onSubmit={handleSubmit}
-            className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-lg" // Genişlik artırıldı
+            className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-lg"
           >
             <h2 className="text-center text-4xl font-bold mb-6">
               Create Account
@@ -98,7 +98,7 @@ const Register: React.FC = () => {
             <div className="flex items-center justify-center">
               <button
                 type="submit"
-                className="bg-black text-white font-bold py-2 px-8 rounded-full focus:outline-none focus:shadow-outline"
+                className="bg-black text-white font-medium py-3 px-12 rounded-full focus:outline-none focus:shadow-outline"
               >
                 Create
               </button>

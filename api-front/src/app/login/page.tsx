@@ -50,11 +50,11 @@ const Login: React.FC = () => {
 
   return (
     <Layouts>
-      <main className="flex items-center justify-center min-h-screen">
-        <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-          <h2 className="text-2xl font-bold mb-4 text-center">Login</h2>
+      <main className="flex items-center justify-center min-h-screen ">
+        <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg">
+          <h2 className="text-4xl font-bold mb-4 text-center">Login</h2>
           <form>
-            <div className="mb-4">
+            <div className="mb-4 w-full max-w-lg">
               <input
                 type="email"
                 value={email}
@@ -83,7 +83,7 @@ const Login: React.FC = () => {
               <button
                 type="button"
                 onClick={handleForgotPasswordClick}
-                className="text-sm text-blue-600 underline"
+                className=" flex flex-and text-[16px] text-black border-b-2 border-black hover:border-b-3 hover:border-black font-medium text-lg "
               >
                 Forgot your password?
               </button>
@@ -95,7 +95,7 @@ const Login: React.FC = () => {
             ) : (
               <button
                 type="button"
-                className="w-full bg-black text-white py-3 rounded-md mb-2 hover:bg-opacity-90"
+                className="w-full font-medium bg-black text-white py-3 rounded-full mb-2 hover:bg-opacity-90"
                 onClick={handleLogin}
                 disabled={!isClient}
               >
@@ -104,7 +104,7 @@ const Login: React.FC = () => {
             )}
             <button
               type="button"
-              className="w-full border border-black text-black py-3 rounded-md hover:bg-black hover:text-white transition-all duration-300"
+              className="w-full font-medium border border-black text-black py-3 rounded-full hover:bg-black hover:text-white transition-all duration-300"
               onClick={handleCreateAccountClick}
             >
               Create Account

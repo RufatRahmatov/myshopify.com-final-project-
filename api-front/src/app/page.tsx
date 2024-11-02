@@ -1,6 +1,7 @@
 "use client";
 
 import SwiperComponent from "./_components/swiper";
+import ViewCollection from "./_components/viewcollection";
 import Layouts from "./_layouts/layout";
 
 export default function Page() {
@@ -8,6 +9,7 @@ export default function Page() {
     <Layouts>
       <main>
         <SwiperComponent />
+        <ViewCollection />
         {/* <Featured /> */}
       </main>
     </Layouts>
