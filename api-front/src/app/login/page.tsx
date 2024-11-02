@@ -44,9 +44,13 @@ const Login: React.FC = () => {
     router.push("/register");
   };
 
+  const handleForgotPasswordClick = () => {
+    router.push("/reset-password");
+  };
+
   return (
     <Layouts>
-      <main className="flex items-center justify-center min-h-screen ">
+      <main className="flex items-center justify-center min-h-screen">
         <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
           <h2 className="text-2xl font-bold mb-4 text-center">Login</h2>
           <form>
@@ -73,6 +77,15 @@ const Login: React.FC = () => {
                 className="absolute right-3 top-1/2 transform -translate-y-1/2"
               >
                 {showPassword ? <FiEyeOff /> : <FiEye />}
+              </button>
+            </div>
+            <div className="mb-4 text-right">
+              <button
+                type="button"
+                onClick={handleForgotPasswordClick}
+                className="text-sm text-blue-600 underline"
+              >
+                Forgot your password?
               </button>
             </div>
             {loading ? (

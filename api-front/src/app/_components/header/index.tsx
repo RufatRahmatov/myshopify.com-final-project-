@@ -478,7 +478,7 @@ const Header = () => {
                 <Link href="/login" legacyBehavior>
                   <a className="flex items-center space-x-2">
                     <IoPersonOutline className="text-2xl cursor-pointer" />
-                    <span className="text-lg font-medium">Login</span>
+                    <span className="text-lg font-medium"></span>
                   </a>
                 </Link>
               )}
