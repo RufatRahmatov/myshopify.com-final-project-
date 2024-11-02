@@ -8,6 +8,13 @@ import { RiSearchLine } from "react-icons/ri";
 import { IoPersonOutline } from "react-icons/io5";
 import { RiShoppingBag2Line } from "react-icons/ri";
 
+interface User {
+  firstname: string;
+  lastname: string;
+  email: string;
+  password: string;
+}
+
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -25,6 +32,14 @@ const Header = () => {
     contactLens: "Contact Lens",
     eyeframes: "Eyeframes",
   });
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    const userData = localStorage.getItem("user");
+    if (userData) {
+      setUser(JSON.parse(userData) as User);
+    }
+  }, []);
 
   const toggleDropdown = (name: string) => {
     setOpenDropdown(openDropdown === name ? null : name);
@@ -452,7 +467,21 @@ const Header = () => {
 
             <div className="hidden md:flex items-center space-x-4 relative left-[280px]">
               <RiSearchLine className="text-2xl cursor-pointer" />
-              <IoPersonOutline className="text-2xl cursor-pointer" />
+              {user ? (
+                <div className="flex items-center space-x-2">
+                  <IoPersonOutline className="text-2xl cursor-pointer" />
+                  <span className="text-lg font-medium">
+                    Hi, {user.firstname}
+                  </span>
+                </div>
+              ) : (
+                <Link href="/login" legacyBehavior>
+                  <a className="flex items-center space-x-2">
+                    <IoPersonOutline className="text-2xl cursor-pointer" />
+                    <span className="text-lg font-medium">Login</span>
+                  </a>
+                </Link>
+              )}
               <RiShoppingBag2Line className="text-2xl cursor-pointer" />
             </div>
 
