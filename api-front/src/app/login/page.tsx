@@ -31,7 +31,7 @@ const Login: React.FC = () => {
 
       const data = await response.json();
       if (response.ok) {
-        router.push("/home");
+        router.push("");
       } else {
         alert(data.message || "Email or password error");
       }
