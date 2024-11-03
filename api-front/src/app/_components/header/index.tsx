@@ -186,13 +186,12 @@ const Header = () => {
             </div>
 
             <div className="hidden md:flex space-x-8 ml-16">
-              <a
-                href="#"
+              <Link
+                href="/page"
                 className="hover:border-b-2 hover:border-black font-medium text-lg"
               >
                 {textContent.home}
-              </a>
-
+              </Link>
               <div className="relative dropdown">
                 {" "}
                 <button
@@ -271,7 +270,6 @@ const Header = () => {
                   </div>
                 </Transition>
               </div>
-
               <div className="relative dropdown">
                 <button
                   onClick={() => toggleDropdown("Template")}
@@ -351,7 +349,6 @@ const Header = () => {
                   </div>
                 </Transition>
               </div>
-
               <div className="relative dropdown">
                 <button
                   onClick={() => toggleDropdown("Collection")}
@@ -450,7 +447,6 @@ const Header = () => {
                   </div>
                 </Transition>
               </div>
-
               <a
                 href="#"
                 className="hover:border-b-2 hover:border-black font-medium text-lg"

@@ -2,20 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* globals.scss */
-// .swiper-pagination {
-//   position: absolute;
-//   top: 50%;
-//   transform: translateY(-50%);
-//   right: 20px;
-//   display: flex;
-//   flex-direction: column;
-
-// }
-// .swiper-pagination {
-//   gap: 16px;
-// }
-
 .swiper-pagination-bullet {
   width: 14px;
   height: 14px;
@@ -38,9 +24,9 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 10px; /* Balaca dairənin eni */
-    height: 10px; /* Balaca dairənin hündürlüyü */
-    background-color: white; /* Balaca dairənin rəngi */
+    width: 10px;
+    height: 10px;
+    background-color: white;
     border-radius: 50%;
   }
 }
@@ -48,4 +34,11 @@
 .swiper-pagination-bullet:hover {
   background-color: white;
   transform: scale(1.1);
+}
+
+.animate-scroll {
+  animation: scroll 10s linear infinite;
+}
+.pause-scroll:hover {
+  animation-play-state: paused;
 }
