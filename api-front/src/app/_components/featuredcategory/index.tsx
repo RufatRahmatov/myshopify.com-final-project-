@@ -1,101 +1,114 @@
-import { useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
+import React, { useState } from "react";
 
 const categories = [
   {
-    image: "/images/eyeglasses.png",
+    imageSrc:
+      "https://maxmod-goggles.myshopify.com/cdn/shop/collections/6.webp?v=1713439281&width=1500",
     title: "Eyeglasses",
-    count: 7,
-    link: "/details/eyeglasses",
+    itemsCount: 7,
   },
   {
-    image: "/images/computer_glasses.png",
+    imageSrc:
+      "https://maxmod-goggles.myshopify.com/cdn/shop/collections/1.webp?v=1713522076&width=1500",
     title: "Computer Glasses",
-    count: 8,
-    link: "/details/computer-glasses",
+    itemsCount: 8,
   },
   {
-    image: "/images/sunglasses.png",
+    imageSrc:
+      "https://maxmod-goggles.myshopify.com/cdn/shop/collections/2.webp?v=1713521903&width=1500",
     title: "Sunglasses",
-    count: 6,
-    link: "/details/sunglasses",
+    itemsCount: 6,
   },
   {
-    image: "/images/power_sunglasses.png",
+    imageSrc:
+      "https://maxmod-goggles.myshopify.com/cdn/shop/collections/3.webp?v=1713521928&width=1500",
     title: "Power Sunglasses",
-    count: 8,
-    link: "/details/power-sunglasses",
+    itemsCount: 8,
   },
   {
-    image: "/images/swimming_glasses.png",
+    imageSrc:
+      "https://maxmod-goggles.myshopify.com/cdn/shop/collections/4.webp?v=1713439404&width=1500",
     title: "Swimming Glasses",
-    count: 3,
-    link: "/details/swimming-glasses",
+    itemsCount: 3,
   },
   {
-    image: "/images/kids_glasses.png",
+    imageSrc:
+      "https://maxmod-goggles.myshopify.com/cdn/shop/collections/5..webp?v=1713522043&width=1500",
     title: "Kids Glasses",
-    count: 6,
-    link: "/details/kids-glasses",
+    itemsCount: 6,
   },
 ];
 
-const Featured = () => {
-  const [isHovered, setIsHovered] = useState<string | null>(null);
+export default function FeaturedCategory() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === categories.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? categories.length - 1 : prevIndex - 1
+    );
+  };
 
   return (
-    <div className="p-8">
-      <h2 className="text-3xl font-bold mb-6">Featured By Category</h2>
-      <div className="relative">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {categories.map((category, index) => (
-            <Link href={category.link} key={index}>
-              <div
-                className="border rounded-lg p-4 flex flex-col items-center justify-center hover:cursor-pointer transform transition duration-300 hover:scale-105"
-                onMouseEnter={() => setIsHovered(category.title)}
-                onMouseLeave={() => setIsHovered(null)}
-              >
-                <div
-                  className={`h-24 w-24 mb-4 transition-transform ${
-                    isHovered === category.title
-                      ? "translate-y-1"
-                      : "translate-y-0"
-                  }`}
-                >
-                  <Image
-                    src={category.image}
-                    alt={category.title}
-                    width={96}
-                    height={96}
-                    className="object-contain"
-                  />
-                </div>
-
-                <div
-                  className={`text-lg font-semibold transition-colors ${
-                    isHovered === category.title
-                      ? "text-gray-500"
-                      : "text-black"
-                  }`}
-                >
-                  {category.title}
-                </div>
-                <div className="text-sm text-gray-600">
-                  {category.count} items
-                </div>
-              </div>
-            </Link>
-          ))}
+    <div className="min-h-screen bg-gray-100 py-10">
+      <div className="container mx-auto px-4 relative">
+        <div className="flex flex-col sm:flex-row justify-between items-center mb-6 space-y-4 sm:space-y-0">
+          <div>
+            <h2 className="text-sm text-gray-500">Eyeglasses Style</h2>
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-medium">
+              Featured By Category
+            </h1>
+          </div>
+          <button className="px-3 py-2 sm:px-4 sm:py-2.5 lg:px-6 lg:py-3 bg-black text-white font-medium rounded-full hover:bg-white hover:text-black transition transform duration-300">
+            View Collection
+          </button>
         </div>
 
-        <div className="absolute inset-0 flex justify-between items-center sm:hidden">
-          <button className="p-2 bg-black text-white rounded-full">&lt;</button>
-          <button className="p-2 bg-black text-white rounded-full">&gt;</button>
+        <div className="flex items-center justify-center">
+          <button
+            onClick={handlePrev}
+            className="text-2xl px-4 focus:outline-none"
+          >
+            &#8249;
+          </button>
+          <div className="flex overflow-hidden w-full sm:w-3/4 md:w-2/3 lg:w-1/2">
+            <div
+              className="flex transition-transform duration-500"
+              style={{
+                transform: `translateX(-${currentIndex * 100}%)`,
+              }}
+            >
+              {categories.map((category, index) => (
+                <div
+                  key={index}
+                  className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-2"
+                >
+                  <div className="flex flex-col items-center p-4 bg-white rounded-lg shadow-md border-2 border-gray-300">
+                    <img
+                      src={category.imageSrc}
+                      alt={category.title}
+                      className="w-24 h-24 mb-4 object-contain"
+                    />
+                    <h3 className="text-lg font-semibold">{category.title}</h3>
+                    <p className="text-gray-500">{category.itemsCount} items</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <button
+            onClick={handleNext}
+            className="text-2xl px-4 focus:outline-none"
+          >
+            &#8250;
+          </button>
         </div>
       </div>
     </div>
   );
-};
-
-export default Featured;
+}

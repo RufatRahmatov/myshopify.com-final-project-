@@ -4,7 +4,7 @@ const ScrollingText: React.FC = () => {
   return (
     <div className="overflow-hidden whitespace-nowrap mt-10 w-full">
       <div
-        className="text-4xl font-medum flex items-center"
+        className="text-4xl font-medium flex items-center"
         style={{
           animation: "scroll 25s linear infinite",
         }}
