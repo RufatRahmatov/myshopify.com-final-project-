@@ -55,7 +55,7 @@ export default function FeaturedCategory() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 py-10">
+    <div className="min-h-screen bg-gray-100 py-10 max-w-[2400px]">
       <div className="container mx-auto px-4 relative">
         <div className="flex flex-col sm:flex-row justify-between items-center mb-6 space-y-4 sm:space-y-0">
           <div>
@@ -64,19 +64,13 @@ export default function FeaturedCategory() {
               Featured By Category
             </h1>
           </div>
-          <button className="px-3 py-2 sm:px-4 sm:py-2.5 lg:px-6 lg:py-3 bg-black text-white font-medium rounded-full hover:bg-white hover:text-black transition transform duration-300">
+          <button className="px-3 py-[10px] sm:px-4 sm:py-2.5 lg:px-6 lg:py-3 bg-black text-white font-medium rounded-full hover:bg-white hover:text-black transition transform duration-300">
             View Collection
           </button>
         </div>
 
-        <div className="flex items-center justify-center">
-          <button
-            onClick={handlePrev}
-            className="text-2xl px-4 focus:outline-none"
-          >
-            &#8249;
-          </button>
-          <div className="flex overflow-hidden w-full sm:w-3/4 md:w-2/3 lg:w-1/2">
+        <div className="flex items-center justify-center max-w-[2400px]">
+          <div className="flex overflow-hidden w-full">
             <div
               className="flex transition-transform duration-500"
               style={{
@@ -86,13 +80,13 @@ export default function FeaturedCategory() {
               {categories.map((category, index) => (
                 <div
                   key={index}
-                  className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-2"
+                  className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/6 p-2"
                 >
-                  <div className="flex flex-col items-center p-4 bg-white rounded-lg shadow-md border-2 border-gray-300">
+                  <div className="flex flex-col items-center p-4 bg-white rounded-lg shadow-md border-2 border-gray-300 w-[250px]">
                     <img
                       src={category.imageSrc}
                       alt={category.title}
-                      className="w-24 h-24 mb-4 object-contain"
+                      className="w-24 h-24 mb-4 rounded-lg shadow-md object-contain transform transition-transform duration-300 hover:scale-105 cursor-pointer"
                     />
                     <h3 className="text-lg font-semibold">{category.title}</h3>
                     <p className="text-gray-500">{category.itemsCount} items</p>
@@ -101,10 +95,13 @@ export default function FeaturedCategory() {
               ))}
             </div>
           </div>
-          <button
-            onClick={handleNext}
-            className="text-2xl px-4 focus:outline-none"
-          >
+        </div>
+
+        <div className="flex justify-center mt-4 sm:hidden">
+          <button onClick={handlePrev} className="text-2xl px-4">
+            &#8249;
+          </button>
+          <button onClick={handleNext} className="text-2xl px-4">
             &#8250;
           </button>
         </div>
