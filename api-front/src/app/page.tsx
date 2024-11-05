@@ -7,6 +7,7 @@ import ViewCollection from "./_components/viewcollection";
 import Layouts from "./_layouts/layout";
 import Featured from "./_components/featuredcategory";
 import VideoBanner from "./_components/youtube";
+import Testimonials from "./_components/customertestimonial";
 export default function Page() {
   return (
     <Layouts>
@@ -17,6 +18,7 @@ export default function Page() {
         <Features />
         <ScrollingText />
         <VideoBanner />
+        <Testimonials />
       </main>
     </Layouts>
   );
