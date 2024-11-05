@@ -81,10 +81,7 @@ export default function FeaturedCategory() {
               }}
             >
               {categories.map((category, index) => (
-                <div
-                  key={index}
-                  className="flex-shrink-0 w-[250px] p-2" // Her zaman aynı genişlik
-                >
+                <div key={index} className="flex-shrink-0 w-[250px] p-2">
                   <div className="flex flex-col items-center p-4 bg-white rounded-lg shadow-md border-2 border-gray-300">
                     <img
                       src={category.imageSrc}
