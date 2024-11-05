@@ -10,11 +10,6 @@ interface Product {
   hoverImageUrl: string;
 }
 
-// interface CartItem {
-//   product: Product;
-//   quantity: number;
-// }
-
 const ProductCard: React.FC<{
   product: Product;
   addToCart: (product: Product) => void;

@@ -11,10 +11,10 @@ export default function Page() {
     <Layouts>
       <main>
         <SwiperComponent />
+        <Featured />
         <ViewCollection />
         <Features />
         <ScrollingText />
-        <Featured />
       </main>
     </Layouts>
   );

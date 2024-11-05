@@ -55,8 +55,11 @@ export default function FeaturedCategory() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 py-10 max-w-[2400px]">
-      <div className="container mx-auto px-4 relative">
+    <div
+      className="min-h-screen py-10 max-w-[1840px] relative"
+      style={{ top: "-120px" }}
+    >
+      <div className="container mx-auto px-4">
         <div className="flex flex-col sm:flex-row justify-between items-center mb-6 space-y-4 sm:space-y-0">
           <div>
             <h2 className="text-sm text-gray-500">Eyeglasses Style</h2>
@@ -64,13 +67,13 @@ export default function FeaturedCategory() {
               Featured By Category
             </h1>
           </div>
-          <button className="px-3 py-[10px] sm:px-4 sm:py-2.5 lg:px-6 lg:py-3 bg-black text-white font-medium rounded-full hover:bg-white hover:text-black transition transform duration-300">
+          <button className="px-3 py-[10px] sm:px-4 sm:py-2.5 lg:px-6 border-2 border-black lg:py-3 bg-black text-white font-medium rounded-full  hover:bg-white hover:text-black transition transform duration-300">
             View Collection
           </button>
         </div>
 
-        <div className="flex items-center justify-center max-w-[2400px]">
-          <div className="flex overflow-hidden w-full">
+        <div className="flex items-center justify-center px-10">
+          <div className="flex overflow-hidden w-full max-w-[1200px]">
             <div
               className="flex transition-transform duration-500"
               style={{
@@ -80,9 +83,9 @@ export default function FeaturedCategory() {
               {categories.map((category, index) => (
                 <div
                   key={index}
-                  className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/6 p-2"
+                  className="flex-shrink-0 w-[250px] p-2" // Her zaman aynı genişlik
                 >
-                  <div className="flex flex-col items-center p-4 bg-white rounded-lg shadow-md border-2 border-gray-300 w-[250px]">
+                  <div className="flex flex-col items-center p-4 bg-white rounded-lg shadow-md border-2 border-gray-300">
                     <img
                       src={category.imageSrc}
                       alt={category.title}
