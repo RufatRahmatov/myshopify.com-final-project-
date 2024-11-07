@@ -16,6 +16,7 @@ interface User {
 }
 
 const Header = () => {
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [selectedLanguage, setSelectedLanguage] = useState("English");
@@ -478,8 +479,46 @@ const Header = () => {
                   </a>
                 </Link>
               )}
-              <RiShoppingBag2Line className="text-2xl cursor-pointer" />
+              <RiShoppingBag2Line
+                className="text-2xl cursor-pointer "
+                onClick={() => setIsCartOpen(true)}
+              />
             </div>
+
+            <Transition show={isCartOpen}>
+              <div
+                className="fixed inset-0 bg-black bg-opacity-50 z-40"
+                onClick={() => setIsCartOpen(false)}
+              ></div>
+
+              <div
+                className={`fixed right-0 top-0 w-80 bg-white h-full z-50 transition ease-in-out transform duration-700 ${
+                  isCartOpen ? "translate-x-0" : "translate-x-full"
+                }`}
+              >
+                <button
+                  onClick={() => setIsCartOpen(false)}
+                  className="absolute top-4 right-4 text-2xl"
+                >
+                  &times;
+                </button>
+                <div className="p-6">
+                  <h2 className="text-xl font-bold">Səbətiniz boşdur</h2>
+                  <button className="mt-4 px-4 py-2 bg-black text-white rounded">
+                    Alış-verişə davam et
+                  </button>
+                  <div className="mt-6">
+                    <img
+                      src="/path-to-image.jpg"
+                      alt="Eyeglasses"
+                      className="w-full"
+                    />
+                    <p className="text-center mt-2">Eynəklər</p>
+                    <p className="text-center text-gray-500">7 məhsul</p>
+                  </div>
+                </div>
+              </div>
+            </Transition>
 
             <div className="-mr-2 flex md:hidden">
               <button
