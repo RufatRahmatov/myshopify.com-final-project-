@@ -8,12 +8,15 @@ import Layouts from "./_layouts/layout";
 import Featured from "./_components/featuredcategory";
 import VideoBanner from "./_components/youtube";
 import Testimonials from "./_components/customertestimonial";
+// import Ourproduct from "./_components/ourproduct";
+
 export default function Page() {
   return (
     <Layouts>
       <main>
         <SwiperComponent />
         <Featured />
+        {/* <Ourproduct /> */}
         <ViewCollection />
         <Features />
         <ScrollingText />
