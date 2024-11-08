@@ -87,7 +87,7 @@ const products: Product[] = [
   },
 ];
 
-const OurProducts: React.FC = () => {
+const Bestselling: React.FC = () => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [selectedColor, setSelectedColor] = useState<string>("");
 
@@ -182,4 +182,4 @@ const OurProducts: React.FC = () => {
   );
 };
 
-export default OurProducts;
+export default Bestselling;
