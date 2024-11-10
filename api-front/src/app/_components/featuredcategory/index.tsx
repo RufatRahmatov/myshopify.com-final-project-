@@ -1,111 +1,117 @@
-import React, { useState } from "react";
+"use client";
 
-const categories = [
+import React from "react";
+
+interface Category {
+  id: number;
+  title: string;
+  itemsCount: number;
+  image: string;
+}
+
+const categories: Category[] = [
   {
-    imageSrc:
-      "https://maxmod-goggles.myshopify.com/cdn/shop/collections/6.webp?v=1713439281&width=1500",
+    id: 1,
     title: "Eyeglasses",
     itemsCount: 7,
+    image:
+      "https://maxmod-goggles.myshopify.com/cdn/shop/collections/6.webp?v=1713439281&width=1500",
   },
   {
-    imageSrc:
-      "https://maxmod-goggles.myshopify.com/cdn/shop/collections/1.webp?v=1713522076&width=1500",
+    id: 2,
     title: "Computer Glasses",
     itemsCount: 8,
+    image:
+      "https://maxmod-goggles.myshopify.com/cdn/shop/collections/1.webp?v=1713522076&width=1500",
   },
   {
-    imageSrc:
-      "https://maxmod-goggles.myshopify.com/cdn/shop/collections/2.webp?v=1713521903&width=1500",
+    id: 3,
     title: "Sunglasses",
     itemsCount: 6,
+    image:
+      "https://maxmod-goggles.myshopify.com/cdn/shop/collections/2.webp?v=1713521903&width=1500",
   },
   {
-    imageSrc:
-      "https://maxmod-goggles.myshopify.com/cdn/shop/collections/3.webp?v=1713521928&width=1500",
+    id: 4,
     title: "Power Sunglasses",
     itemsCount: 8,
+    image:
+      "https://maxmod-goggles.myshopify.com/cdn/shop/collections/3.webp?v=1713521928&width=1500",
   },
   {
-    imageSrc:
-      "https://maxmod-goggles.myshopify.com/cdn/shop/collections/4.webp?v=1713439404&width=1500",
+    id: 5,
     title: "Swimming Glasses",
     itemsCount: 3,
+    image:
+      "https://maxmod-goggles.myshopify.com/cdn/shop/collections/4.webp?v=1713439404&width=1500",
   },
   {
-    imageSrc:
-      "https://maxmod-goggles.myshopify.com/cdn/shop/collections/5..webp?v=1713522043&width=1500",
+    id: 6,
     title: "Kids Glasses",
     itemsCount: 6,
+    image:
+      "https://maxmod-goggles.myshopify.com/cdn/shop/collections/5..webp?v=1713522043&width=1500",
   },
 ];
 
-export default function FeaturedCategory() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === categories.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  const handlePrev = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? categories.length - 1 : prevIndex - 1
-    );
-  };
-
+const FeaturedCategory: React.FC = () => {
   return (
-    <div
-      className="min-h-screen py-10 max-w-[1840px] relative"
-      style={{ top: "-120px" }}
-    >
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col sm:flex-row justify-between items-center mb-6 space-y-4 sm:space-y-0">
-          <div>
-            <h2 className="text-sm text-gray-500">Eyeglasses Style</h2>
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-medium">
-              Featured By Category
-            </h1>
-          </div>
-          <button className="px-3 py-[10px] sm:px-4 sm:py-2.5 lg:px-6 border-2 border-black lg:py-3 bg-black text-white font-medium rounded-full  hover:bg-white hover:text-black transition transform duration-300">
-            View Collection
-          </button>
+    <div className="p-4">
+      <div className="flex justify-between items-center mx-4">
+        <div>
+          <p className="text-sm text-gray-500">Eyeglasses Style</p>
+          <h2 className="text-2xl sm:text-4xl font-semibold mb-4">
+            Featured By Category
+          </h2>
         </div>
+        <button className="text-black border border-black px-4 py-2 rounded hover:bg-black hover:text-white transition">
+          View Collection
+        </button>
+      </div>
 
-        <div className="flex items-center justify-center px-10">
-          <div className="flex overflow-hidden w-full max-w-[1200px]">
-            <div
-              className="flex transition-transform duration-500"
-              style={{
-                transform: `translateX(-${currentIndex * 100}%)`,
-              }}
-            >
-              {categories.map((category, index) => (
-                <div key={index} className="flex-shrink-0 w-[250px] p-2">
-                  <div className="flex flex-col items-center p-4 bg-white rounded-lg shadow-md border-2 border-gray-300">
-                    <img
-                      src={category.imageSrc}
-                      alt={category.title}
-                      className="w-24 h-24 mb-4 rounded-lg shadow-md object-contain transform transition-transform duration-300 hover:scale-105 cursor-pointer"
-                    />
-                    <h3 className="text-lg font-semibold">{category.title}</h3>
-                    <p className="text-gray-500">{category.itemsCount} items</p>
-                  </div>
-                </div>
-              ))}
+      <div className="h-[280px] grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 mx-8 text-center">
+        {categories.map((category) => (
+          <div
+            key={category.id}
+            className="border rounded-lg shadow-md overflow-hidden"
+          >
+            <div className="p-4 overflow-hidden">
+              <img
+                src={category.image}
+                alt={category.title}
+                className="w-full h-[150px] object-cover rounded-lg mb-4 hover:transform transition-transform duration-300 group-hover:scale-110"
+              />
+              <h3 className="text-lg font-semibold">{category.title}</h3>
+              <p className="text-gray-500 text-sm">
+                {category.itemsCount} items
+              </p>
             </div>
           </div>
-        </div>
+        ))}
+      </div>
 
-        <div className="flex justify-center mt-4 sm:hidden">
-          <button onClick={handlePrev} className="text-2xl px-4">
-            &#8249;
-          </button>
-          <button onClick={handleNext} className="text-2xl px-4">
-            &#8250;
-          </button>
-        </div>
+      <div className="flex overflow-x-auto space-x-4 sm:hidden mt-4">
+        {categories.map((category) => (
+          <div
+            key={category.id}
+            className="flex-shrink-0 w-48 border rounded-lg shadow-md"
+          >
+            <div className="p-4">
+              <img
+                src={category.image}
+                alt={category.title}
+                className="w-full h-32 object-cover mb-4"
+              />
+              <h3 className="text-lg font-semibold">{category.title}</h3>
+              <p className="text-gray-500 text-sm">
+                {category.itemsCount} items
+              </p>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
-}
+};
+
+export default FeaturedCategory;

@@ -19,7 +19,7 @@ interface Product {
 const products: Product[] = [
   {
     id: "1",
-    title: "Unveiling the Finest Optical Experience",
+    title: "Unveiling the Finest Optical Experience at Eyewearlabs",
     category: "Optical",
     basePrice: 2610,
     onSale: false,
@@ -131,7 +131,7 @@ const OurProducts: React.FC = () => {
               />
 
               <button
-                className="absolute top-4 right-4 text-black font-medium text-sm  hover:underline "
+                className="absolute top-4 right-4 text-black font-medium text-md  hover:underline "
                 onClick={(e) => {
                   e.stopPropagation();
                   setSelectedProduct(product);
@@ -146,9 +146,11 @@ const OurProducts: React.FC = () => {
               </div>
             </div>
             <div className="text-center mt-4">
-              <p className="text-sm text-gray-500">{product.category}</p>
-              <p className="font-semibold text-lg">{product.title}</p>
-              <p className="text-sm text-red-500">Rs. {product.basePrice}</p>
+              <p className="text-sm text-gray-500 font-medium">
+                {product.category}
+              </p>
+              <p className="font-bold text-lg ">{product.title}</p>
+              <p className="text-lg  font-medium">Rs. {product.basePrice}</p>
             </div>
           </div>
         ))}
@@ -196,7 +198,7 @@ const OurProducts: React.FC = () => {
                 ))}
               </div>
             </div>
-            <p className="font-semibold text-lg">
+            <p className="font-medium text-lg">
               Rs.{" "}
               {selectedColor
                 ? selectedProduct.colors.find(
