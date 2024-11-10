@@ -13,6 +13,7 @@ interface Product {
     image: string;
     hoverImage: string;
   }[];
+  onSale: boolean;
 }
 
 const products: Product[] = [
@@ -21,6 +22,7 @@ const products: Product[] = [
     title: "Unveiling the Finest Optical Experience",
     category: "Optical",
     basePrice: 2610,
+    onSale: false,
     colors: [
       {
         name: "Black",
@@ -37,6 +39,7 @@ const products: Product[] = [
     title: "Clarity & Style: Discover the Perfect",
     category: "Maxmod Goggles",
     basePrice: 900,
+    onSale: true,
     colors: [
       {
         name: "Orange",
@@ -46,12 +49,6 @@ const products: Product[] = [
         hoverImage:
           "https://maxmod-goggles.myshopify.com/cdn/shop/files/19_67553eb4-3cd2-478c-8854-205450801ee7.webp?v=1713441191&width=533",
       },
-      {
-        name: "Blue",
-        price: 800,
-        image: "/images/product2-blue.jpg",
-        hoverImage: "/images/product2-hover-blue.jpg",
-      },
     ],
   },
   {
@@ -59,6 +56,7 @@ const products: Product[] = [
     title: "Clarity and Comfort with Our Optical Collection",
     category: "Glass",
     basePrice: 300,
+    onSale: true,
     colors: [
       {
         name: "Gray",
@@ -75,13 +73,15 @@ const products: Product[] = [
     title: "ClarityPrime Optical Glass with Luminix Precision",
     category: "Electronics",
     basePrice: 1128,
+    onSale: false,
     colors: [
       {
         name: "Gold",
         price: 1128,
         image:
           "https://maxmod-goggles.myshopify.com/cdn/shop/files/19_51aa1dcc-03ae-4f9e-8391-c23df47807b5.webp?v=1713862373&width=533",
-        hoverImage: "/images/product4-hover.jpg",
+        hoverImage:
+          "https://maxmod-goggles.myshopify.com/cdn/shop/files/20_97089cb7-390e-49a4-a78f-a22da33c2a6d.webp?v=1713441191&width=533",
       },
     ],
   },
@@ -93,22 +93,54 @@ const OurProducts: React.FC = () => {
 
   return (
     <div className="p-4">
-      <h2 className="text-4xl font-medium mb-8">Our Featured Products</h2>
-      <div className="flex flex-wrap -mx-4">
+      <div className="flex justify-between items-center mx-8">
+        <p className="font-medium text-[#787878]">Hottest collections</p>
+      </div>
+      <div className="flex justify-between items-center">
+        <h2 className="text-4xl font-medium mb-5 mx-8">
+          Our Featured Products
+        </h2>
+        <button className=" text-black border-2 border-black px-6 py-[8px] font-medium rounded-full bg-black text-white hover:bg-white hover:text-black transition duration-300 mx-8">
+          View All
+        </button>
+      </div>
+
+      <div className="flex flex-wrap mx-4">
         {products.map((product) => (
           <div
             key={product.id}
             className="relative group cursor-pointer w-full sm:w-1/2 lg:w-1/4 p-4"
             onClick={() => setSelectedProduct(product)}
           >
-            <div className="relative rounded-2xl border-2 border-gray-300 overflow-hidden">
+            {product.onSale && (
+              <span className="absolute top-8  left-8 bg-[#448B23] px-4 py-1 text-white text-xs font-medium px-2 py-1 rounded-full z-50">
+                SALE
+              </span>
+            )}
+
+            <div className="relative rounded-2xl overflow-hidden">
               <img
                 src={product.colors[0].image}
                 alt={product.title}
-                className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-[420px] object-cover transition-opacity duration-500 group-hover:opacity-0"
               />
-              <div className="absolute bottom-0 left-0 w-full bg-black bg-opacity-75 py-2">
-                <button className="w-full text-white py-2 hover:bg-white hover:text-black transition duration-300">
+              <img
+                src={product.colors[0].hoverImage}
+                alt={`${product.title} Hover`}
+                className="w-full h-[420px] object-cover absolute top-0 left-0 transition-opacity duration-500 group-hover:opacity-100 opacity-0"
+              />
+
+              <button
+                className="absolute top-4 right-4 text-black font-medium text-sm  hover:underline "
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedProduct(product);
+                }}
+              >
+                Quick View
+              </button>
+              <div className="absolute bottom-2 left-3 w-full bg-opacity-75 py-2">
+                <button className="w-[calc(100%-25px)] font-medium text-white py-2 bg-black rounded-full hover:bg-white hover:text-black border-2 border-black transition duration-300">
                   Add to Cart
                 </button>
               </div>
