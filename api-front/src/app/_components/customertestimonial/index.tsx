@@ -45,10 +45,10 @@ const testimonials: Testimonial[] = [
 
 const Testimonials: React.FC = () => {
   return (
-    <div className="container relative  mx-auto overflow-hidden  max-w-[1840px] px-4 py-10  ">
+    <div className="container relative mx-auto overflow-hidden max-w-[1840px] px-4  py-10 -mt-32  ">
       <div className="flex justify-between items-center mb-8">
         <h2 className="text-4xl font-medium">Our Customers Testimonial</h2>
-        <button className="bg-black text-white px-4 py-2 rounded-3xl">
+        <button className="bg-black border-2 border-black font-medium text-white px-6 py-2 rounded-full hover:bg-white hover:text-black transition duraction-300 ease-in-out">
           View Review
         </button>
       </div>
@@ -59,7 +59,7 @@ const Testimonials: React.FC = () => {
             className=" p-6 rounded-2xl shadow-md border border-gray-200 bg-[#F5F5F5] "
           >
             <div className="flex items-center mb-4">
-              <div className="text-yellow-500 text-lg">
+              <div className="text-[#F9B42F] text-2xl">
                 {"★".repeat(testimonial.rating)}
                 {"☆".repeat(5 - testimonial.rating)}
               </div>
