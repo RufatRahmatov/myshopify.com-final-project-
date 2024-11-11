@@ -10,7 +10,7 @@ const ViewCollection: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-[1840px]">
+    <div className=" relative mt-6 container mx-auto px-4 py-8 max-w-[1840px]">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="relative rounded-3xl overflow-hidden bg-white shadow-lg ">
           <img

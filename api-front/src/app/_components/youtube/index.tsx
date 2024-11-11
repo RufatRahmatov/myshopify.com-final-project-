@@ -9,8 +9,8 @@ const VideoBanner: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="relative w-full max-w-[1810px] h-[600px] bg-gray-200 rounded-3xl overflow-hidden">
+    <div className="relative -mt-[65px] flex items-center justify-center min-h-screen">
+      <div className="relative w-full max-w-[1810px] h-[650px] bg-gray-200 rounded-3xl overflow-hidden">
         {!showVideo ? (
           <div
             className="flex items-center justify-center w-full h-full cursor-pointer"

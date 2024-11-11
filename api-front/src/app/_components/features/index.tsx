@@ -33,7 +33,7 @@ const Features: React.FC = () => {
   ];
 
   return (
-    <div className="container mx-auto px-4 py-10 bg-[#F5F5F5] max-w-[2000px]">
+    <div className=" relative mt-8 container mx-auto px-4 py-10 bg-[#F5F5F5] max-w-[2000px]">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {features.map((feature, index) => (
           <div

@@ -92,7 +92,7 @@ const Bestselling: React.FC = () => {
   const [selectedColor, setSelectedColor] = useState<string>("");
 
   return (
-    <div className="p-4">
+    <div className="relative mt-10 p-4">
       <h2 className="text-4xl font-medium mb-8">Our Featured Products</h2>
       <div className="flex flex-wrap -mx-4">
         {products.map((product) => (

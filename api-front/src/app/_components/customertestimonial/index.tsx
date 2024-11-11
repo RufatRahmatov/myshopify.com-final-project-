@@ -45,14 +45,14 @@ const testimonials: Testimonial[] = [
 
 const Testimonials: React.FC = () => {
   return (
-    <div className="max-w-[1840px] mx-auto px-4 py-10 ">
+    <div className="container relative  mx-auto overflow-hidden  max-w-[1840px] px-4 py-10  ">
       <div className="flex justify-between items-center mb-8">
         <h2 className="text-4xl font-medium">Our Customers Testimonial</h2>
         <button className="bg-black text-white px-4 py-2 rounded-3xl">
           View Review
         </button>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
         {testimonials.map((testimonial, index) => (
           <div
             key={index}

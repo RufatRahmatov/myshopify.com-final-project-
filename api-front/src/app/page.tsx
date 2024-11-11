@@ -10,6 +10,7 @@ import VideoBanner from "./_components/youtube";
 import Testimonials from "./_components/customertestimonial";
 import OurProducts from "./_components/ourproduct";
 import Bestselling from "./_components/bestselling";
+import Blogs from "./_components/blogs";
 
 export default function Page() {
   return (
@@ -20,10 +21,11 @@ export default function Page() {
         <OurProducts />
         <ViewCollection />
         <Features />
+        <Bestselling />
         <ScrollingText />
         <VideoBanner />
         <Testimonials />
-        <Bestselling />
+        <Blogs />
       </main>
     </Layouts>
   );

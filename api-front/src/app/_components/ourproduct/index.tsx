@@ -92,7 +92,7 @@ const OurProducts: React.FC = () => {
   const [selectedColor, setSelectedColor] = useState<string>("");
 
   return (
-    <div className="p-4">
+    <div className="relative mt-8 p-4 ">
       <div className="flex justify-between items-center mx-8">
         <p className="font-medium text-[#787878]">Hottest collections</p>
       </div>
