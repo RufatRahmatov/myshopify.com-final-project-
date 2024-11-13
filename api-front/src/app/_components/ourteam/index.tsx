@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Blogs from "../blogs";
 
 const OurTeam: React.FC = () => {
   return (
@@ -65,6 +66,7 @@ const OurTeam: React.FC = () => {
           />
         </div>
       </div>
+      <Blogs />
     </div>
   );
 };
