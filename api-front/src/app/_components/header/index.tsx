@@ -222,7 +222,7 @@ const Header = () => {
                         OTHER PAGES
                       </h2>
                       <Link
-                        href="/about-us"
+                        href="/aboutus"
                         className=" block font-medium text-[1.05rem] text-gray-600 hover:text-black transition ease-in-out duration-100 transform"
                       >
                         About us
