@@ -188,7 +188,7 @@ const Header = () => {
 
             <div className="hidden md:flex space-x-8 ml-16">
               <Link
-                href="/page"
+                href="/home"
                 className="hover:border-b-2 hover:border-black font-medium text-lg"
               >
                 {textContent.home}

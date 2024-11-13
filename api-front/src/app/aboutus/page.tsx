@@ -1,10 +1,24 @@
 "use client";
 
-import React from "react";
 import Layouts from "../_layouts/layout";
 import OurTeam from "../_components/ourteam";
-
+import Spiner from "../_components/spiner";
+import React, { useState, useEffect } from "react";
 const AboutUs: React.FC = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <Spiner />
+      </div>
+    );
+  }
   return (
     <Layouts>
       <main>
