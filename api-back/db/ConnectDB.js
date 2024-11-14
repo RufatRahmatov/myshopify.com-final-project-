@@ -1,34 +1,17 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
-const MONGO_URI = process.env.MONGO_URI || "";
 
-if (!MONGO_URI) {
-  throw new Error("Please add your Mongo URI to .env.local");
-}
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.DB_URL, {
 
-let cached = global.mongoose;
-
-if (!cached) {
-  cached = global.mongoose = { conn: null, promise: null };
-}
-
-async function dbConnect() {
-  if (cached.conn) {
-    return cached.conn;
+    });
+    console.log('Database connected successfully');
+  } catch (error) {
+    console.error('Database connection error:', error);
+    process.exit(1);
   }
+};
 
-  if (!cached.promise) {
-    cached.promise = mongoose
-      .connect(MONGO_URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      })
-      .then((mongoose) => {
-        return mongoose;
-      });
-  }
-  cached.conn = await cached.promise;
-  return cached.conn;
-}
 
-export default dbConnect;
+module.exports = connectDB;

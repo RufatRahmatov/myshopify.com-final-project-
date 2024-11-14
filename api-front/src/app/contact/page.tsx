@@ -67,7 +67,7 @@ const Contact: React.FC = () => {
               ></textarea>
               <button
                 type="submit"
-                className="w-32 bg-black text-white py-2 px-4 border-2 border-black rounded-full hover:bg-white hover:text-black transition"
+                className="w-32 bg-black font-medium text-white py-2 px-4 border-2 border-black rounded-full hover:bg-white hover:text-black transition"
               >
                 Send
               </button>

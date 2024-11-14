@@ -492,7 +492,7 @@ const Header = () => {
               ></div>
 
               <div
-                className={`fixed right-0 top-0 w-80 bg-white h-full z-50 transition ease-in-out transform duration-700 ${
+                className={`fixed right-0 top-0 w-[420px] bg-white h-full z-50 transition ease-in-out transform duration-300 ${
                   isCartOpen ? "translate-x-0" : "translate-x-full"
                 }`}
               >
@@ -503,18 +503,24 @@ const Header = () => {
                   &times;
                 </button>
                 <div className="p-6">
-                  <h2 className="text-xl font-bold">Səbətiniz boşdur</h2>
-                  <button className="mt-4 px-4 py-2 bg-black text-white rounded">
-                    Alış-verişə davam et
+                  <h2 className="text-2xl font-bold text-center">
+                    Your cart is empty
+                  </h2>
+                  <button className="  flex justify-center mt-4 px-4 py-2 border-2 border-black bg-black text-white rounded-full font-medium hover:bg-white hover:text-black ransition ease-in-out transform duration-300">
+                    Continue Shopping
                   </button>
                   <div className="mt-6">
                     <img
-                      src="/path-to-image.jpg"
+                      src="https://maxmod-goggles.myshopify.com/cdn/shop/collections/6.webp?v=1713439281&width=1500"
                       alt="Eyeglasses"
-                      className="w-full"
+                      className="w-full rounded-xl mt-[500px]"
                     />
-                    <p className="text-center mt-2">Eynəklər</p>
-                    <p className="text-center text-gray-500">7 məhsul</p>
+                    <p className="text-center mt-2 font-bold text-lg">
+                      Eyeglasses
+                    </p>
+                    <p className="text-center text-gray-600 font-medium">
+                      7 items
+                    </p>
                   </div>
                 </div>
               </div>
