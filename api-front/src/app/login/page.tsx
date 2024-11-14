@@ -8,33 +8,39 @@ import Layouts from "../_layouts/layout";
 const Login: React.FC = () => {
   const [isClient, setIsClient] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-
   const handleLogin = async () => {
-    if (!isClient) return;
+    if (!email || !password) {
+      alert("Email and password are required!");
+      return;
+    }
 
     setLoading(true);
     try {
-      const response = await fetch("http://localhost:3001/auth/login", {
+      const response = await fetch("http://localhost:3001/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
 
       const data = await response.json();
+
       if (response.ok) {
-        router.push("");
+        router.push("/");
       } else {
-        alert(data.message || "Email or password error");
+        alert(data.message || "Invalid email or password!");
       }
+    } catch (error) {
+      console.error("Login error:", error);
+      alert("Failed to connect to the server!");
     } finally {
       setLoading(false);
     }
@@ -50,26 +56,34 @@ const Login: React.FC = () => {
 
   return (
     <Layouts>
-      <main className="flex items-center justify-center min-h-screen ">
+      <main className="flex items-center justify-center min-h-screen">
         <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg">
           <h2 className="text-4xl font-bold mb-4 text-center">Login</h2>
-          <form>
-            <div className="mb-4 w-full max-w-lg">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleLogin();
+            }}
+          >
+            <div className="mb-4">
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-2 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+                className="w-full px-3 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                 placeholder="Email"
+                required
               />
             </div>
+
             <div className="mb-4 relative">
               <input
                 type={showPassword ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+                className="w-full px-3 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                 placeholder="Password"
+                required
               />
               <button
                 type="button"
@@ -79,29 +93,31 @@ const Login: React.FC = () => {
                 {showPassword ? <FiEyeOff /> : <FiEye />}
               </button>
             </div>
+
             <div className="mb-4 text-right">
               <button
                 type="button"
                 onClick={handleForgotPasswordClick}
-                className=" flex flex-and text-[16px] text-black border-b-2 border-black hover:border-b-3 hover:border-black font-medium text-lg "
+                className="text-[16px] text-black border-b-2 border-black hover:border-b-3 font-medium"
               >
                 Forgot your password?
               </button>
             </div>
+
             {loading ? (
               <div className="flex justify-center py-3">
                 <Spiner />
               </div>
             ) : (
               <button
-                type="button"
+                type="submit"
                 className="w-full font-medium bg-black text-white py-3 rounded-full mb-2 hover:bg-opacity-90"
-                onClick={handleLogin}
                 disabled={!isClient}
               >
                 Sign In
               </button>
             )}
+
             <button
               type="button"
               className="w-full font-medium border border-black text-black py-3 rounded-full hover:bg-black hover:text-white transition-all duration-300"

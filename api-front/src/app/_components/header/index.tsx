@@ -13,6 +13,7 @@ interface User {
   lastname: string;
   email: string;
   password: string;
+  profileImage?: string;
 }
 
 const Header = () => {
@@ -466,6 +467,11 @@ const Header = () => {
               <RiSearchLine className="text-2xl cursor-pointer" />
               {user ? (
                 <div className="flex items-center space-x-2">
+                  <img
+                    src={user.profileImage || "/default-profile.png"}
+                    alt="User Profile"
+                    className="w-10 h-10 rounded-full"
+                  />
                   <IoPersonOutline className="text-2xl cursor-pointer" />
                   <span className="text-lg font-medium">
                     Hi, {user.firstname}

@@ -1,6 +1,6 @@
-import User from "../models/User.js";
+import User from "../models/userModel";
 
-// Get all users
+
 export const getAllUsers = async (req, res) => {
     try {
         const users = await User.find();
@@ -10,7 +10,7 @@ export const getAllUsers = async (req, res) => {
     }
 };
 
-// Get a single user by ID
+
 export const getUserById = async (req, res) => {
     try {
         const user = await User.findById(req.params.id);
@@ -23,14 +23,14 @@ export const getUserById = async (req, res) => {
     }
 };
 
-// Update user by ID
+
 export const updateUserById = async (req, res) => {
     try {
-        const { firstName, lastName, email, role } = req.body;
+        const { name, email, role } = req.body;
 
         const updatedUser = await User.findByIdAndUpdate(
             req.params.id,
-            { firstName, lastName, email, role },
+            { name, email, role },
             { new: true, runValidators: true }
         );
 
@@ -44,7 +44,7 @@ export const updateUserById = async (req, res) => {
     }
 };
 
-// Delete user by ID
+
 export const deleteUserById = async (req, res) => {
     try {
         const deletedUser = await User.findByIdAndDelete(req.params.id);

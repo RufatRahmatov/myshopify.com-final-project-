@@ -1,20 +1,41 @@
-// auth.controller.js
+
 const User = require('../models/userModel');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+
+
+
 exports.register = async (req, res) => {
     try {
         const { name, email, password } = req.body;
+
+
+        if (!email || !password) {
+            return res.status(400).json({ message: 'Email and password are required.' });
+        }
+
+
         const existingUser = await User.findOne({ email });
         if (existingUser) {
             return res.status(400).json({ message: 'Email already registered' });
         }
+
+
         const hashedPassword = await bcrypt.hash(password, 10);
+
+
         const newUser = await User.create({ name, email, password: hashedPassword });
+
+
         const token = generateToken(newUser);
-        res.status(201).json({ user: newUser, token });
+
+
+        res.status(201).json({ user: { id: newUser._id, name: newUser.name || null, email: newUser.email }, token });
     } catch (error) {
+        if (error.name === 'ValidationError') {
+            return res.status(400).json({ message: 'Validation Error', error: error.message });
+        }
         res.status(500).json({ message: 'Error registering user', error: error.message });
     }
 };
