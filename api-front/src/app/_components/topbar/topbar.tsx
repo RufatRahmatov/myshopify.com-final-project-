@@ -1,11 +1,12 @@
 import { AiOutlineBell, AiOutlineSetting } from "react-icons/ai";
-import { useState } from "react";
+import { CiLogin } from "react-icons/ci";
+// import { useState } from "react";
 
 const TopBar: React.FC = () => {
-  const [user] = useState({
-    name: "John Doe",
-    avatar: "https://via.placeholder.com/40",
-  });
+  //   const [user] = useState({
+  //     name: "John Doe",
+  //     avatar: "https://via.placeholder.com/40",
+  //   });
 
   return (
     <div className="flex justify-between items-center bg-white shadow-md p-4 rounded-lg mb-6 overflow-hidden font-medium">
@@ -22,8 +23,9 @@ const TopBar: React.FC = () => {
           />
         </div>
 
-        <button className="bg-black text-white py-1.5 sm:py-2 px-3 sm:px-4 rounded-lg hover:bg-white hover:text-black font-medium border-2 border-black text-xs sm:text-sm">
-          Online Builder
+        <button className=" flex items-center gap-1 bg-black text-white py-1.5 sm:py-2 px-3 sm:px-4 rounded-lg hover:bg-white hover:text-black font-medium border-2 border-black text-xs sm:text-sm transition duration-300 ">
+          Log Out{" "}
+          <CiLogin className="font-medium text-lg  hover:text-black  " />
         </button>
 
         <div className="flex items-center space-x-2 sm:space-x-3">
@@ -32,13 +34,13 @@ const TopBar: React.FC = () => {
 
           <div className="flex items-center space-x-2">
             <img
-              src={user.avatar}
+              //   src={user.avatar}
               alt="Profile"
-              className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-gray-300"
+              className="w-6 h-6 sm:w-10 sm:h-10 rounded-full border border-gray-300"
             />
 
             <span className="hidden sm:block text-gray-800 text-xs sm:text-sm font-medium">
-              {user.name}
+              {/* {user.name} */}
             </span>
           </div>
         </div>
