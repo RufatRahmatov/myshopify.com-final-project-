@@ -183,7 +183,7 @@ const Header = () => {
           <div className="flex justify-between h-16 items-center">
             <div className="relative flex justify-start">
               <span className="absolute right-[179px] text-[1.6rem] font-bold bottom-[-15px]">
-                Maxmod
+                Eyeglass
               </span>
             </div>
 
