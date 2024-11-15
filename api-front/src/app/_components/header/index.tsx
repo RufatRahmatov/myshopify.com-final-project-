@@ -94,7 +94,7 @@ const Header = () => {
   return (
     <header className="w-full">
       <div className="bg-black text-white text-sm flex justify-between px-4 py-3">
-        <div className="relative left-12 font-medium">
+        <div className="relative left-12 font-medium md:block hidden">
           {textContent.helpline}
         </div>
         <div className="font-medium">{textContent.orders}</div>
@@ -121,9 +121,9 @@ const Header = () => {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 -translate-y-4"
             >
-              <div className="absolute right-0 mt-2 bg-black text-white py-2 px-4 shadow-lg rounded z-50 font-medium">
+              <div className="absolute  hidden right-0 mt-2  text-white py-2 px-4 shadow-lg rounded z-50 font-medium">
                 <div
-                  className="cursor-pointer font-medium"
+                  className="cursor-pointer font-medium  "
                   onClick={() => setSelectedCurrency("USD")}
                 >
                   USD
@@ -138,7 +138,7 @@ const Header = () => {
             </Transition>
           </div>
 
-          <div className="relative dropdown">
+          <div className="relative dropdown md:block hidden">
             <button
               onClick={() => toggleDropdown("Language")}
               className="inline-flex items-center mr-12 font-medium"

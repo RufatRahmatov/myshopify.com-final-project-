@@ -8,7 +8,7 @@ import "tailwindcss/tailwind.css";
 
 const SliderComponent: React.FC = () => {
   return (
-    <div className="relative w-full h-screen  px-10 md:px-12 rounded-3xl overflow-hidden">
+    <div className="relative w-full h-screen  px-2 md:px-12 rounded-3xl overflow-hidden">
       <Swiper
         direction="horizontal"
         pagination={{
@@ -27,7 +27,7 @@ const SliderComponent: React.FC = () => {
             <img
               src="https://maxmod-goggles.myshopify.com/cdn/shop/files/1.webp?v=1713438123&width=3840"
               alt="Slide 1"
-              className="w-full h-full object-cover"
+              className="w-full min-h-screen  md:h-full object-cover"
             />
             <div className="absolute bottom-20 left-12 text-white">
               <p className="text-lg font-medium">Perfect fit for every face</p>
@@ -51,7 +51,7 @@ const SliderComponent: React.FC = () => {
             <img
               src="https://maxmod-goggles.myshopify.com/cdn/shop/files/2.webp?v=1713438127&width=3840"
               alt="Slide 2"
-              className="w-full h-full object-cover"
+              className="w-full min-h-screen  md:h-full object-cover"
             />
             <div className="absolute bottom-20 left-12 text-white">
               <p className="text-lg font-light font-medium">
@@ -74,7 +74,7 @@ const SliderComponent: React.FC = () => {
             <img
               src="https://maxmod-goggles.myshopify.com/cdn/shop/files/3.webp?v=1713438128&width=3840"
               alt="Slide 3"
-              className="w-full h-full object-cover"
+              className="w-full min-h-screen  md:h-full object-cover"
             />
             <div className="absolute bottom-20 left-12 text-white">
               <p className="text-lg font-light font-medium">

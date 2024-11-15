@@ -4,6 +4,11 @@ const nextConfig = {
         locales: ['en', 'az'],
         defaultLocale: 'en',
     },
+    images: {
+        domains: [
+            'localhost',
+        ],
+    },
 };
 
 export default nextConfig;

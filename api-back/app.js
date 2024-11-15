@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const authRoutes = require('../api-back/routers/authRoutes');
+const shopCardRoutes = require('./routers/shopCardRoutes'); // Yolu ayarlayın
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -17,8 +18,9 @@ mongoose.connect(process.env.DB_URL, {
 })
     .then(() => console.log('Connected to MongoDB'))
     .catch((err) => console.log('MongoDB connection error', err));
-
+app.use('/uploads', express.static('uploads'));
 app.use('/api/auth', authRoutes);
+app.use('/api/shop-cards', shopCardRoutes); // ShopCard rotalarını ekledik
 
 app.get('/', (req, res) => {
     res.send('API is running...');

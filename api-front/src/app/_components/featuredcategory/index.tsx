@@ -56,14 +56,14 @@ const categories: Category[] = [
 
 const FeaturedCategory: React.FC = () => {
   return (
-    <div className="relative -mt-[100px]">
+    <div className="relative mt-8">
       <div className=" p-4 ">
         <div className="flex justify-between items-center mx-8 mb-2">
           <div className="mb-8">
             <p className="text-md font-medium text-gray-500">
               Eyeglasses Style
             </p>
-            <h2 className="text-3xl sm:text-4xl font-medium ">
+            <h2 className="text-3xl sm:text-4xl  font-medium ">
               Featured By Category
             </h2>
           </div>
@@ -72,7 +72,7 @@ const FeaturedCategory: React.FC = () => {
           </button>
         </div>
 
-        <div className="h-[270px] grid grid-cols-2  sm:grid-cols-3 lg:grid-cols-6 gap-6 mx-8 text-center">
+        <div className="h-[270px] grid grid-cols-2 hidden md:flex  sm:grid-cols-3 lg:grid-cols-6 gap-6 mx-8 text-center">
           {categories.map((category) => (
             <div
               key={category.id}

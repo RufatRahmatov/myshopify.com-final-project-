@@ -1,33 +1,41 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
+
 import { LuLayoutDashboard } from "react-icons/lu";
 import { FaTable } from "react-icons/fa6";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
+
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <div className="flex h-screen bg-gray-100 font-medium">
-      <aside className="w-64 bg-white border-r hidden md:block ">
+      <aside className="w-64 bg-white border-r hidden md:block">
         <div className="p-4">
           <h2 className="text-xl font-bold">Glass</h2>
         </div>
         <nav className="mt-4 transistor px-4">
           <ul>
             <li className="p-4 font-bold ">Menu</li>
-            <li className=" flex items-center p-4 hover:bg-gray-200 cursor-pointer gap-2">
-              <LuLayoutDashboard />
-              Dashboard
-            </li>
-            <Link href="/tables"></Link>
-            <li className=" flex items-center p-4 hover:bg-gray-200 cursor-pointer gap-2">
-              <FaTable />
-              Tables
-            </li>
-            <li className="p-4 font-bold ">Managment</li>
+            <Link href="">
+              <li className="flex items-center p-4 hover:bg-gray-200 cursor-pointer gap-2">
+                <LuLayoutDashboard />
+                Dashboard
+              </li>
+            </Link>
+            <Link href="/tables">
+              <li className="flex items-center p-4 hover:bg-gray-200 cursor-pointer gap-2">
+                <FaTable />
+                Tables
+              </li>
+            </Link>
+
+            <li className="p-4 font-bold ">Management</li>
             <li className="flex items-center p-4 hover:bg-gray-200 cursor-pointer gap-2">
               <MdOutlineProductionQuantityLimits />
               Product
             </li>
-            <li className=" flex items-center p-4 hover:bg-gray-200 cursor-pointer gap-2">
+            <li className="flex items-center p-4 hover:bg-gray-200 cursor-pointer gap-2">
               Notifications
             </li>
           </ul>
