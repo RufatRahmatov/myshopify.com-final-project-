@@ -1,6 +1,6 @@
 const ShopCard = require("../models/shopCardModel");
 
-// Get all shop cards
+
 exports.getAllShopCards = async (req, res) => {
     try {
         const shopCards = await ShopCard.find();
@@ -10,7 +10,7 @@ exports.getAllShopCards = async (req, res) => {
     }
 };
 
-// Get a single shop card by ID
+
 exports.getShopCardById = async (req, res) => {
     try {
         const shopCard = await ShopCard.findById(req.params.id);
@@ -23,12 +23,12 @@ exports.getShopCardById = async (req, res) => {
     }
 };
 
-// Create a new shop card
+
 exports.createShopCard = async (req, res) => {
     try {
         const data = req.body;
 
-        // Eğer resim yüklendiyse, dosya yolunu veriye ekleyin
+
         if (req.file) {
             data.image = req.file.path;
         }
@@ -40,12 +40,12 @@ exports.createShopCard = async (req, res) => {
     }
 };
 
-// Update a shop card
+
 exports.updateShopCard = async (req, res) => {
     try {
         const data = req.body;
 
-        // Eğer resim yüklendiyse, dosya yolunu veriye ekleyin
+
         if (req.file) {
             data.image = req.file.path;
         }
@@ -63,7 +63,7 @@ exports.updateShopCard = async (req, res) => {
     }
 };
 
-// Delete a shop card
+
 exports.deleteShopCard = async (req, res) => {
     try {
         const shopCard = await ShopCard.findByIdAndDelete(req.params.id);

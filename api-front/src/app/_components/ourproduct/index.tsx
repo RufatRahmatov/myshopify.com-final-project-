@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-
+// import Link from "next/link";
 interface Product {
   id: string;
   title: string;
@@ -19,14 +19,14 @@ interface Product {
 const products: Product[] = [
   {
     id: "1",
-    title: "Unveiling the Finest Optical Experience at Eyewearlabs",
+    title: "Unveiling the Finest Optical Experience  ",
     category: "Optical",
-    basePrice: 2610,
+    basePrice: 110,
     onSale: false,
     colors: [
       {
         name: "Black",
-        price: 2610,
+        price: 110,
         image:
           "https://maxmod-goggles.myshopify.com/cdn/shop/files/6.webp?v=1713440677&width=533",
         hoverImage:
@@ -38,12 +38,12 @@ const products: Product[] = [
     id: "2",
     title: "Clarity & Style: Discover the Perfect",
     category: "Maxmod Goggles",
-    basePrice: 900,
+    basePrice: 90,
     onSale: true,
     colors: [
       {
         name: "Orange",
-        price: 900,
+        price: 90,
         image:
           "https://maxmod-goggles.myshopify.com/cdn/shop/files/18_d766001f-9580-4059-ab48-bbec5a8b7a78.webp?v=1713862372&width=533",
         hoverImage:
@@ -55,12 +55,12 @@ const products: Product[] = [
     id: "3",
     title: "Clarity and Comfort with Our Optical Collection",
     category: "Glass",
-    basePrice: 300,
+    basePrice: 100,
     onSale: true,
     colors: [
       {
         name: "Gray",
-        price: 300,
+        price: 100,
         image:
           "https://maxmod-goggles.myshopify.com/cdn/shop/files/22_80307ee7-a053-494d-a572-c4c0379c1176.webp?v=1713441277&width=533",
         hoverImage:
@@ -72,12 +72,12 @@ const products: Product[] = [
     id: "4",
     title: "ClarityPrime Optical Glass with Luminix Precision",
     category: "Electronics",
-    basePrice: 1128,
+    basePrice: 112,
     onSale: false,
     colors: [
       {
         name: "Gold",
-        price: 1128,
+        price: 112,
         image:
           "https://maxmod-goggles.myshopify.com/cdn/shop/files/19_51aa1dcc-03ae-4f9e-8391-c23df47807b5.webp?v=1713862373&width=533",
         hoverImage:
@@ -89,8 +89,20 @@ const products: Product[] = [
 
 const OurProducts: React.FC = () => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-  const [selectedColor, setSelectedColor] = useState<string>("");
+  const [selectedColor, setSelectedColor] = useState<string | null>(null);
+  const [quantity, setQuantity] = useState<number>(1);
 
+  const handleQuantityChange = (type: "increase" | "decrease") => {
+    if (type === "increase") {
+      setQuantity((prev) => prev + 1);
+    } else if (type === "decrease" && quantity > 1) {
+      setQuantity((prev) => prev - 1);
+    }
+  };
+
+  // const handleColorChange = (colorName: string) => {
+  //   setSelectedColor(colorName);
+  // };
   return (
     <div className="relative mt-8 p-4 ">
       <div className="flex justify-between items-center mx-8">
@@ -150,65 +162,131 @@ const OurProducts: React.FC = () => {
                 {product.category}
               </p>
               <p className="font-bold text-lg ">{product.title}</p>
-              <p className="text-lg  font-medium">Rs. {product.basePrice}</p>
+              <p className="text-lg  font-medium"> {product.basePrice}.$</p>
+            </div>
+            <div className="flex items-center justify-center mt-2 gap-2">
+              <div className="bg-black rounded-full h-5 w-5"></div>
+              <div className="bg-black h-5 w-5 rounded-full"></div>
+              <div className="bg-black rounded-full h-5 w-5"></div>
             </div>
           </div>
         ))}
       </div>
 
-      {selectedProduct && (
+      {selectedProduct && selectedColor && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white w-11/12 sm:w-2/3 lg:w-1/3 p-6 rounded-lg relative">
-            <button
-              className="absolute top-2 right-2 bg-red-500 text-white px-3 py-1 rounded"
-              onClick={() => setSelectedProduct(null)}
-            >
-              X
-            </button>
-            <img
-              src={
-                selectedColor
-                  ? selectedProduct.colors.find(
+          <div className="bg-white w-11/12 sm:w-2/3 lg:w-3/4 p-6 rounded-lg flex gap-8 relative">
+            {/* Sol Bölüm - Büyük Fotoğraf ve Küçük Fotoğraflar */}
+            <div className="flex-1">
+              {/* Büyük Fotoğraf */}
+              <div className="w-full mb-4">
+                <img
+                  src={
+                    selectedProduct.colors.find(
                       (color) => color.name === selectedColor
-                    )?.image
-                  : selectedProduct.colors[0].image
-              }
-              alt={selectedProduct.title}
-              className="w-full mb-4 rounded-2xl"
-            />
-            <h3 className="text-lg font-semibold">{selectedProduct.title}</h3>
-            <p className="text-sm text-gray-500 mb-2">
-              {selectedProduct.category}
-            </p>
-            <div className="mb-4">
-              <p className="text-sm font-semibold">Colors:</p>
-              <div className="flex space-x-2">
+                    )?.image || selectedProduct.colors[0].image
+                  }
+                  alt={selectedProduct.title}
+                  className="w-full h-auto object-cover rounded-lg"
+                />
+              </div>
+
+              {/* Küçük Fotoğraflar */}
+              <div className="flex gap-2">
                 {selectedProduct.colors.map((color) => (
                   <button
                     key={color.name}
-                    className={`px-4 py-2 border rounded ${
-                      selectedColor === color.name
-                        ? "bg-black text-white"
-                        : "bg-gray-200"
-                    }`}
                     onClick={() => setSelectedColor(color.name)}
+                    className={`border rounded-md ${
+                      selectedColor === color.name
+                        ? "border-black"
+                        : "border-gray-300"
+                    }`}
                   >
-                    {color.name}
+                    <img
+                      src={color.image}
+                      alt={color.name}
+                      className="w-16 h-16 object-cover rounded-md"
+                    />
                   </button>
                 ))}
               </div>
             </div>
-            <p className="font-medium text-lg">
-              Rs.{" "}
-              {selectedColor
-                ? selectedProduct.colors.find(
+
+            {/* Sağ Bölüm - Yazılar ve Butonlar */}
+            <div className="flex-1">
+              {/* Kapatma Butonu */}
+              <button
+                className="absolute top-4 right-4 bg-black text-white px-3 py-1 rounded-full z-50"
+                onClick={() => setSelectedProduct(null)}
+              >
+                X
+              </button>
+
+              {/* Başlık */}
+              <h3 className="text-xl font-bold mb-2">
+                {selectedProduct.title}
+              </h3>
+              {/* Kategori */}
+              <p className="text-sm text-gray-500 mb-4">
+                {selectedProduct.category}
+              </p>
+              {/* Fiyat */}
+              <p className="text-lg font-semibold mb-4">
+                $
+                {
+                  selectedProduct.colors.find(
                     (color) => color.name === selectedColor
                   )?.price
-                : selectedProduct.basePrice}
-            </p>
-            <button className="mt-4 bg-black text-white px-6 py-2 rounded hover:bg-gray-800">
-              Add to Cart
-            </button>
+                }
+              </p>
+
+              {/* Miktar Ayarı */}
+              <div className="mb-4">
+                <p className="text-sm font-semibold">Quantity:</p>
+                <div className="flex items-center gap-4">
+                  <button
+                    onClick={() => handleQuantityChange("decrease")}
+                    className="px-4 py-2 bg-gray-200 rounded text-black font-bold"
+                  >
+                    -
+                  </button>
+                  <span>{quantity}</span>
+                  <button
+                    onClick={() => handleQuantityChange("increase")}
+                    className="px-4 py-2 bg-gray-200 rounded text-black font-bold"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+
+              {/* Butonlar */}
+              <div className="flex flex-col gap-4">
+                <button className="w-full bg-black text-white py-2 rounded-full hover:bg-gray-800">
+                  Add to Cart
+                </button>
+                <button className="w-full border border-black text-black py-2 rounded-full hover:bg-black hover:text-white">
+                  Buy it Now
+                </button>
+              </div>
+              <div className="font-medium">
+                <p>
+                  Welcome to our Optical Collection, where we prioritize Clarity
+                  and Comfort to enhance your vision and elevate your eyewear
+                  experience. At our store, we understand the significance of
+                  clear vision in your daily life. Thats why we have carefully
+                  curated an extensive range of high-quality eyeglasses and
+                  sunglasses that offer unparalleled clarity. Whether you need
+                  prescription lenses for precise vision correction or
+                  fashionable sunglasses to protect your eyes in style, we have
+                  the perfect solution for you. Our commitment to comfort is
+                  evident in every aspect of our eyewear selection. Each frame
+                  is crafted with precision and designed to provide a snug and
+                  secure fit,
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       )}

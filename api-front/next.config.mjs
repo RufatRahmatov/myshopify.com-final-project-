@@ -7,6 +7,7 @@ const nextConfig = {
     images: {
         domains: [
             'localhost',
+            "maxmod-goggles.myshopify.com", "another-domain.com"
         ],
     },
 };

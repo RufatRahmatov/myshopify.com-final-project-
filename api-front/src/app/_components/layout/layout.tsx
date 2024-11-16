@@ -17,7 +17,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         <nav className="mt-4 transistor px-4">
           <ul>
             <li className="p-4 font-bold ">Menu</li>
-            <Link href="">
+            <Link href="/dashbord">
               <li className="flex items-center p-4 hover:bg-gray-200 cursor-pointer gap-2">
                 <LuLayoutDashboard />
                 Dashboard
@@ -31,10 +31,13 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             </Link>
 
             <li className="p-4 font-bold ">Management</li>
-            <li className="flex items-center p-4 hover:bg-gray-200 cursor-pointer gap-2">
-              <MdOutlineProductionQuantityLimits />
-              Product
-            </li>
+            <Link href="/product">
+              <li className="flex items-center p-4 hover:bg-gray-200 cursor-pointer gap-2">
+                <MdOutlineProductionQuantityLimits />
+                Product
+              </li>
+            </Link>
+
             <li className="flex items-center p-4 hover:bg-gray-200 cursor-pointer gap-2">
               Notifications
             </li>

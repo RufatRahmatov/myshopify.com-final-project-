@@ -51,7 +51,6 @@ const Dashboard = () => {
           />
         </div>
 
-        {/* Charts */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-white shadow rounded-lg p-4">
             <h2 className="text-sm font-medium text-gray-600">Website Views</h2>
@@ -63,7 +62,6 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Projects Table */}
         <div className="bg-white shadow rounded-lg p-4">
           <h2 className="text-sm font-medium text-gray-600">Projects</h2>
           <div className="overflow-x-auto mt-4">

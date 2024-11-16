@@ -1,5 +1,6 @@
 import { AiOutlineBell, AiOutlineSetting } from "react-icons/ai";
 import { CiLogin } from "react-icons/ci";
+import Link from "next/link";
 // import { useState } from "react";
 
 const TopBar: React.FC = () => {
@@ -22,11 +23,12 @@ const TopBar: React.FC = () => {
             className="border border-gray-300 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-pink-500"
           />
         </div>
-
-        <button className=" flex items-center gap-1 bg-black text-white py-1.5 sm:py-2 px-3 sm:px-4 rounded-lg hover:bg-white hover:text-black font-medium border-2 border-black text-xs sm:text-sm transition duration-300 ">
-          Log Out{" "}
-          <CiLogin className="font-medium text-lg  hover:text-black  " />
-        </button>
+        <Link href="/home">
+          <button className=" flex items-center gap-1 bg-black text-white py-1.5 sm:py-2 px-3 sm:px-4 rounded-lg hover:bg-white hover:text-black font-medium border-2 border-black text-xs sm:text-sm transition duration-300 ">
+            Log Out{" "}
+            <CiLogin className="font-medium text-lg  hover:text-black  " />
+          </button>
+        </Link>
 
         <div className="flex items-center space-x-2 sm:space-x-3">
           <AiOutlineBell className="text-lg sm:text-xl text-gray-500 hover:text-gray-800 cursor-pointer" />

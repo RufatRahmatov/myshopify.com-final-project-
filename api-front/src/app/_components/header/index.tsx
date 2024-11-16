@@ -455,12 +455,12 @@ const Header = () => {
               >
                 {textContent.contactLens}
               </a>
-              <a
-                href="#"
+              <Link
+                href="/eyeframs"
                 className="hover:border-b-2 hover:border-black font-medium text-lg"
               >
                 {textContent.eyeframes}
-              </a>
+              </Link>
             </div>
 
             <div className="hidden md:flex items-center space-x-4 relative left-[280px]">
