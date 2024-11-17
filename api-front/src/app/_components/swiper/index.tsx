@@ -22,8 +22,8 @@ const SliderComponent: React.FC = () => {
         loop={true}
         speed={800}
       >
-        <SwiperSlide className="rounded-3xl">
-          <div className="relative flex items-center justify-center h-full border rounded-3xl overflow-hidden">
+        <SwiperSlide className="rounded-3xl ">
+          <div className="relative overflow-hidden flex items-center justify-center h-full border rounded-3xl ">
             <img
               src="https://maxmod-goggles.myshopify.com/cdn/shop/files/1.webp?v=1713438123&width=3840"
               alt="Slide 1"

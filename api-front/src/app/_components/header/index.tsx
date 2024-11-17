@@ -190,7 +190,7 @@ const Header = () => {
               </span>
             </div>
 
-            <div className="hidden md:flex space-x-8 ml-16">
+            <div className="hidden md:flex space-x-8 ml-16 ml-[160px]">
               <Link
                 href="/home"
                 className="hover:border-b-2 hover:border-black font-medium text-lg"
@@ -466,7 +466,7 @@ const Header = () => {
               </Link>
             </div>
 
-            <div className="hidden md:flex items-center space-x-4 relative left-[280px]">
+            <div className="hidden md:flex items-center space-x-4 relative left-[380px]">
               <RiSearchLine className="text-2xl cursor-pointer" />
               {user ? (
                 <div className="flex items-center space-x-2">
@@ -489,7 +489,7 @@ const Header = () => {
                 </Link>
               )}
               <RiShoppingBag2Line
-                className="text-2xl cursor-pointer "
+                className="relative right-2 text-2xl cursor-pointer "
                 onClick={() => setIsCartOpen(true)}
               />
             </div>
