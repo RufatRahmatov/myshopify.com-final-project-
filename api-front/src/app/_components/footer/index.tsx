@@ -30,11 +30,11 @@ const Footer = () => {
             </div>
           </div>
 
-          <div>
+          <div className="">
             <h4 className="font-bold text-2xl mb-4">INFORMATION</h4>
             <ul className="relative top-6 space-y-2.5 ">
               {["Home", "Search", "Blog", "About us", "Contact"].map((item) => (
-                <li key={item} className="hover:border-b-2 border-white pb-1">
+                <li key={item} className=" border-white pb-1">
                   <a href="#">{item}</a>
                 </li>
               ))}
@@ -51,7 +51,7 @@ const Footer = () => {
                 "Gaming Glasses",
                 "Eyewearlab",
               ].map((item) => (
-                <li key={item} className="hover:border-b-2 border-white pb-1">
+                <li key={item} className="  pb-1">
                   <a href="#">{item}</a>
                 </li>
               ))}
@@ -68,7 +68,7 @@ const Footer = () => {
                 "Power sunglasses",
                 "Swimming glasses",
               ].map((item) => (
-                <li key={item} className="hover:border-b-2 border-white pb-1">
+                <li key={item} className=" pb-1">
                   <a href="#">{item}</a>
                 </li>
               ))}
@@ -85,7 +85,7 @@ const Footer = () => {
                 "Terms of Service",
                 "Refund Policy",
               ].map((item) => (
-                <li key={item} className="hover:border-b-2 border-white pb-1">
+                <li key={item} className=" pb-1">
                   <a href="#">{item}</a>
                 </li>
               ))}

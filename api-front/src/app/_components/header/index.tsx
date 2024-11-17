@@ -7,7 +7,8 @@ import { IoIosArrowDown } from "react-icons/io";
 import { RiSearchLine } from "react-icons/ri";
 import { IoPersonOutline } from "react-icons/io5";
 import { RiShoppingBag2Line } from "react-icons/ri";
-
+import { FaFacebook, FaYoutube } from "react-icons/fa";
+import { RiTwitterXLine } from "react-icons/ri";
 interface User {
   firstname: string;
   lastname: string;
@@ -46,7 +47,9 @@ const Header = () => {
   const toggleDropdown = (name: string) => {
     setOpenDropdown(openDropdown === name ? null : name);
   };
-
+  const handleLoginClick = () => {
+    window.location.href = "/login"; // Login sayfasına yönlendirme
+  };
   const handleLanguageChange = (language: string) => {
     setSelectedLanguage(language);
     if (language === "Azərbaycan") {
@@ -532,18 +535,87 @@ const Header = () => {
               </div>
             </Transition>
 
-            <div className="-mr-2 flex md:hidden">
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-black focus:outline-none"
+            <div className="relative">
+              <div className="-mr-2 flex md:hidden">
+                <button
+                  onClick={() => setIsOpen(!isOpen)}
+                  className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-black focus:outline-none"
+                >
+                  <span className="sr-only">Open main menu</span>
+                  {!isOpen ? (
+                    <BiMenu className="text-2xl" />
+                  ) : (
+                    <BiX className="text-2xl" />
+                  )}
+                </button>
+              </div>
+
+              <div
+                className={`fixed top-0 left-0 h-full w-full bg-white shadow-lg z-50 transform ${
+                  isOpen ? "translate-x-0" : "-translate-x-full"
+                } transition-transform duration-300 ease-in-out`}
               >
-                <span className="sr-only">Open main menu</span>
-                {!isOpen ? (
-                  <BiMenu className="text-2xl" />
-                ) : (
-                  <BiX className="text-2xl" />
-                )}
-              </button>
+                <div className="p-4">
+                  <h2 className="text-lg font-bold mb-4">Menu</h2>
+                  <ul className="space-y-4">
+                    {[
+                      "Home",
+                      "Pages",
+                      "Template",
+                      "Collection",
+                      "Contact Lens",
+                      "Eyeframes",
+                    ].map((item) => (
+                      <li key={item} className="hover:text-gray-700">
+                        <a
+                          href="#"
+                          className="flex justify-between items-center"
+                        >
+                          {item}
+                          <span className="text-gray-500">→</span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="p-6">
+                  <button
+                    className="absolute top-4 right-4 text-2xl text-black focus:outline-none"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <BiX />
+                  </button>
+
+                  <div className="flex flex-col h-full justify-between ">
+                    <div className=" relative space-y-8 mt-[100px]">
+                      <button
+                        onClick={handleLoginClick}
+                        className="flex items-center text-black font-medium text-lg hover:underline"
+                      >
+                        <span className="mr-2">👤</span> Log in
+                      </button>
+                      <p className="text-black text-sm font-medium">
+                        United States | AZE | English
+                      </p>
+                    </div>
+
+                    <div className="flex flex-col  space-y-6 mt-[40px]">
+                      <div className="flex space-x-6 text-2xl text-black">
+                        <RiTwitterXLine />
+                        <FaFacebook />
+                        <FaYoutube />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {isOpen && (
+                <div
+                  onClick={() => setIsOpen(false)}
+                  className="fixed inset-0 bg-black bg-opacity-50 z-40"
+                />
+              )}
             </div>
           </div>
         </div>
