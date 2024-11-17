@@ -106,7 +106,7 @@ export default function Product() {
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-2xl font-bold">Product Management</h1>
           <button
-            onClick={() => openModal()} // Yeni ürün eklemek için modal'ı aç
+            onClick={() => openModal()} 
             className="bg-green-500 text-white px-4 py-2 rounded-md"
           >
             Add Product

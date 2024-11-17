@@ -1,7 +1,8 @@
 "use client";
 
 import { FC, useState } from "react";
-
+import { MdKeyboardArrowRight } from "react-icons/md";
+import { MdKeyboardArrowLeft } from "react-icons/md";
 interface Blog {
   id: number;
   title: string;
@@ -61,8 +62,8 @@ const Blogs: FC = () => {
   return (
     <div className="container max-w-[1840px] mx-auto p-4">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-4xl font-medium">Our Blogs & Post</h2>
-        <button className="bg-black border-2 border-black text-white font-medium rounded-full px-6 py-2 hover:bg-white hover:text-black transition duraction-300 ease-in-out">
+        <h2 className="text-2xl sm:text-4xl font-medium">Our Blogs & Post</h2>
+        <button className="bg-black border-2 border-black text-sm sm:text-base text-white font-medium rounded-full px-4 sm:px-6 py-1 sm:py-2 hover:bg-white hover:text-black transition duration-300 ease-in-out">
           View All
         </button>
       </div>
@@ -115,18 +116,18 @@ const Blogs: FC = () => {
             <p className="text-sm text-blue-500 mt-2">Google Sport</p>
           </div>
         </div>
-        <div className="flex justify-between mt-4">
+        <div className="flex justify-center gap-2 mt-4">
           <button
             onClick={handlePrev}
             className="bg-gray-200 px-4 py-2 rounded-md"
           >
-            Prev
+            <MdKeyboardArrowLeft />
           </button>
           <button
             onClick={handleNext}
             className="bg-gray-200 px-4 py-2 rounded-md"
           >
-            Next
+            <MdKeyboardArrowRight />
           </button>
         </div>
       </div>

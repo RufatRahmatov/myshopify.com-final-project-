@@ -45,35 +45,44 @@ const testimonials: Testimonial[] = [
 
 const Testimonials: React.FC = () => {
   return (
-    <div className="container relative mx-auto overflow-hidden max-w-[1840px] px-4  py-10 -mt-32  ">
-      <div className="flex justify-between items-center mb-8">
-        <h2 className="text-4xl font-medium">Our Customers Testimonial</h2>
-        <button className="bg-black border-2 border-black font-medium text-white px-6 py-2 rounded-full hover:bg-white hover:text-black transition duraction-300 ease-in-out">
+    <div className="container relative mx-auto overflow-hidden max-w-[1840px] px-4 py-10 -mt-32">
+      <div className="flex flex-wrap items-center justify-between mb-6 sm:mb-8">
+        <h2 className="text-lg sm:text-2xl md:text-3xl font-medium">
+          Our Customers Testimonial
+        </h2>
+        <button className="text-xs sm:text-sm md:text-base bg-black border-2 border-black font-medium text-white px-3 sm:px-6 py-2 sm:py-2 rounded-full hover:bg-white hover:text-black transition duration-300 ease-in-out">
           View Review
         </button>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
         {testimonials.map((testimonial, index) => (
           <div
             key={index}
-            className=" p-6 rounded-2xl shadow-md border border-gray-200 bg-[#F5F5F5] "
+            className="p-4 sm:p-6 rounded-2xl shadow-md border border-gray-200 bg-[#F5F5F5]"
           >
             <div className="flex items-center mb-4">
-              <div className="text-[#F9B42F] text-2xl">
+              <div className="text-[#F9B42F] text-xl sm:text-2xl">
                 {"★".repeat(testimonial.rating)}
                 {"☆".repeat(5 - testimonial.rating)}
               </div>
             </div>
-            <p className="text-gray-700 mb-4">{testimonial.text}</p>
+            <p className="text-gray-700 mb-4 text-sm sm:text-base">
+              {testimonial.text}
+            </p>
             <div className="flex items-center">
               <img
                 src={testimonial.image}
                 alt={testimonial.name}
-                className="w-12 h-12 rounded-full mr-4"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full mr-4"
               />
               <div>
-                <h3 className="font-semibold">{testimonial.name}</h3>
-                <p className="text-gray-500 text-sm">{testimonial.date}</p>
+                <h3 className="font-semibold text-sm sm:text-base">
+                  {testimonial.name}
+                </h3>
+                <p className="text-gray-500 text-xs sm:text-sm">
+                  {testimonial.date}
+                </p>
               </div>
             </div>
           </div>

@@ -35,9 +35,10 @@ const SliderComponent: React.FC = () => {
                 SHOP YOUR OUTFIT SUNGLASSES
               </h2>
               <div className="mt-4 flex gap-2">
-                <button className="px-6 py-2 font-medium border-2 border-white rounded-full text-black bg-white hover:bg-[#737373] hover:text-white transition-all duration-300">
+                <button className="px-6 py-2 text-sm md:text-base font-medium border-2 border-white rounded-full text-black bg-white hover:bg-[#737373] hover:text-white transition-all duration-300 sm:px-4 sm:py-1">
                   SHOP MENS
                 </button>
+
                 <button className="px-6 py-2 font-medium border-2 border-white rounded-full text-white bg-transparent hover:bg-white hover:text-black transition-all duration-300">
                   SHOP WOMENS
                 </button>
@@ -84,7 +85,7 @@ const SliderComponent: React.FC = () => {
                 EXPLORE OUR LATEST COLLECTION OF GOGGLES
               </h2>
               <div className="mt-4 flex gap-2">
-                <button className="px-6 py-2 font-medium border-2 border-white rounded-full text-black bg-white hover:bg-transparent hover:text-white transition-all duration-300">
+                <button className="px-6 py-2 text-sm md:text-base font-medium border-2 border-white rounded-full text-black bg-white hover:bg-[#737373] hover:text-white transition-all duration-300 sm:px-4 sm:py-1">
                   SHOP MENS
                 </button>
                 <button className="px-6 py-2 font-medium border-2 border-white rounded-full text-white bg-transparent hover:bg-white hover:text-black transition-all duration-300">

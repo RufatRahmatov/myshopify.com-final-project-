@@ -58,16 +58,16 @@ const FeaturedCategory: React.FC = () => {
   return (
     <div className="relative mt-8">
       <div className=" p-4 ">
-        <div className="flex justify-between items-center mx-8 mb-2">
+        <div className="flex items-center justify-between mx-4 sm:mx-8 mb-2">
           <div className="mb-8">
             <p className="text-md font-medium text-gray-500">
               Eyeglasses Style
             </p>
-            <h2 className="text-3xl sm:text-4xl  font-medium ">
+            <h2 className="text-xl sm:text-3xl md:text-4xl font-medium">
               Featured By Category
             </h2>
           </div>
-          <button className="text-white bg-black font-medium border-2 border-black px-4 py-2 rounded-full hover:bg-white hover:text-black transition duration-300">
+          <button className="text-xs sm:text-sm md:text-base text-white bg-black font-medium border-2 border-black px-2 sm:px-4 py-1 sm:py-2 rounded-full hover:bg-white hover:text-black transition duration-300">
             View Collection
           </button>
         </div>

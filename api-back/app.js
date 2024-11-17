@@ -2,10 +2,12 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+
+
 const authRoutes = require('../api-back/routers/authRoutes');
 const shopCardRoutes = require('./routers/shopCardRoutes');
-const productRoutes = require('./routers/productRouter'); // Doğru isimlendirme yapıldı
-const eyeframesRoutes = require('./routers/eyeframRouter'); // Yeni eyeframes router'ı eklendi
+const productRoutes = require('./routers/productRouter');
+const eyeframesRoutes = require('./routers/eyeframRouter');
 
 const app = express();
 const PORT = process.env.PORT || 3001;

@@ -456,7 +456,7 @@ const Header = () => {
                 {textContent.contactLens}
               </a>
               <Link
-                href="/eyeframs"
+                href="/eyeframes"
                 className="hover:border-b-2 hover:border-black font-medium text-lg"
               >
                 {textContent.eyeframes}

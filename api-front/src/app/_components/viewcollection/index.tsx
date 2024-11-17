@@ -18,16 +18,16 @@ const ViewCollection: React.FC = () => {
             alt="Eyeglasses Collection"
             className="w-full h-auto object-cover"
           />
-          <div className="absolute inset-0 flex flex-col justify-center px-8  bg-opacity-40 text-white ml-2">
-            <p className="text-xl text-black font-medium mb-4">
+          <div className="absolute inset-0 flex flex-col justify-center px-4 sm:px-8 bg-opacity-40 text-white ml-1 sm:ml-2">
+            <p className="text-lg sm:text-xl text-black font-medium mb-3 sm:mb-4">
               Lets Elevate your frame
             </p>
-            <h2 className="text-4xl font-medium mb-4 text-black">
+            <h2 className="text-2xl sm:text-4xl font-medium mb-3 sm:mb-4 text-black">
               Elevate Your Style <br /> With Eyeglasses
             </h2>
             <button
               onClick={() => handleCollectionClick("/collection1")}
-              className="w-40 bg-black text-white px-4 py-[10px] mt-6 rounded-full font-medium hover:bg-white hover:text-black  transition-all duration-300"
+              className="w-28 sm:w-40 bg-black text-white text-sm sm:text-base px-2 sm:px-4 py-1 sm:py-[10px] mt-4 sm:mt-6 rounded-full font-medium hover:bg-white hover:text-black transition-all duration-300"
             >
               View Collection
             </button>
@@ -40,17 +40,17 @@ const ViewCollection: React.FC = () => {
             alt="Vision Collection"
             className="w-full h-auto object-cover"
           />
-          <div className="absolute inset-0 flex flex-col justify-center px-8  bg-opacity-40 text-white ml-2">
-            <p className="text-xl text-black font-medium mb-4">
+          <div className="absolute inset-0 flex flex-col justify-center px-4 sm:px-8 bg-opacity-40 text-white ml-1 sm:ml-2">
+            <p className="text-lg sm:text-xl text-black font-medium mb-3 sm:mb-4">
               Lets Elevate your frame
             </p>
-            <h2 className="text-4xl font-medium mb-4 text-black">
+            <h2 className="text-2xl sm:text-4xl font-medium mb-3 sm:mb-4 text-black">
               Elevate Your Get <br />
               Vision You Deserve
             </h2>
             <button
               onClick={() => handleCollectionClick("/collection1")}
-              className="w-40 bg-black text-white px-4 py-[10px] mt-6 rounded-full font-medium hover:bg-white hover:text-black  transition-all duration-300"
+              className="w-28 sm:w-40 bg-black text-white text-sm sm:text-base px-2 sm:px-4 py-1 sm:py-[10px] mt-4 sm:mt-6 rounded-full font-medium hover:bg-white hover:text-black transition-all duration-300"
             >
               View Collection
             </button>

@@ -10,23 +10,23 @@ const {
     deleteShopCard,
 } = require("../controllers/shopCardController");
 
-// Multer Storage Ayarları
+
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'uploads/'); // Dosyaların kaydedileceği klasör
+        cb(null, 'uploads/');
     },
     filename: function (req, file, cb) {
-        cb(null, Date.now() + path.extname(file.originalname)); // Dosya ismi
+        cb(null, Date.now() + path.extname(file.originalname));
     }
 });
 
 const upload = multer({ storage: storage });
 
-// Routes
+
 router.get("/", getAllShopCards);
 router.get("/:id", getShopCardById);
-router.post("/", upload.single('image'), createShopCard); // Multer middleware'ini ekledik
-router.put("/:id", upload.single('image'), updateShopCard); // Güncelleme için de ekledik
+router.post("/", upload.single('image'), createShopCard);
+router.put("/:id", upload.single('image'), updateShopCard);
 router.delete("/:id", deleteShopCard);
 
 module.exports = router;

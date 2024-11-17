@@ -20,7 +20,7 @@ const TopBar: React.FC = () => {
           <input
             type="text"
             placeholder="Type here..."
-            className="border border-gray-300 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-pink-500"
+            className="border border-gray-300 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-black-500"
           />
         </div>
         <Link href="/home">

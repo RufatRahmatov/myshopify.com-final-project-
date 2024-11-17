@@ -108,16 +108,16 @@ const OurProducts: React.FC = () => {
       <div className="flex justify-between items-center mx-8">
         <p className="font-medium text-[#787878]">Hottest collections</p>
       </div>
-      <div className="flex justify-between items-center">
-        <h2 className="text-4xl font-medium mb-5 mx-8">
+      <div className="flex items-center justify-between">
+        <h2 className="text-xl sm:text-3xl font-medium mb-0 mx-2 sm:mx-8">
           Our Featured Products
         </h2>
-        <button className=" text-black border-2 border-black px-6 py-[8px] font-medium rounded-full bg-black text-white hover:bg-white hover:text-black transition duration-300 mx-8">
+        <button className="text-sm sm:text-lg text-black border-2 border-black px-4 sm:px-6 py-1 sm:py-2 font-medium rounded-full bg-black text-white hover:bg-white hover:text-black transition duration-300 mx-2 sm:mx-8">
           View All
         </button>
       </div>
 
-      <div className="flex flex-wrap mx-4">
+      <div className="flex flex-wrap mx-4 mt-4">
         {products.map((product) => (
           <div
             key={product.id}
@@ -173,7 +173,7 @@ const OurProducts: React.FC = () => {
         ))}
       </div>
 
-      {selectedProduct && selectedColor && (
+      {selectedProduct && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white w-11/12 sm:w-2/3 lg:w-3/4 p-6 rounded-lg flex gap-8 relative">
             {/* Sol Bölüm - Büyük Fotoğraf ve Küçük Fotoğraflar */}
@@ -218,7 +218,10 @@ const OurProducts: React.FC = () => {
               {/* Kapatma Butonu */}
               <button
                 className="absolute top-4 right-4 bg-black text-white px-3 py-1 rounded-full z-50"
-                onClick={() => setSelectedProduct(null)}
+                onClick={() => {
+                  setSelectedProduct(null);
+                  setSelectedColor(null); // Renk seçimini sıfırlayın
+                }}
               >
                 X
               </button>
@@ -227,18 +230,18 @@ const OurProducts: React.FC = () => {
               <h3 className="text-xl font-bold mb-2">
                 {selectedProduct.title}
               </h3>
+
               {/* Kategori */}
               <p className="text-sm text-gray-500 mb-4">
                 {selectedProduct.category}
               </p>
+
               {/* Fiyat */}
               <p className="text-lg font-semibold mb-4">
                 $
-                {
-                  selectedProduct.colors.find(
-                    (color) => color.name === selectedColor
-                  )?.price
-                }
+                {selectedProduct.colors.find(
+                  (color) => color.name === selectedColor
+                )?.price || selectedProduct.colors[0].price}
               </p>
 
               {/* Miktar Ayarı */}
@@ -270,7 +273,9 @@ const OurProducts: React.FC = () => {
                   Buy it Now
                 </button>
               </div>
-              <div className="font-medium">
+
+              {/* Açıklama */}
+              <div className="font-medium mt-4">
                 <p>
                   Welcome to our Optical Collection, where we prioritize Clarity
                   and Comfort to enhance your vision and elevate your eyewear
@@ -283,7 +288,7 @@ const OurProducts: React.FC = () => {
                   the perfect solution for you. Our commitment to comfort is
                   evident in every aspect of our eyewear selection. Each frame
                   is crafted with precision and designed to provide a snug and
-                  secure fit,
+                  secure fit.
                 </p>
               </div>
             </div>
