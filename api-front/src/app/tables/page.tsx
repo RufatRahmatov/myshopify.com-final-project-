@@ -20,8 +20,8 @@ interface Product {
 const Table: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null); // Seçili ürün
-  const [isEditing, setIsEditing] = useState(false); // Düzenleme modalını kontrol eder
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [isEditing, setIsEditing] = useState(false);
 
   const fetchProducts = async () => {
     setLoading(true);
@@ -58,7 +58,7 @@ const Table: React.FC = () => {
 
   const handleEdit = (product: Product) => {
     setSelectedProduct(product);
-    setIsEditing(true); // Düzenleme moduna geçiş
+    setIsEditing(true);
   };
 
   const handleUpdate = async () => {

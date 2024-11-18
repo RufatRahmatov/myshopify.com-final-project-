@@ -1,8 +1,9 @@
 "use client";
 
 import { FC, useState } from "react";
-import { MdKeyboardArrowRight } from "react-icons/md";
-import { MdKeyboardArrowLeft } from "react-icons/md";
+import Image from "next/image";
+import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
+
 interface Blog {
   id: number;
   title: string;
@@ -70,20 +71,21 @@ const Blogs: FC = () => {
 
       <div className="hidden md:grid grid-cols-4 gap-8">
         {blogsData.map((blog) => (
-          <div key={blog.id} className=" rounded-3xl overflow-hidden group">
+          <div key={blog.id} className="rounded-3xl overflow-hidden group">
             <div className="overflow-hidden rounded-3xl">
-              <img
+              <Image
                 src={blog.image}
                 alt={blog.title}
+                width={533}
+                height={250}
                 className="w-full h-[250px] object-cover rounded-3xl transform group-hover:scale-105 transition duration-300 ease-in-out"
               />
             </div>
-            <div className="mt-6 ">
+            <div className="mt-6">
               <h3 className="font-bold text-lg mb-2">{blog.title}</h3>
-              <hr className="border-t border-gray-300 my-2 py-1 " />
+              <hr className="border-t border-gray-300 my-2 py-1" />
               <div className="flex justify-between mb-3">
-                {" "}
-                <p className="text-md font-medium ">{blog.category}</p>
+                <p className="text-md font-medium">{blog.category}</p>
                 <p className="text-md font-medium text-gray-500">
                   By {blog.author}
                 </p>
@@ -96,9 +98,11 @@ const Blogs: FC = () => {
       <div className="md:hidden">
         <div className="relative">
           <div className="overflow-hidden">
-            <img
+            <Image
               src={blogsData[currentIndex].image}
               alt={blogsData[currentIndex].title}
+              width={600}
+              height={240}
               className="w-full h-60 object-cover rounded-lg transform transition duration-300 ease-in-out group-hover:scale-110"
             />
           </div>
@@ -113,7 +117,6 @@ const Blogs: FC = () => {
             <p className="text-sm text-gray-400">
               By {blogsData[currentIndex].author}
             </p>
-            <p className="text-sm text-blue-500 mt-2">Google Sport</p>
           </div>
         </div>
         <div className="flex justify-center gap-2 mt-4">
@@ -121,13 +124,13 @@ const Blogs: FC = () => {
             onClick={handlePrev}
             className="bg-gray-200 px-4 py-2 rounded-md"
           >
-            <MdKeyboardArrowLeft />
+            <MdKeyboardArrowLeft size={24} />
           </button>
           <button
             onClick={handleNext}
             className="bg-gray-200 px-4 py-2 rounded-md"
           >
-            <MdKeyboardArrowRight />
+            <MdKeyboardArrowRight size={24} />
           </button>
         </div>
       </div>

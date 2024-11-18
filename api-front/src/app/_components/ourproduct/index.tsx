@@ -99,7 +99,6 @@ const OurProducts: React.FC = () => {
       setQuantity((prev) => prev - 1);
     }
   };
-
   // const handleColorChange = (colorName: string) => {
   //   setSelectedColor(colorName);
   // };
@@ -166,8 +165,8 @@ const OurProducts: React.FC = () => {
             </div>
             <div className="flex items-center justify-center mt-2 gap-2">
               <div className="bg-black rounded-full h-5 w-5"></div>
-              <div className="bg-black h-5 w-5 rounded-full"></div>
-              <div className="bg-black rounded-full h-5 w-5"></div>
+              <div className="bg-red-600 h-5 w-5 rounded-full"></div>
+              <div className="bg-white rounded-full h-5 w-5"></div>
             </div>
           </div>
         ))}

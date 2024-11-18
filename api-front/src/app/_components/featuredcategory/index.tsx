@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 
 interface Category {
   id: number;
@@ -57,7 +58,7 @@ const categories: Category[] = [
 const FeaturedCategory: React.FC = () => {
   return (
     <div className="relative mt-8">
-      <div className=" p-4 ">
+      <div className="p-4">
         <div className="flex items-center justify-between mx-4 sm:mx-8 mb-2">
           <div className="mb-8">
             <p className="text-md font-medium text-gray-500">
@@ -67,27 +68,27 @@ const FeaturedCategory: React.FC = () => {
               Featured By Category
             </h2>
           </div>
-          <button className="text-xs sm:text-sm md:text-base text-white bg-black font-medium border-2 border-black px-2 sm:px-4 py-1 sm:py-2 rounded-full hover:bg-white hover:text-black transition duration-300">
+          <button className="text-xs sm:text-sm md:text-base text-white bg-black font-medium border-2 border-black px-2 sm:px-4 py-2 sm:py-2 rounded-full hover:bg-white hover:text-black transition duration-300">
             View Collection
           </button>
         </div>
 
-        <div className="h-[270px] grid grid-cols-2 hidden md:flex  sm:grid-cols-3 lg:grid-cols-6 gap-6 mx-8 text-center">
+        <div className="h-[270px] grid grid-cols-2 hidden md:flex sm:grid-cols-3 lg:grid-cols-6 gap-6 mx-8 text-center">
           {categories.map((category) => (
             <div
               key={category.id}
-              className="border-2 border-gray-300 rounded-xl  overflow-hidden"
+              className="border-2 border-gray-300 rounded-xl overflow-hidden"
             >
               <div className="p-4 rounded-lg">
-                <div className="overflow-hidden rounded-lg  h-[165px]">
-                  {" "}
-                  <img
+                <div className="overflow-hidden rounded-lg h-[165px]">
+                  <Image
                     src={category.image}
                     alt={category.title}
+                    width={300}
+                    height={165}
                     className="w-full h-[165px] object-cover rounded-lg mb-4 transform transition-transform duration-300 hover:scale-105 cursor-pointer"
                   />
                 </div>
-
                 <h3 className="text-lg font-semibold">{category.title}</h3>
                 <p className="text-gray-500 text-sm">
                   {category.itemsCount} items
@@ -104,10 +105,12 @@ const FeaturedCategory: React.FC = () => {
               className="flex-shrink-0 w-48 border rounded-lg shadow-md"
             >
               <div className="p-4">
-                <img
+                <Image
                   src={category.image}
                   alt={category.title}
-                  className="w-full h-32 object-cover mb-4"
+                  width={192}
+                  height={128}
+                  className="w-full h-32 object-cover mb-4 transform transition-transform duration-300 hover:scale-105"
                 />
                 <h3 className="text-lg font-semibold">{category.title}</h3>
                 <p className="text-gray-500 text-sm">

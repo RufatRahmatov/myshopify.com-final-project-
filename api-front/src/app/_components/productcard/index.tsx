@@ -1,10 +1,10 @@
 "use client";
-
+// import Image from "next/image";
 interface Product {
   _id?: string;
   name: string;
   price: number;
-  image: string; // Tam URL veya kısmi yol olabilir
+  image: string;
   product: string;
   category: string;
 }

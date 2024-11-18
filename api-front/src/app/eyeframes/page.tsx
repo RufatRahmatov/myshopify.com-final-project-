@@ -46,7 +46,7 @@ const Eyeframes: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/api/eyeframs");
+        const response = await axios.get("http://localhost:3001/api/eyeframes");
         setProducts(response.data);
         setFilteredProducts(response.data);
       } catch (error) {
