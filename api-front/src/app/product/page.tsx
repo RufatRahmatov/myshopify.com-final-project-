@@ -30,9 +30,9 @@ const defaultProduct: Product = {
 };
 
 export default function Product() {
-  const [products, setProducts] = useState<Product[]>([]); // Başlangıçta boş bir dizi
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false); // Modal durumu
-  const [currentProduct, setCurrentProduct] = useState<Product | null>(null); // Seçili ürün
+  const [products, setProducts] = useState<Product[]>([]);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [currentProduct, setCurrentProduct] = useState<Product | null>(null);
 
   const fetchProducts = async () => {
     try {
@@ -58,9 +58,9 @@ export default function Product() {
       );
 
       if (response.ok) {
-        fetchProducts(); // Ürünleri yeniden yükle
-        setIsModalOpen(false); // Modal'ı kapat
-        setCurrentProduct(null); // Seçili ürünü sıfırla
+        fetchProducts();
+        setIsModalOpen(false);
+        setCurrentProduct(null);
       } else {
         console.error("Error saving product");
       }
@@ -91,12 +91,12 @@ export default function Product() {
   };
 
   const openModal = (product: Product | null = defaultProduct) => {
-    setCurrentProduct(product); // Yeni ürün eklemek için varsayılan ürün bilgisi veya düzenleme için seçili ürünü ayarla
-    setIsModalOpen(true); // Modal'ı aç
+    setCurrentProduct(product);
+    setIsModalOpen(true);
   };
 
   useEffect(() => {
-    fetchProducts(); // Sayfa yüklendiğinde ürünleri getir
+    fetchProducts();
   }, []);
 
   return (
@@ -104,10 +104,10 @@ export default function Product() {
       <TopBar />
       <div className="p-8">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold">Product Management</h1>
+          <h1 className="text-2xl font-bold  ">Product Management</h1>
           <button
-            onClick={() => openModal()} 
-            className="bg-green-500 text-white px-4 py-2 rounded-md"
+            onClick={() => openModal()}
+            className="flex items-center gap-1 bg-black text-white py-1.5 sm:py-2 px-3 sm:px-4 rounded-lg hover:bg-white hover:text-black font-medium border-2 border-black text-xs sm:text-sm transition duration-300 "
           >
             Add Product
           </button>
@@ -118,8 +118,8 @@ export default function Product() {
               <ProductCard
                 key={product._id}
                 product={product}
-                onEdit={() => openModal(product)} // Düzenleme için modal'ı aç
-                onDelete={() => handleDelete(product._id!)} // Ürünü sil
+                onEdit={() => openModal(product)}
+                onDelete={() => handleDelete(product._id!)}
               />
             ))
           ) : (
@@ -128,9 +128,9 @@ export default function Product() {
         </div>
         {isModalOpen && (
           <Modal
-            product={currentProduct!} // Modal'da gösterilecek ürün
-            onSave={handleSave} // Kaydetme işlevi
-            onClose={() => setIsModalOpen(false)} // Modal'ı kapatma işlevi
+            product={currentProduct!}
+            onSave={handleSave}
+            onClose={() => setIsModalOpen(false)}
           />
         )}
       </div>

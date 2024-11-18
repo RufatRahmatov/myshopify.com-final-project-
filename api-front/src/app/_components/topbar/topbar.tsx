@@ -41,9 +41,7 @@ const TopBar: React.FC = () => {
               className="w-6 h-6 sm:w-10 sm:h-10 rounded-full border border-gray-300"
             />
 
-            <span className="hidden sm:block text-gray-800 text-xs sm:text-sm font-medium">
-              {/* {user.name} */}
-            </span>
+            <span className="hidden sm:block text-gray-800 text-xs sm:text-sm font-medium"></span>
           </div>
         </div>
       </div>
