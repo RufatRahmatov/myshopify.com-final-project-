@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Image from "next/image";
 
 const VideoBanner: React.FC = () => {
   const [showVideo, setShowVideo] = useState(false);
@@ -13,9 +14,10 @@ const VideoBanner: React.FC = () => {
         <div className="relative w-full h-full">
           {!showVideo ? (
             <>
-              <img
+              <Image
                 src="https://maxmod-goggles.myshopify.com/cdn/shop/files/1_2.webp?v=1713442186&width=3840"
                 alt="Background"
+                fill
                 className="absolute inset-0 w-full h-full object-cover"
               />
               <div
@@ -43,10 +45,11 @@ const VideoBanner: React.FC = () => {
           ) : (
             <iframe
               className="absolute inset-0 w-full h-full"
-              src="https://www.youtube.com/embed/D0UnqGm_miA?autoplay=1"
+              src="https://www.youtube.com/embed/2lxN4R-Sc4U"
               title="YouTube video player"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               frameBorder="0"
+              allowFullScreen
             ></iframe>
           )}
         </div>

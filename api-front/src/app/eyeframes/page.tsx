@@ -280,24 +280,23 @@ const Eyeframes: React.FC = () => {
             </div>
           </div>
 
-          {/* Products Section */}
-          <div className="w-3/4 p-4">
-            <div className="flex justify-start gap-4 mb-4">
+          <div className="w-full md:w-3/4 p-4">
+            <div className="flex justify-start gap-2 md:gap-4 mb-4">
               <button onClick={() => setViewMode("grid")}>
-                <TfiLayoutGrid4Alt className="text-2xl" />
+                <TfiLayoutGrid4Alt className="text-lg md:text-2xl" />
               </button>
               <button onClick={() => setViewMode("list")}>
-                <BsGrid3X3GapFill className="text-2xl" />
+                <BsGrid3X3GapFill className="text-lg md:text-2xl" />
               </button>
               <button onClick={() => setViewMode("compact")}>
-                <TfiLayoutGrid2Alt className="text-2xl" />
+                <TfiLayoutGrid2Alt className="text-lg md:text-2xl" />
               </button>
             </div>
 
             <div
-              className={`grid gap-4 ${
+              className={`grid gap-2 md:gap-4 ${
                 viewMode === "grid"
-                  ? "grid-cols-3"
+                  ? "grid-cols-2 md:grid-cols-3"
                   : viewMode === "list"
                   ? "grid-cols-1"
                   : "grid-cols-2"
@@ -306,23 +305,34 @@ const Eyeframes: React.FC = () => {
               {filteredProducts.map((product) => (
                 <div
                   key={product.id}
-                  className="border p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+                  className="relative p-2 md:p-4 overflow-hidden group"
                 >
+                  {/* Görsel */}
                   <Image
                     src={product.colors[0]?.image || ""}
                     alt={product.title}
-                    width={300}
-                    height={300}
-                    className="w-full rounded-lg"
+                    width={200}
+                    height={200}
+                    className="w-full h-[420px] object-cover transition-opacity duration-500 rounded-3xl"
                   />
-                  <h3 className="text-lg font-bold mt-2">{product.title}</h3>
-                  <p className="text-sm text-gray-600">{product.category}</p>
-                  <p className="text-sm text-gray-800 font-semibold">
-                    Rs. {product.basePrice}
+
+                  <div className="absolute inset-0 top-[220px] flex justify-center items-center">
+                    <button className="font-medium border-2 border-black bg-black text-white text-xs md:text-sm px-8 md:px-6 py-1 md:py-2 rounded-full hover:text-black hover:bg-white transition duration-300 z-50">
+                      Add to Cart
+                    </button>
+                  </div>
+
+                  <p className="flex justify-center items-center text-xs md:text-sm text-gray-600 mt-2">
+                    {product.category}
                   </p>
-                  <button className="bg-blue-500 text-white text-sm px-4 py-2 rounded mt-2 hover:bg-blue-600">
-                    Add to Cart
-                  </button>
+
+                  <h3 className="flex justify-center items-center text-md md:text-lg font-bold mt-2">
+                    {product.title}
+                  </h3>
+
+                  <p className="flex justify-center items-center text-sm md:text-base text-gray-800 font-semibold">
+                    {product.basePrice} $
+                  </p>
                 </div>
               ))}
             </div>

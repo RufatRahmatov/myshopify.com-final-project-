@@ -453,7 +453,7 @@ const Header = () => {
                 </Transition>
               </div>
               <a
-                href="#"
+                href="/collections"
                 className="hover:border-b-2 hover:border-black font-medium text-lg"
               >
                 {textContent.contactLens}
