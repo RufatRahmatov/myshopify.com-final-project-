@@ -5,15 +5,24 @@ const nextConfig = {
         defaultLocale: 'en',
     },
     images: {
-        domains: [
-            'localhost',
-            "maxmod-goggles.myshopify.com", "another-domain.com"
+        remotePatterns: [
+            {
+                protocol: 'http',
+                hostname: 'localhost',
+                pathname: '/**', // Tüm alt yolları kapsar
+            },
+            {
+                protocol: 'https',
+                hostname: 'maxmod-goggles.myshopify.com',
+                pathname: '/**', // Tüm alt yolları kapsar
+            },
+            {
+                protocol: 'https',
+                hostname: 'another-domain.com',
+                pathname: '/**', // Tüm alt yolları kapsar
+            },
         ],
     },
 };
 
 export default nextConfig;
-
-
-
-

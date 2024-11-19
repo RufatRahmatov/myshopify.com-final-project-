@@ -42,7 +42,6 @@ const Eyeframes: React.FC = () => {
   const [selectedFilters, setSelectedFilters] = useState<Filter[]>([]);
   const [viewMode, setViewMode] = useState<"grid" | "list" | "compact">("grid");
 
-  // Fetch products from the backend
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -111,11 +110,9 @@ const Eyeframes: React.FC = () => {
     <Layouts>
       <main>
         <div className="flex">
-          {/* Filter Sidebar */}
           <div className="w-1/4 p-4 border-r">
             <h3 className="text-lg font-bold mb-4">Filter:</h3>
 
-            {/* Selected Filters */}
             {selectedFilters.length > 0 && (
               <div className="mb-6">
                 <h4 className="text-sm font-semibold">Selected Filters:</h4>
@@ -153,7 +150,6 @@ const Eyeframes: React.FC = () => {
               </div>
             )}
 
-            {/* Accordion Style Filters */}
             <div className="mb-6">
               <details className="group">
                 <summary className="text-sm font-semibold cursor-pointer flex justify-between items-center">

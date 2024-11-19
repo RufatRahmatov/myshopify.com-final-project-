@@ -48,7 +48,7 @@ const Header = () => {
     setOpenDropdown(openDropdown === name ? null : name);
   };
   const handleLoginClick = () => {
-    window.location.href = "/login"; // Login sayfasına yönlendirme
+    window.location.href = "/login";
   };
   const handleLanguageChange = (language: string) => {
     setSelectedLanguage(language);

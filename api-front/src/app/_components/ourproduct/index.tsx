@@ -121,7 +121,7 @@ const OurProducts: React.FC = () => {
           <div
             key={product.id}
             className="relative group cursor-pointer w-full sm:w-1/2 lg:w-1/4 p-4"
-            onClick={() => setSelectedProduct(product)}
+            // Removed onClick handler here
           >
             {product.onSale && (
               <span className="absolute top-8  left-8 bg-[#448B23] px-4 py-1 text-white text-xs font-medium px-2 py-1 rounded-full z-50">
@@ -166,7 +166,9 @@ const OurProducts: React.FC = () => {
             <div className="flex items-center justify-center mt-2 gap-2">
               <div className="bg-black rounded-full h-5 w-5"></div>
               <div className="bg-red-600 h-5 w-5 rounded-full"></div>
-              <div className="bg-white rounded-full h-5 w-5"></div>
+              <div className="bg-gray-300 rounded-full h-5 w-5"></div>
+              <div className="bg-blue-700  rounded-full h-5 w-5"></div>
+              <div className="bg-orange-500  rounded-full h-5 w-5"></div>
             </div>
           </div>
         ))}
@@ -175,9 +177,9 @@ const OurProducts: React.FC = () => {
       {selectedProduct && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white w-11/12 sm:w-2/3 lg:w-3/4 p-6 rounded-lg flex gap-8 relative">
-            {/* Sol Bölüm - Büyük Fotoğraf ve Küçük Fotoğraflar */}
+            {/* Left Section - Large Image and Thumbnails */}
             <div className="flex-1">
-              {/* Büyük Fotoğraf */}
+              {/* Large Image */}
               <div className="w-full mb-4">
                 <img
                   src={
@@ -190,7 +192,7 @@ const OurProducts: React.FC = () => {
                 />
               </div>
 
-              {/* Küçük Fotoğraflar */}
+              {/* Thumbnails */}
               <div className="flex gap-2">
                 {selectedProduct.colors.map((color) => (
                   <button
@@ -212,30 +214,28 @@ const OurProducts: React.FC = () => {
               </div>
             </div>
 
-            {/* Sağ Bölüm - Yazılar ve Butonlar */}
             <div className="flex-1">
-              {/* Kapatma Butonu */}
               <button
                 className="absolute top-4 right-4 bg-black text-white px-3 py-1 rounded-full z-50"
                 onClick={() => {
                   setSelectedProduct(null);
-                  setSelectedColor(null); // Renk seçimini sıfırlayın
+                  setSelectedColor(null);
                 }}
               >
                 X
               </button>
 
-              {/* Başlık */}
+              {/* Title */}
               <h3 className="text-xl font-bold mb-2">
                 {selectedProduct.title}
               </h3>
 
-              {/* Kategori */}
+              {/* Category */}
               <p className="text-sm text-gray-500 mb-4">
                 {selectedProduct.category}
               </p>
 
-              {/* Fiyat */}
+              {/* Price */}
               <p className="text-lg font-semibold mb-4">
                 $
                 {selectedProduct.colors.find(
@@ -243,7 +243,7 @@ const OurProducts: React.FC = () => {
                 )?.price || selectedProduct.colors[0].price}
               </p>
 
-              {/* Miktar Ayarı */}
+              {/* Quantity Selector */}
               <div className="mb-4">
                 <p className="text-sm font-semibold">Quantity:</p>
                 <div className="flex items-center gap-4">
@@ -263,7 +263,7 @@ const OurProducts: React.FC = () => {
                 </div>
               </div>
 
-              {/* Butonlar */}
+              {/* Buttons */}
               <div className="flex flex-col gap-4">
                 <button className="w-full bg-black text-white py-2 rounded-full hover:bg-gray-800">
                   Add to Cart
@@ -273,7 +273,7 @@ const OurProducts: React.FC = () => {
                 </button>
               </div>
 
-              {/* Açıklama */}
+              {/* Description */}
               <div className="font-medium mt-4">
                 <p>
                   Welcome to our Optical Collection, where we prioritize Clarity

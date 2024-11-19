@@ -1,8 +1,10 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
+import Spinner from "../spiner";
 
 interface Blog {
   id: number;
@@ -48,7 +50,13 @@ const blogsData: Blog[] = [
 ];
 
 const Blogs: FC = () => {
+  const [loading, setLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 1500);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % blogsData.length);
@@ -60,6 +68,14 @@ const Blogs: FC = () => {
     );
   };
 
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <Spinner />
+      </div>
+    );
+  }
+
   return (
     <div className="container max-w-[1840px] mx-auto p-4">
       <div className="flex justify-between items-center mb-6">
@@ -70,7 +86,7 @@ const Blogs: FC = () => {
       </div>
 
       <div className="hidden md:grid grid-cols-4 gap-8">
-        {blogsData.map((blog) => (
+        {blogsData.map((blog, index) => (
           <div key={blog.id} className="rounded-3xl overflow-hidden group">
             <div className="overflow-hidden rounded-3xl">
               <Image
@@ -82,10 +98,29 @@ const Blogs: FC = () => {
               />
             </div>
             <div className="mt-6">
-              <h3 className="font-bold text-lg mb-2">{blog.title}</h3>
+              <Link
+                href={
+                  index === 0
+                    ? `/trends`
+                    : index === 1
+                    ? `/effectiv`
+                    : index === 2
+                    ? `/swimming`
+                    : `/ultimate`
+                }
+                legacyBehavior
+              >
+                <a>
+                  <h3 className="font-bold text-lg mb-2 cursor-pointer hover:text-gray-600">
+                    {blog.title}
+                  </h3>
+                </a>
+              </Link>
               <hr className="border-t border-gray-300 my-2 py-1" />
               <div className="flex justify-between mb-3">
-                <p className="text-md font-medium">{blog.category}</p>
+                <p className="text-md font-medium cursor-pointer">
+                  {blog.category}
+                </p>
                 <p className="text-md font-medium text-gray-500">
                   By {blog.author}
                 </p>
@@ -107,9 +142,24 @@ const Blogs: FC = () => {
             />
           </div>
           <div className="p-4">
-            <h3 className="font-bold text-lg mb-2">
-              {blogsData[currentIndex].title}
-            </h3>
+            <Link
+              href={
+                currentIndex === 0
+                  ? `/trends`
+                  : currentIndex === 1
+                  ? `/effective`
+                  : currentIndex === 2
+                  ? `/swimming`
+                  : `/ultimate`
+              }
+              legacyBehavior
+            >
+              <a>
+                <h3 className="font-bold text-lg mb-2">
+                  {blogsData[currentIndex].title}
+                </h3>
+              </a>
+            </Link>
             <hr className="border-t border-gray-300 my-2" />
             <p className="text-sm text-gray-500">
               {blogsData[currentIndex].category}
