@@ -16,13 +16,21 @@ interface User {
   password: string;
   profileImage?: string;
 }
-
+interface CartItem {
+  id: string;
+  title: string;
+  price: number;
+  quantity: number;
+  image: string;
+  color: string;
+}
 const Header = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [selectedLanguage, setSelectedLanguage] = useState("English");
   const [selectedCurrency, setSelectedCurrency] = useState("USD");
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [textContent, setTextContent] = useState({
     helpline: "Helpline Number: 123-456-7890",
     orders: "Orders By Shop Our Spring Collection Sale!",
@@ -36,14 +44,23 @@ const Header = () => {
     eyeframes: "Eyeframes",
   });
   const [user, setUser] = useState<User | null>(null);
-
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    setCartItems(storedCart);
+  }, [isCartOpen]);
+  const getTotalPrice = () =>
+    cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
   useEffect(() => {
     const userData = localStorage.getItem("user");
     if (userData) {
       setUser(JSON.parse(userData) as User);
     }
   }, []);
-
+  const removeFromCart = (id: string) => {
+    const updatedCart = cartItems.filter((item) => item.id !== id);
+    setCartItems(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
   const toggleDropdown = (name: string) => {
     setOpenDropdown(openDropdown === name ? null : name);
   };
@@ -495,11 +512,13 @@ const Header = () => {
             </div>
 
             <Transition show={isCartOpen}>
+              {/* Arka Plan */}
               <div
                 className="fixed inset-0 bg-black bg-opacity-50 z-40"
                 onClick={() => setIsCartOpen(false)}
               ></div>
 
+              {/* Sepet İçeriği */}
               <div
                 className={`fixed right-0 top-0 w-[420px] bg-white h-full z-50 transition ease-in-out transform duration-300 ${
                   isCartOpen ? "translate-x-0" : "translate-x-full"
@@ -512,25 +531,61 @@ const Header = () => {
                   &times;
                 </button>
                 <div className="p-6">
-                  <h2 className="text-2xl font-bold text-center">
-                    Your cart is empty
-                  </h2>
-                  <button className="  flex justify-center mt-4 px-4 py-2 border-2 border-black bg-black text-white rounded-full font-medium hover:bg-white hover:text-black ransition ease-in-out transform duration-300">
-                    Continue Shopping
-                  </button>
-                  <div className="mt-6">
-                    <img
-                      src="https://maxmod-goggles.myshopify.com/cdn/shop/collections/6.webp?v=1713439281&width=1500"
-                      alt="Eyeglasses"
-                      className="w-full rounded-xl mt-[500px]"
-                    />
-                    <p className="text-center mt-2 font-bold text-lg">
-                      Eyeglasses
-                    </p>
-                    <p className="text-center text-gray-600 font-medium">
-                      7 items
-                    </p>
-                  </div>
+                  <h2 className="text-2xl font-bold text-center">Your Cart</h2>
+
+                  {cartItems.length === 0 ? (
+                    <div className="text-center mt-4">
+                      <p>Your cart is empty</p>
+                      <button className="mt-4 px-4 py-2 border-2 border-black bg-black text-white rounded-full font-medium hover:bg-white hover:text-black transition ease-in-out transform duration-300">
+                        Continue Shopping
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="mt-4 space-y-4">
+                      {/* Ürün Listesi */}
+                      {cartItems.map((item, index) => (
+                        <div
+                          key={index}
+                          className="flex items-center justify-between border-b pb-4 mb-4"
+                        >
+                          <div className="flex items-center gap-4">
+                            <img
+                              src={item.image}
+                              alt={item.title}
+                              className="w-16 h-16 object-cover rounded-md"
+                            />
+                            <div>
+                              <p className="font-medium">{item.title}</p>
+                              <p className="text-sm text-gray-600">
+                                {item.color} | ${item.price} x {item.quantity}
+                              </p>
+                            </div>
+                          </div>
+                          <p className="font-bold">
+                            ${item.price * item.quantity}
+                          </p>
+                          <button
+                            onClick={() => removeFromCart(item.id)}
+                            className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-700"
+                          >
+                            Remove
+                          </button>
+                        </div>
+                      ))}
+
+                      {/* Toplam Tutar */}
+                      <div className="border-t pt-4">
+                        <p className="text-lg font-bold">
+                          Total: ${getTotalPrice()}
+                        </p>
+                      </div>
+
+                      {/* Checkout Butonu */}
+                      <button className="w-full mt-4 px-4 py-2 border-2 border-black bg-black text-white rounded-full font-medium hover:bg-white hover:text-black transition ease-in-out transform duration-300">
+                        Checkout
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
             </Transition>
