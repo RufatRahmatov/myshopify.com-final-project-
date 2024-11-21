@@ -106,7 +106,7 @@ const Blogs: FC = () => {
                     ? `/effectiv`
                     : index === 2
                     ? `/swimming`
-                    : `/ultimate`
+                    : `/ultima`
                 }
                 legacyBehavior
               >
@@ -150,7 +150,7 @@ const Blogs: FC = () => {
                   ? `/effective`
                   : currentIndex === 2
                   ? `/swimming`
-                  : `/ultimate`
+                  : `/ultima`
               }
               legacyBehavior
             >

@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Transition } from "@headlessui/react";
 import { BiMenu, BiX } from "react-icons/bi";
@@ -9,8 +10,7 @@ import { IoPersonOutline } from "react-icons/io5";
 import { RiShoppingBag2Line } from "react-icons/ri";
 import { FaFacebook, FaYoutube } from "react-icons/fa";
 import { RiTwitterXLine } from "react-icons/ri";
-// import { useRouter } from "next/router";
-
+import { FaRegTrashCan } from "react-icons/fa6";
 interface User {
   firstname: string;
   lastname: string;
@@ -27,7 +27,6 @@ interface CartItem {
   color: string;
 }
 const Header = () => {
-  // const router = useRouter();
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -492,10 +491,12 @@ const Header = () => {
               <RiSearchLine className="text-2xl cursor-pointer" />
               {user ? (
                 <div className="flex items-center space-x-2">
-                  <img
+                  <Image
                     src={user.profileImage || "/default-profile.png"}
                     alt="User Profile"
-                    className="w-10 h-10 rounded-full"
+                    width={40}
+                    height={40}
+                    className="rounded-full"
                   />
                   <IoPersonOutline className="text-2xl cursor-pointer" />
                   <span className="text-lg font-medium">
@@ -517,13 +518,11 @@ const Header = () => {
             </div>
 
             <Transition show={isCartOpen}>
-              {/* Arka Plan */}
               <div
                 className="fixed inset-0 bg-black bg-opacity-50 z-40"
                 onClick={() => setIsCartOpen(false)}
               ></div>
 
-              {/* Sepet İçeriği */}
               <div
                 className={`fixed right-0 top-0 w-[420px] bg-white h-full z-50 transition ease-in-out transform duration-300 ${
                   isCartOpen ? "translate-x-0" : "translate-x-full"
@@ -547,17 +546,18 @@ const Header = () => {
                     </div>
                   ) : (
                     <div className="mt-4 space-y-4">
-                      {/* Ürün Listesi */}
                       {cartItems.map((item, index) => (
                         <div
                           key={index}
                           className="flex items-center justify-between border-b pb-4 mb-4"
                         >
                           <div className="flex items-center gap-4">
-                            <img
+                            <Image
                               src={item.image}
                               alt={item.title}
-                              className="w-16 h-16 object-cover rounded-md"
+                              width={64}
+                              height={64}
+                              className="object-cover rounded-md"
                             />
                             <div>
                               <p className="font-medium">{item.title}</p>
@@ -571,21 +571,19 @@ const Header = () => {
                           </p>
                           <button
                             onClick={() => removeFromCart(item.id)}
-                            className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-700"
+                            className=" px-3 py-1  text-red-500  hover:text-red-700 ml-2  transition ease-in-out transform duration-300"
                           >
-                            Remove
+                            <FaRegTrashCan />
                           </button>
                         </div>
                       ))}
 
-                      {/* Toplam Tutar */}
                       <div className="border-t pt-4">
                         <p className="text-lg font-bold">
                           Total: ${getTotalPrice()}
                         </p>
                       </div>
 
-                      {/* Checkout Butonu */}
                       <Link href="/checkout">
                         <button className="w-full mt-4 px-4 py-2 border-2 border-black bg-black text-white rounded-full font-medium hover:bg-white hover:text-black transition ease-in-out transform duration-300">
                           Checkout

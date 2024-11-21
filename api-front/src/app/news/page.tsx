@@ -9,7 +9,7 @@ const Spinner = () => {
   return (
     <div className="flex justify-center items-center min-h-screen">
       <div
-        className="animate-spin inline-block w-12 h-12 border-4 border-current border-t-transparent text-black rounded-full"
+        className="animate-spin inline-block w-10 h-10 border-4 border-current border-t-transparent text-black rounded-full"
         role="status"
         aria-label="loading"
       >
@@ -27,7 +27,7 @@ const articles = [
       "Fashion goggles have become a key part of winter sports outfits, allowing skiers and snowboarders to express their style while protecting their eyes. In this article, we'll explore the latest..",
     image:
       "https://maxmod-goggles.myshopify.com/cdn/shop/articles/5.webp?v=1713443723&width=533",
-    link: "/blog/article1",
+    link: "/trends",
   },
   {
     id: 2,
@@ -36,7 +36,7 @@ const articles = [
       "Foggy goggles can be frustrating and hinder your performance during activities like swimming, skiing, or other sports. To keep your vision clear, here are some tips on how to prevent...",
     image:
       "https://maxmod-goggles.myshopify.com/cdn/shop/articles/2.webp?v=1713443584&width=533",
-    link: "/blog/article2",
+    link: "/effectiv",
   },
   {
     id: 3,
@@ -45,7 +45,7 @@ const articles = [
       "Swimming goggles are essential for anyone who wants to protect their eyes and improve their performance in the water. With so many brands and options available, it can be overwhelming...",
     image:
       "https://maxmod-goggles.myshopify.com/cdn/shop/articles/3.webp?v=1713443467&width=533",
-    link: "/blog/article3",
+    link: "/swimming",
   },
   {
     id: 4,
@@ -54,7 +54,7 @@ const articles = [
       "Proper maintenance and cleaning of your eyewear can extend its lifespan and ensure clear vision. Here's how to take care of your glasses...",
     image:
       "https://maxmod-goggles.myshopify.com/cdn/shop/articles/4.webp?v=1713443287&width=533",
-    link: "/blog/article4",
+    link: "/ultima",
   },
   {
     id: 5,

@@ -1,17 +1,45 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Layouts from "../_layouts/layout";
 import { LiaArrowLeftSolid } from "react-icons/lia";
 import ShareButton from "../_components/share";
 
+const Spinner = () => {
+  return (
+    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+      <div
+        className="animate-spin inline-block w-10 h-10 border-4 border-current border-t-transparent text-black rounded-full"
+        role="status"
+        aria-label="loading"
+      >
+        <span className="sr-only">Loading...</span>
+      </div>
+    </div>
+  );
+};
+
 const Effectiv: React.FC = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <Spinner />;
+  }
+
   return (
     <Layouts>
       <main>
-        <div className=" container max-w-screen-xl mx-auto p-4">
+        <div className="container max-w-screen-xl mx-auto p-4">
           <div className="flex justify-center mb-8">
             <Image
               src="https://maxmod-goggles.myshopify.com/cdn/shop/articles/2.webp?v=1713443584&width=1100"
@@ -22,19 +50,19 @@ const Effectiv: React.FC = () => {
             />
           </div>
 
-          <div className="text-center space-y-6 ">
+          <div className="text-center space-y-6">
             <div>
-              <h1 className="text-4xl font-medium ">
+              <h1 className="text-4xl font-medium">
                 Effective Strategies to Prevent Fogging in Your Goggles
               </h1>
             </div>
 
-            <p className=" flex items-start ml-[115px] text-gray-500 text-sm">
+            <p className="flex items-start text-gray-500 text-sm">
               April 18, 2024
             </p>
             <ShareButton />
             <div className="space-y-4 text-left max-w-5xl mx-auto">
-              <p className="text-lg  ">
+              <p className="text-lg">
                 Fashion goggles have become a key part of winter sports outfits,
                 allowing skiers and snowboarders to express their style while
                 protecting their eyes. In this article, we&apos;ll explore the
@@ -47,20 +75,22 @@ const Effectiv: React.FC = () => {
               <h2 className="text-2xl font-medium">Why Fogging Happens</h2>
               <ol className="list-decimal pl-5 space-y-2 text-gray-900 text-lg">
                 <li>
-                  <span className="font-bold text-black">Bold colors:</span>{" "}
-                  Bright and vibrant colors are in vogue, helping you stand out
-                  on the slopes.
-                </li>
-                <li>
-                  <span className="font-bold text-black">Mirrored lenses:</span>{" "}
-                  Mirrored lenses not only look stylish but also reduce glare.
+                  <span className="font-bold text-black">
+                    Temperature changes:
+                  </span>{" "}
+                  Sudden shifts between warm and cold environments can cause
+                  condensation.
                 </li>
                 <li>
                   <span className="font-bold text-black">
-                    Oversized frames:
+                    Poor ventilation:
                   </span>{" "}
-                  Larger frames provide a trendy look and offer a wider field of
-                  vision.
+                  Inadequate airflow in goggles leads to moisture buildup.
+                </li>
+                <li>
+                  <span className="font-bold text-black">Body heat:</span> Heat
+                  from your face can create a foggy environment inside the
+                  goggles.
                 </li>
               </ol>
 
@@ -68,24 +98,19 @@ const Effectiv: React.FC = () => {
               <ol className="list-decimal pl-5 space-y-2 text-gray-900 text-lg">
                 <li>
                   <span className="font-bold text-black">
-                    Interchangeable lenses:
+                    Ventilation systems:
                   </span>{" "}
-                  Some goggles allow you to switch lenses based on weather
-                  conditions or personal preference.
+                  Built-in vents improve airflow, reducing fog formation.
                 </li>
                 <li>
                   <span className="font-bold text-black">
-                    Photochromic lenses:
+                    Anti-fog coatings:
                   </span>{" "}
-                  These lenses adjust their tint based on the light intensity,
-                  providing optimal visibility.
+                  Special treatments on the lenses help repel moisture.
                 </li>
                 <li>
-                  <span className="font-bold text-black">
-                    Customizable straps:
-                  </span>{" "}
-                  Brands offer interchangeable straps, allowing you to mix and
-                  match designs.
+                  <span className="font-bold text-black">Double lenses:</span>{" "}
+                  Dual-layer lenses create a thermal barrier to prevent fogging.
                 </li>
               </ol>
 
@@ -94,37 +119,35 @@ const Effectiv: React.FC = () => {
               </h2>
               <ol className="list-decimal pl-5 space-y-2 text-gray-900 text-lg">
                 <li>
-                  <span className="font-bold text-black">Oakley:</span> Known
-                  for cutting-edge designs and high-quality lenses, Oakley
-                  offers a wide range of stylish goggles.
+                  <span className="font-bold text-black">Use dish soap:</span>{" "}
+                  Apply a small amount of dish soap, then rinse and dry to
+                  create a fog-resistant layer.
                 </li>
                 <li>
-                  <span className="font-bold text-black">Smith:</span> Smith
-                  goggles combine fashion with functionality, featuring advanced
-                  lens technologies.
+                  <span className="font-bold text-black">Anti-fog sprays:</span>{" "}
+                  Sprays designed for goggles can help keep lenses clear.
                 </li>
                 <li>
-                  <span className="font-bold text-black">Dragon:</span>{" "}
-                  Dragon&apos;s goggles boast a range of trendy designs and
-                  innovative features like Lumalens technology.
+                  <span className="font-bold text-black">Saliva trick:</span>{" "}
+                  While unconventional, saliva can be used as a temporary
+                  anti-fogging measure.
                 </li>
               </ol>
 
               <h2 className="text-2xl font-medium mt-6">Conclusion</h2>
               <p className="text-lg text-gray-900">
-                Fashion goggles offer a unique way to express your personal
-                style on the slopes while keeping your eyes protected. With a
-                variety of colors, designs, and features to choose from, you can
-                find the perfect pair to complement your winter sports attire.
-                Make a statement this season with the latest trends in fashion
-                goggles.
+                Fogging can be a frustrating issue, but with the right
+                strategies, you can enjoy clear vision throughout your
+                activities. From advanced anti-fog technologies to simple DIY
+                methods, there are plenty of options to keep your goggles
+                fog-free.
               </p>
             </div>
           </div>
 
           <div className="flex justify-center mt-12">
-            <Link href="/blog" className="button-class">
-              <button className=" flex items-center gap-2 text-lg bg-black text-white border-2 border-black rounded-full px-10 py-2 font-medium hover:bg-white hover:text-black transition duration-300">
+            <Link href="/news">
+              <button className="flex items-center gap-2 text-lg bg-black text-white border-2 border-black rounded-full px-10 py-2 font-medium hover:bg-white hover:text-black transition duration-300">
                 <LiaArrowLeftSolid className="text-xl" /> Back to Blog
               </button>
             </Link>

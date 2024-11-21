@@ -1,17 +1,45 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Layouts from "../_layouts/layout";
 import { LiaArrowLeftSolid } from "react-icons/lia";
 import ShareButton from "../_components/share";
 
+const Spinner = () => {
+  return (
+    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+      <div
+        className="animate-spin inline-block w-10 h-10 border-4 border-current border-t-transparent text-black rounded-full"
+        role="status"
+        aria-label="loading"
+      >
+        <span className="sr-only">Loading...</span>
+      </div>
+    </div>
+  );
+};
+
 const Swimming: React.FC = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <Spinner />;
+  }
+
   return (
     <Layouts>
       <main>
-        <div className=" container max-w-screen-xl mx-auto p-4">
+        <div className="container max-w-screen-xl mx-auto p-4">
           <div className="flex justify-center mb-8">
             <Image
               src="https://maxmod-goggles.myshopify.com/cdn/shop/articles/3.webp?v=1713443467&width=1100"
@@ -22,19 +50,19 @@ const Swimming: React.FC = () => {
             />
           </div>
 
-          <div className="text-center space-y-6 ">
+          <div className="text-center space-y-6">
             <div>
-              <h1 className="text-4xl font-medium ">
+              <h1 className="text-4xl font-medium">
                 A Comprehensive Review of Top Swimming Goggles Brands
               </h1>
             </div>
 
-            <p className=" flex items-start ml-[115px] text-gray-500 text-sm">
+            <p className="flex items-start ml-[140px] text-gray-500 text-sm">
               April 23, 2024
             </p>
             <ShareButton />
             <div className="space-y-4 text-left max-w-5xl mx-auto">
-              <p className="text-lg  ">
+              <p className="text-lg">
                 Fashion goggles have become a key part of winter sports outfits,
                 allowing skiers and snowboarders to express their style while
                 protecting their eyes. In this article, we&apos;ll explore the
@@ -123,8 +151,8 @@ const Swimming: React.FC = () => {
           </div>
 
           <div className="flex justify-center mt-12">
-            <Link href="/blog" className="button-class">
-              <button className=" flex items-center gap-2 text-lg bg-black text-white border-2 border-black rounded-full px-10 py-2 font-medium hover:bg-white hover:text-black transition duration-300">
+            <Link href="/news">
+              <button className="flex items-center gap-2 text-lg bg-black text-white border-2 border-black rounded-full px-10 py-2 font-medium hover:bg-white hover:text-black transition duration-300">
                 <LiaArrowLeftSolid className="text-xl" /> Back to Blog
               </button>
             </Link>
