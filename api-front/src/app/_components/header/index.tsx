@@ -9,6 +9,8 @@ import { IoPersonOutline } from "react-icons/io5";
 import { RiShoppingBag2Line } from "react-icons/ri";
 import { FaFacebook, FaYoutube } from "react-icons/fa";
 import { RiTwitterXLine } from "react-icons/ri";
+// import { useRouter } from "next/router";
+
 interface User {
   firstname: string;
   lastname: string;
@@ -25,8 +27,10 @@ interface CartItem {
   color: string;
 }
 const Header = () => {
+  // const router = useRouter();
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [selectedLanguage, setSelectedLanguage] = useState("English");
   const [selectedCurrency, setSelectedCurrency] = useState("USD");
@@ -43,6 +47,7 @@ const Header = () => {
     contactLens: "Contact Lens",
     eyeframes: "Eyeframes",
   });
+
   const [user, setUser] = useState<User | null>(null);
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -581,9 +586,11 @@ const Header = () => {
                       </div>
 
                       {/* Checkout Butonu */}
-                      <button className="w-full mt-4 px-4 py-2 border-2 border-black bg-black text-white rounded-full font-medium hover:bg-white hover:text-black transition ease-in-out transform duration-300">
-                        Checkout
-                      </button>
+                      <Link href="/checkout">
+                        <button className="w-full mt-4 px-4 py-2 border-2 border-black bg-black text-white rounded-full font-medium hover:bg-white hover:text-black transition ease-in-out transform duration-300">
+                          Checkout
+                        </button>
+                      </Link>
                     </div>
                   )}
                 </div>
