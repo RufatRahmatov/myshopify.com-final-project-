@@ -88,7 +88,7 @@ const Contact: React.FC = () => {
                 placeholder="Name"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full p-3 border border-gray-300 rounded-md hover:border-2 focus:outline-none focus:ring-2 focus:ring-black"
+                className="w-full p-3 border border-gray-300 rounded-md "
               />
               <input
                 name="email"
@@ -96,7 +96,7 @@ const Contact: React.FC = () => {
                 placeholder="Email *"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full p-3 border border-gray-300 rounded-md  hover:border-2 focus:outline-none focus:ring-2 focus:ring-black"
+                className="w-full p-3 border border-gray-300 rounded-md  "
                 required
               />
               <input
@@ -105,14 +105,14 @@ const Contact: React.FC = () => {
                 placeholder="Phone number"
                 value={formData.phone}
                 onChange={handleChange}
-                className="w-full p-3 border border-gray-300 rounded-md  hover:border-2 focus:outline-none focus:ring-2 focus:ring-black"
+                className="w-full p-3 border border-gray-300 rounded-md  "
               />
               <textarea
                 name="comment"
                 placeholder="Comment"
                 value={formData.comment}
                 onChange={handleChange}
-                className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black hover:border-2"
+                className="w-full p-3 border border-gray-300 rounded-md "
                 rows={5}
               ></textarea>
               <button

@@ -112,11 +112,11 @@ const Eyeframes: React.FC = () => {
       <main>
         <div className="flex">
           <div className="w-1/4 p-4 border-r">
-            <h3 className="text-lg font-bold mb-4">Filter:</h3>
+            <h3 className="text-2xl font-bold mb-4">Filter:</h3>
 
             {selectedFilters.length > 0 && (
               <div className="mb-6">
-                <h4 className="text-sm font-semibold">Selected Filters:</h4>
+                <h4 className="text-sm font-medium">Selected Filters:</h4>
                 <div className="flex flex-wrap gap-2 mt-2">
                   {selectedFilters.map((filter) => (
                     <div
@@ -136,7 +136,7 @@ const Eyeframes: React.FC = () => {
                   ))}
                 </div>
                 <button
-                  className="mt-2 text-sm text-blue-500 underline"
+                  className="mt-2 text-md text-black font-medium underline"
                   onClick={() => {
                     setFilters({
                       color: "",
@@ -153,7 +153,7 @@ const Eyeframes: React.FC = () => {
 
             <div className="mb-6">
               <details className="group">
-                <summary className="text-sm font-semibold cursor-pointer flex justify-between items-center">
+                <summary className="text-md font-medium cursor-pointer flex justify-between items-center">
                   Availability
                   <span className="group-open:rotate-180 transition-transform">
                     ▼
@@ -167,7 +167,7 @@ const Eyeframes: React.FC = () => {
                         handleFilterChange("availability", "In Stock")
                       }
                     />
-                    <span className="text-sm">In Stock</span>
+                    <span className="text-md font-medium">In Stock</span>
                   </label>
                   <label className="flex items-center gap-2">
                     <input
@@ -176,7 +176,7 @@ const Eyeframes: React.FC = () => {
                         handleFilterChange("availability", "Out Of Stock")
                       }
                     />
-                    <span className="text-sm">Out Of Stock</span>
+                    <span className="text-md font-medium">Out Of Stock</span>
                   </label>
                 </div>
               </details>
@@ -184,15 +184,15 @@ const Eyeframes: React.FC = () => {
 
             <div className="mb-6">
               <details className="group">
-                <summary className="text-sm font-semibold cursor-pointer flex justify-between items-center">
+                <summary className="text-md  font-medium cursor-pointer flex justify-between items-center">
                   Price
                   <span className="group-open:rotate-180 transition-transform">
                     ▼
                   </span>
                 </summary>
                 <div className="mt-2">
-                  <p className="text-xs text-gray-500 mb-2">
-                    The highest price is Rs.{" "}
+                  <p className="text-md font-medium text-gray-500 mb-2">
+                    The highest price is ${" "}
                     {Math.max(...products.map((p) => p.basePrice), 0)}
                   </p>
                   <div className="flex items-center gap-2">
@@ -225,13 +225,13 @@ const Eyeframes: React.FC = () => {
 
             <div className="mb-6">
               <details className="group">
-                <summary className="text-sm font-semibold cursor-pointer flex justify-between items-center">
+                <summary className="text-md font-medium cursor-pointer flex justify-between items-center">
                   Color
                   <span className="group-open:rotate-180 transition-transform">
                     ▼
                   </span>
                 </summary>
-                <div className="grid grid-cols-2 gap-2 mt-2">
+                <div className=" text-md font-medium grid grid-cols-2 gap-2 mt-2">
                   {[
                     "Black",
                     "Blue",
@@ -259,13 +259,13 @@ const Eyeframes: React.FC = () => {
 
             <div className="mb-6">
               <details className="group">
-                <summary className="text-sm font-semibold cursor-pointer flex justify-between items-center">
+                <summary className="text-md font-medium cursor-pointer flex justify-between items-center">
                   Brand
                   <span className="group-open:rotate-180 transition-transform">
                     ▼
                   </span>
                 </summary>
-                <div className="flex flex-col mt-2 gap-2">
+                <div className="flex flex-col font-medium text-md mt-2 gap-2">
                   {["Electronics", "Glass", "Optical"].map((brand) => (
                     <label key={brand} className="flex items-center gap-2">
                       <input
@@ -284,13 +284,13 @@ const Eyeframes: React.FC = () => {
           <div className="w-full md:w-3/4 p-4">
             <div className="flex justify-start gap-2 md:gap-4 mb-4">
               <button onClick={() => setViewMode("grid")}>
-                <TfiLayoutGrid4Alt className="text-lg md:text-2xl" />
+                <TfiLayoutGrid4Alt className="text-lg md:text-2xl hover:bg-gray-300" />
               </button>
               <button onClick={() => setViewMode("list")}>
-                <BsGrid3X3GapFill className="text-lg md:text-2xl" />
+                <BsGrid3X3GapFill className="text-lg md:text-2xl hover:bg-gray-300" />
               </button>
               <button onClick={() => setViewMode("compact")}>
-                <TfiLayoutGrid2Alt className="text-lg md:text-2xl" />
+                <TfiLayoutGrid2Alt className="text-lg md:text-2xl hover:bg-gray-300" />
               </button>
             </div>
 
@@ -308,7 +308,6 @@ const Eyeframes: React.FC = () => {
                   key={product.id}
                   className="relative p-2 md:p-4 overflow-hidden group"
                 >
-                  {/* Görsel */}
                   <Image
                     src={product.colors[0]?.image || ""}
                     alt={product.title}

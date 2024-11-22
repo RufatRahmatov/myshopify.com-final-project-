@@ -1,12 +1,16 @@
 import { NextResponse } from 'next/server';
 
-export function middleware(request) {
+export function middleware(req) {
 
-    const url = request.nextUrl.pathname;
+    const url = req.nextUrl;
 
 
-    if (url.includes('//')) {
-        return NextResponse.redirect(new URL('/', request.url));
+    if (url.pathname.includes('/')) {
+
+        return new NextResponse(
+            'Page-to-page navigation is blocked.',
+            { status: 403 }
+        );
     }
 
 
@@ -15,5 +19,5 @@ export function middleware(request) {
 
 
 export const config = {
-    matcher: '/:path*',
+    matcher: ['/:path*'],
 };
