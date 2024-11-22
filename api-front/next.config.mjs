@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+
     i18n: {
         locales: ['en', 'az'],
         defaultLocale: 'en',
@@ -9,17 +10,17 @@ const nextConfig = {
             {
                 protocol: 'http',
                 hostname: 'localhost',
-                pathname: '/**', // Tüm alt yolları kapsar
+                pathname: '/**',
             },
             {
                 protocol: 'https',
                 hostname: 'maxmod-goggles.myshopify.com',
-                pathname: '/**', // Tüm alt yolları kapsar
+                pathname: '/**',
             },
             {
                 protocol: 'https',
                 hostname: 'another-domain.com',
-                pathname: '/**', // Tüm alt yolları kapsar
+                pathname: '/**',
             },
         ],
     },

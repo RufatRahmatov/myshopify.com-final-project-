@@ -156,7 +156,7 @@ const Header = () => {
                   className="cursor-pointer mt-1 font-medium"
                   onClick={() => setSelectedCurrency("AZN")}
                 >
-                  India
+                  Azerbaijan
                 </div>
               </div>
             </Transition>

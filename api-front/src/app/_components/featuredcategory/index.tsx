@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-
+import Link from "next/link";
 interface Category {
   id: number;
   title: string;
@@ -68,9 +68,11 @@ const FeaturedCategory: React.FC = () => {
               Featured By Category
             </h2>
           </div>
-          <button className="text-xs sm:text-sm md:text-base text-white bg-black font-medium border-2 border-black px-2 sm:px-4 py-2 sm:py-2 rounded-full hover:bg-white hover:text-black transition duration-300">
-            View Collection
-          </button>
+          <Link href="/collections">
+            <button className="text-xs sm:text-sm md:text-base text-white bg-black font-medium border-2 border-black px-2 sm:px-4 py-2 sm:py-2 rounded-full hover:bg-white hover:text-black transition duration-300">
+              View Collection
+            </button>
+          </Link>
         </div>
 
         <div className="h-[270px] grid grid-cols-2 hidden md:flex sm:grid-cols-3 lg:grid-cols-6 gap-6 mx-8 text-center">

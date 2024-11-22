@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import Layouts from "../_layouts/layout";
 import Blogs from "../_components/blogs";
 import Testimonials from "../_components/customertestimonial";
@@ -22,6 +23,11 @@ const Home = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+  };
+
   if (loading) {
     return (
       <div className="flex items-center justify-center h-screen">
@@ -33,16 +39,45 @@ const Home = () => {
   return (
     <Layouts>
       <main>
-        <SliderComponent />
-        <FeaturedCategory />
-        <OurProducts />
-        <ViewCollection />
-        <Features />
-        <Bestselling />
-        <ScrollingText />
-        <VideoBanner />
-        <Testimonials />
-        <Blogs />
+        <motion.div initial="hidden" animate="visible" variants={fadeIn}>
+          <SliderComponent />
+        </motion.div>
+
+        <motion.div initial="hidden" animate="visible" variants={fadeIn}>
+          <FeaturedCategory />
+        </motion.div>
+
+        <motion.div initial="hidden" animate="visible" variants={fadeIn}>
+          <OurProducts />
+        </motion.div>
+
+        <motion.div initial="hidden" animate="visible" variants={fadeIn}>
+          <ViewCollection />
+        </motion.div>
+
+        <motion.div initial="hidden" animate="visible" variants={fadeIn}>
+          <Features />
+        </motion.div>
+
+        <motion.div initial="hidden" animate="visible" variants={fadeIn}>
+          <Bestselling />
+        </motion.div>
+
+        <motion.div initial="hidden" animate="visible" variants={fadeIn}>
+          <ScrollingText />
+        </motion.div>
+
+        <motion.div initial="hidden" animate="visible" variants={fadeIn}>
+          <VideoBanner />
+        </motion.div>
+
+        <motion.div initial="hidden" animate="visible" variants={fadeIn}>
+          <Testimonials />
+        </motion.div>
+
+        <motion.div initial="hidden" animate="visible" variants={fadeIn}>
+          <Blogs />
+        </motion.div>
       </main>
     </Layouts>
   );

@@ -7,6 +7,7 @@ import Layouts from "../_layouts/layout";
 import { TfiLayoutGrid4Alt } from "react-icons/tfi";
 import { BsGrid3X3GapFill } from "react-icons/bs";
 import { TfiLayoutGrid2Alt } from "react-icons/tfi";
+
 interface Color {
   name: string;
   price: number;
