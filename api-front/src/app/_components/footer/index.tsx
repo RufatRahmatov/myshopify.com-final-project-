@@ -5,6 +5,7 @@ import { FaFacebook, FaYoutube } from "react-icons/fa";
 import { IoAddSharp, IoRemoveSharp } from "react-icons/io5";
 import { IoIosArrowDown } from "react-icons/io";
 import { BsTwitterX } from "react-icons/bs";
+// import Image from "next/image";
 const Footer = () => {
   const [openSections, setOpenSections] = useState<string[]>([]);
 
@@ -121,14 +122,6 @@ const Footer = () => {
                   alt="Visa"
                 />
               </div>
-              {/* 
-              <div>
-                <img
-                  className="w-10 bg-white py-2 px-3 rounded-sm"
-                  src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
-                  alt="MasterCard"
-                />
-              </div> */}
 
               <div>
                 <img
@@ -146,13 +139,6 @@ const Footer = () => {
                 />
               </div>
 
-              {/* <div>
-                <img
-                  className="w-10 bg-white py-2 px-3 rounded-sm"
-                  src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
-                  alt="MasterCard"
-                />
-              </div> */}
               <div>
                 <img
                   className="w-10 bg-white py-2 px-1 rounded-sm"

@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import "tailwindcss/tailwind.css";
-
+import Image from "next/image";
 const SliderComponent: React.FC = () => {
   return (
     <div className="relative w-full h-screen  px-2 md:px-12 rounded-3xl overflow-hidden">
@@ -24,10 +24,13 @@ const SliderComponent: React.FC = () => {
       >
         <SwiperSlide className="rounded-3xl ">
           <div className="relative overflow-hidden flex items-center justify-center h-full border rounded-3xl ">
-            <img
+            <Image
               src="https://maxmod-goggles.myshopify.com/cdn/shop/files/1.webp?v=1713438123&width=3840"
               alt="Slide 1"
-              className="w-full min-h-screen  md:h-full object-cover"
+              width={3840}
+              height={2160}
+              className="w-full min-h-screen md:h-full object-cover"
+              loading="lazy"
             />
             <div className="absolute bottom-20 left-12 text-white">
               <p className="text-lg font-medium">Perfect fit for every face</p>
@@ -49,10 +52,13 @@ const SliderComponent: React.FC = () => {
 
         <SwiperSlide>
           <div className="relative flex items-center justify-center h-full border rounded-3xl overflow-hidden">
-            <img
+            <Image
               src="https://maxmod-goggles.myshopify.com/cdn/shop/files/2.webp?v=1713438127&width=3840"
               alt="Slide 2"
-              className="w-full min-h-screen  md:h-full object-cover"
+              width={3840}
+              height={2160}
+              className="w-full min-h-screen md:h-full object-cover"
+              loading="lazy"
             />
             <div className="absolute bottom-20 left-12 text-white">
               <p className="text-lg font-light font-medium">
@@ -72,10 +78,13 @@ const SliderComponent: React.FC = () => {
 
         <SwiperSlide>
           <div className="relative flex items-center justify-center h-full border rounded-3xl overflow-hidden">
-            <img
+            <Image
               src="https://maxmod-goggles.myshopify.com/cdn/shop/files/3.webp?v=1713438128&width=3840"
               alt="Slide 3"
-              className="w-full min-h-screen  md:h-full object-cover"
+              width={3840}
+              height={2160}
+              className="w-full min-h-screen md:h-full object-cover"
+              loading="lazy"
             />
             <div className="absolute bottom-20 left-12 text-white">
               <p className="text-lg font-light font-medium">

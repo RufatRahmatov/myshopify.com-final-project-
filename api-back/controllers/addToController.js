@@ -1,12 +1,12 @@
 const AddTo = require('../models/addToModel');
 const mongoose = require('mongoose');
 
-// Add a new product
+
 exports.addProduct = async (req, res) => {
     try {
         const { title, category, basePrice, colors, onSale } = req.body;
 
-        // Validasyon
+
         if (!title || !category || !basePrice || !Array.isArray(colors)) {
             return res.status(400).json({ error: 'Missing or invalid fields' });
         }
@@ -26,7 +26,7 @@ exports.addProduct = async (req, res) => {
     }
 };
 
-// Get all products
+
 exports.getAllProducts = async (req, res) => {
     try {
         const products = await AddTo.find();
@@ -36,7 +36,7 @@ exports.getAllProducts = async (req, res) => {
     }
 };
 
-// Get a single product by ID
+
 exports.getProductById = async (req, res) => {
     try {
         const productId = req.params.id;
@@ -82,7 +82,7 @@ exports.updateProduct = async (req, res) => {
     }
 };
 
-// Delete a product by ID
+
 exports.deleteProduct = async (req, res) => {
     try {
         const productId = req.params.id;

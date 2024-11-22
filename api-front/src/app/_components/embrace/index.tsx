@@ -1,19 +1,19 @@
 "use client";
 
 import React, { useState } from "react";
-import { useRouter } from "next/navigation"; // Next.js router
-import Image from "next/image"; // Import Next.js Image component
+import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const Embrace = () => {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const handleViewAll = () => {
-    setIsLoading(true); // Show loading spinner
+    setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-      router.push("/eyeframes"); // Navigate to eyeframes page
-    }, 1500); // Simulate loading delay
+      router.push("/eyeframes");
+    }, 1500);
   };
 
   return (
@@ -24,7 +24,6 @@ const Embrace = () => {
         </div>
       ) : (
         <div className="container mx-auto px-4 md:px-8 lg:px-16 flex flex-col-reverse md:flex-row items-center space-y-8 md:space-y-0 md:space-x-8 max-w-[1900px]">
-          {/* Text Section */}
           <div className="md:w-1/2 text-center md:text-left">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Where Can I Get Some?
@@ -46,10 +45,9 @@ const Embrace = () => {
             </button>
           </div>
 
-          {/* Image Section */}
           <div className="md:w-1/2 flex justify-center">
             <Image
-              src="https://maxmod-goggles.myshopify.com/cdn/shop/files/2_b8700fc8-df0c-4d1d-9d0c-b4160f67e59c.webp?v=1713441967&width=1500" // Replace with your actual image URL
+              src="https://maxmod-goggles.myshopify.com/cdn/shop/files/2_b8700fc8-df0c-4d1d-9d0c-b4160f67e59c.webp?v=1713441967&width=1500"
               alt="Embrace Your Unique Style"
               width={900}
               height={400}

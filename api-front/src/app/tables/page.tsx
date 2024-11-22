@@ -4,7 +4,8 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Layout from "../_components/layout/layout";
 import TopBar from "../_components/topbar/topbar";
-
+import { MdEdit } from "react-icons/md";
+import { FaTrash } from "react-icons/fa";
 interface Product {
   _id: string;
   product: string;
@@ -180,18 +181,18 @@ const Table: React.FC = () => {
                         {product.status}
                       </span>
                     </td>
-                    <td className="p-4 border border-gray-200 text-center space-x-2">
+                    <td className="p-4 border border-gray-200 text-center space-x-6">
                       <button
                         className="text-blue-500 hover:underline"
                         onClick={() => handleEdit(product)}
                       >
-                        Edit
+                        <MdEdit />
                       </button>
                       <button
                         className="text-red-500 hover:underline"
                         onClick={() => deleteProduct(product._id)}
                       >
-                        Delete
+                        <FaTrash />
                       </button>
                     </td>
                   </tr>

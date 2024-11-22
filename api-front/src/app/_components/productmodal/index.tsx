@@ -14,9 +14,9 @@ interface Product {
 }
 
 interface ModalProps {
-  product: Product; // Modal'a gelen ürün
-  onSave: (product: Product) => Promise<void>; // Kaydetme işlevi
-  onClose: () => void; // Modal'ı kapatma işlevi
+  product: Product;
+  onSave: (product: Product) => Promise<void>;
+  onClose: () => void;
 }
 
 export default function ProductModal({ product, onSave, onClose }: ModalProps) {
@@ -29,14 +29,14 @@ export default function ProductModal({ product, onSave, onClose }: ModalProps) {
     setFormData({
       ...formData,
       [name]:
-        name === "price" || name === "quantity" ? parseFloat(value) : value, // Sayısal alanları dönüştür
+        name === "price" || name === "quantity" ? parseFloat(value) : value,
     });
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    await onSave(formData); // Kaydetme işlevi
-    onClose(); // Modal'ı kapatma
+    await onSave(formData);
+    onClose();
   };
 
   return (

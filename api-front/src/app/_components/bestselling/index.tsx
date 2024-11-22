@@ -147,12 +147,12 @@ const Bestselling: React.FC = () => {
         <p className="font-medium text-[#787878]">Hottest collections</p>
       </div>
       <div className="flex items-center justify-between">
-        <h2 className="text-xl sm:text-3xl font-medium mb-0 mx-2 sm:mx-8">
+        <h2 className="text-lg sm:text-xl md:text-3xl font-medium mb-0 mx-2 sm:mx-8">
           Our Best Selling Products
         </h2>
 
         <Link href="/eyeframes">
-          <button className="text-sm sm:text-lg text-black border-2 border-black px-4 sm:px-6 py-1 sm:py-2 font-medium rounded-full bg-black text-white hover:bg-white hover:text-black transition duration-300 mx-2 sm:mx-8">
+          <button className="text-xs sm:text-sm md:text-lg text-black border-2 border-black px-3 sm:px-4 md:px-6 py-1 sm:py-2 font-medium rounded-full bg-black text-white hover:bg-white hover:text-black transition duration-300 mx-2 sm:mx-8">
             View All
           </button>
         </Link>
@@ -165,16 +165,14 @@ const Bestselling: React.FC = () => {
           >
             <div
               className="relative rounded-2xl overflow-hidden cursor-pointer"
-              onClick={() => (window.location.href = product.colors[0].link)} // Görsele tıklanınca yönlendirme
+              onClick={() => (window.location.href = product.colors[0].link)}
             >
-              {/* Sale etiketi */}
               {product.onSale && (
                 <span className="absolute top-8 left-8 bg-[#448B23] px-4 py-1 text-white text-xs font-medium px-2 py-1 rounded-full z-50">
                   SALE
                 </span>
               )}
 
-              {/* Birinci Görsel */}
               <Image
                 src={product.colors[0].image}
                 alt={product.title}
@@ -183,7 +181,6 @@ const Bestselling: React.FC = () => {
                 className="w-full h-[420px] object-cover transition-opacity duration-500 group-hover:opacity-0"
               />
 
-              {/* Hover Görsel */}
               <Image
                 src={product.colors[0].hoverImage}
                 alt={`${product.title} Hover`}
@@ -192,24 +189,22 @@ const Bestselling: React.FC = () => {
                 className="w-full h-[420px] object-cover absolute top-0 left-0 transition-opacity duration-500 group-hover:opacity-100 opacity-0"
               />
 
-              {/* Hızlı görüntüleme butonu */}
               <button
                 className="absolute top-4 right-4 text-black font-medium text-md hover:underline"
                 onClick={(e) => {
-                  e.stopPropagation(); // Üstteki `div`'in tıklama olayını engelle
-                  setSelectedProduct(product); // Quick View özelliği
+                  e.stopPropagation();
+                  setSelectedProduct(product);
                 }}
               >
                 Quick View
               </button>
 
-              {/* Sepete ekleme butonu */}
               <div className="absolute bottom-2 left-3 w-full bg-opacity-75 py-2">
                 <button
                   className="w-[calc(100%-25px)] font-medium text-white py-2 bg-black rounded-full hover:bg-white hover:text-black border-2 border-black transition duration-300"
                   onClick={(e) => {
-                    e.stopPropagation(); // Tıklama olayını üst div'e iletme
-                    handleAddToCart(product, null, 1); // Sepete ekleme
+                    e.stopPropagation();
+                    handleAddToCart(product, null, 1);
                   }}
                 >
                   Add to Cart

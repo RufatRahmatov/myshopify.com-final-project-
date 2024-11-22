@@ -1,3 +1,4 @@
+"use client";
 interface CardProps {
   title: string;
   value: string;

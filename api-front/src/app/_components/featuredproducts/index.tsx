@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-
+import Image from "next/image";
 interface Product {
   id: number;
   name: string;
@@ -23,10 +23,13 @@ const ProductCard: React.FC<{
       onMouseLeave={() => setHovered(false)}
     >
       <div className="relative">
-        <img
+        <Image
           src={hovered ? product.hoverImageUrl : product.imageUrl}
           alt={product.name}
+          width={500}
+          height={500}
           className="w-full h-auto transition-transform transform group-hover:scale-105"
+          loading="lazy"
         />
       </div>
       <div className="text-center mt-4">

@@ -1,5 +1,7 @@
-import React from "react";
+"use client";
 
+import React from "react";
+import Image from "next/image";
 interface Testimonial {
   name: string;
   date: string;
@@ -71,10 +73,13 @@ const Testimonials: React.FC = () => {
               {testimonial.text}
             </p>
             <div className="flex items-center">
-              <img
+              <Image
                 src={testimonial.image}
                 alt={testimonial.name}
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full mr-4"
+                width={48}
+                height={48}
+                className="rounded-full mr-4"
+                loading="lazy"
               />
               <div>
                 <h3 className="font-semibold text-sm sm:text-base">

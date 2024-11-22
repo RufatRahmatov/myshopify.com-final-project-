@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
-
+import Image from "next/image";
 const ViewCollection: React.FC = () => {
   const router = useRouter();
 
@@ -13,10 +13,13 @@ const ViewCollection: React.FC = () => {
     <div className=" relative mt-6 container mx-auto px-4 py-8 max-w-[1840px]">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="relative rounded-3xl overflow-hidden bg-white shadow-lg ">
-          <img
+          <Image
             src="https://maxmod-goggles.myshopify.com/cdn/shop/files/1_9915b714-16b1-44f7-a03e-39a5de594827.webp?v=1713441967"
             alt="Eyeglasses Collection"
+            width={1920}
+            height={1080}
             className="w-full h-auto object-cover"
+            loading="lazy"
           />
           <div className="absolute inset-0 flex flex-col justify-center px-4 sm:px-8 bg-opacity-40 text-white ml-1 sm:ml-2">
             <p className="text-lg sm:text-xl text-black font-medium mb-3 sm:mb-4">
@@ -35,10 +38,13 @@ const ViewCollection: React.FC = () => {
         </div>
 
         <div className="relative rounded-3xl overflow-hidden bg-white shadow-lg">
-          <img
+          <Image
             src="https://maxmod-goggles.myshopify.com/cdn/shop/files/2_b8700fc8-df0c-4d1d-9d0c-b4160f67e59c.webp?v=1713441967"
             alt="Vision Collection"
+            width={1920}
+            height={1080}
             className="w-full h-auto object-cover"
+            loading="lazy"
           />
           <div className="absolute inset-0 flex flex-col justify-center px-4 sm:px-8 bg-opacity-40 text-white ml-1 sm:ml-2">
             <p className="text-lg sm:text-xl text-black font-medium mb-3 sm:mb-4">

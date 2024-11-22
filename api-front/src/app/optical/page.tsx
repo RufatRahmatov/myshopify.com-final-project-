@@ -227,7 +227,7 @@ const Optical = () => {
                   Experience the difference from the moment you slip on a pair
                   of our meticulously crafted frames. Each frame is meticulously
                   designed to not only enhance your vision but also complement
-                  your unique sense of style.{" "}
+                  your unique sense of style.
                   <p className="mt-2">
                     From sleek and sophisticated to bold and avant-garde, our
                     collection offers something for every taste and occasion.
@@ -235,7 +235,7 @@ const Optical = () => {
                     the finest optical experience possible. Our lenses are
                     crafted with precision and care, using advanced technology
                     to ensure crystal-clear vision with minimal distortion.
-                  </p>{" "}
+                  </p>
                   Say goodbye to eye strain and discomfort as you immerse
                   yourself in a world of unmatched clarity and precision. At
                   Eyewearlabs, we understand that your eyes are precious, which

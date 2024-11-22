@@ -9,8 +9,8 @@ const shopCardRoutes = require('./routers/shopCardRoutes');
 const productRoutes = require('./routers/productRouter');
 const eyeframesRoutes = require('./routers/eyeframRouter');
 const addToRoutes = require('./routers/addToRoutes');
-// const paymentRoutes = require('./routers/paymentRouter');
 
+const messageRoutes = require('./routers/messageRoutes');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -37,7 +37,8 @@ app.use('/api/shop-cards', shopCardRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/eyeframes', eyeframesRoutes);
 app.use('/api/add-to', addToRoutes);
-// app.use('/api/payment', paymentRoutes);
+app.use('/api/messages', messageRoutes);
+
 
 
 app.get('/', (req, res) => {

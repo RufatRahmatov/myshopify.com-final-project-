@@ -165,16 +165,14 @@ const OurProducts: React.FC = () => {
           >
             <div
               className="relative rounded-2xl overflow-hidden cursor-pointer"
-              onClick={() => (window.location.href = product.colors[0].link)} // Görsele tıklanınca yönlendirme
+              onClick={() => (window.location.href = product.colors[0].link)}
             >
-              {/* Sale etiketi */}
               {product.onSale && (
                 <span className="absolute top-8 left-8 bg-[#448B23] px-4 py-1 text-white text-xs font-medium px-2 py-1 rounded-full z-50">
                   SALE
                 </span>
               )}
 
-              {/* Birinci Görsel */}
               <Image
                 src={product.colors[0].image}
                 alt={product.title}
@@ -183,7 +181,6 @@ const OurProducts: React.FC = () => {
                 className="w-full h-[420px] object-cover transition-opacity duration-500 group-hover:opacity-0"
               />
 
-              {/* Hover Görsel */}
               <Image
                 src={product.colors[0].hoverImage}
                 alt={`${product.title} Hover`}
@@ -192,24 +189,22 @@ const OurProducts: React.FC = () => {
                 className="w-full h-[420px] object-cover absolute top-0 left-0 transition-opacity duration-500 group-hover:opacity-100 opacity-0"
               />
 
-              {/* Hızlı görüntüleme butonu */}
               <button
                 className="absolute top-4 right-4 text-black font-medium text-md hover:underline"
                 onClick={(e) => {
-                  e.stopPropagation(); // Üstteki `div`'in tıklama olayını engelle
-                  setSelectedProduct(product); // Quick View özelliği
+                  e.stopPropagation();
+                  setSelectedProduct(product);
                 }}
               >
                 Quick View
               </button>
 
-              {/* Sepete ekleme butonu */}
               <div className="absolute bottom-2 left-3 w-full bg-opacity-75 py-2">
                 <button
                   className="w-[calc(100%-25px)] font-medium text-white py-2 bg-black rounded-full hover:bg-white hover:text-black border-2 border-black transition duration-300"
                   onClick={(e) => {
-                    e.stopPropagation(); // Tıklama olayını üst div'e iletme
-                    handleAddToCart(product, null, 1); // Sepete ekleme
+                    e.stopPropagation();
+                    handleAddToCart(product, null, 1);
                   }}
                 >
                   Add to Cart

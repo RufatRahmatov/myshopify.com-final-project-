@@ -63,7 +63,6 @@ const CardDetail: React.FC = () => {
       <main>
         <div className="container mx-auto p-6 max-w-[1600px]">
           <div className="flex flex-col lg:flex-row gap-8">
-            {/* Left Section - Product Images */}
             <div className="lg:w-7/12">
               <div className="w-full rounded-2xl mb-6 relative aspect-[4/3]">
                 <Image
@@ -76,7 +75,7 @@ const CardDetail: React.FC = () => {
                   className="object-cover rounded-2xl"
                 />
               </div>
-              {/* Color Carousel */}
+
               <div className="flex gap-4 overflow-x-auto">
                 {product.colors.map((color) => (
                   <button

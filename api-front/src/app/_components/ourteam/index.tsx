@@ -2,16 +2,19 @@
 
 import React from "react";
 import Blogs from "../blogs";
-
+import Image from "next/image";
 const OurTeam: React.FC = () => {
   return (
     <div className="flex flex-col gap-8 max-w-[1858px] mx-auto p-4 lg:p-8 mt-8">
       <div className="flex flex-col lg:flex-row items-center lg:items-start lg:gap-4 sm:gap-8">
         <div className="flex-shrink-0 w-full lg:w-1/2">
-          <img
+          <Image
             src="https://maxmod-goggles.myshopify.com/cdn/shop/files/4.jpg?v=1713615602&width=1500"
             alt="Team"
             className="rounded-2xl w-full object-cover"
+            width={1500}
+            height={1000}
+            loading="lazy"
           />
         </div>
 
@@ -59,10 +62,13 @@ const OurTeam: React.FC = () => {
         </div>
 
         <div className="w-full flex-shrink-0 lg:w-1/2 sm:mt-10 sm:pt-4">
-          <img
+          <Image
             src="https://maxmod-goggles.myshopify.com/cdn/shop/files/3.jpg?v=1713615610&width=1500"
             alt="Customer Experience"
             className="rounded-2xl w-full object-cover"
+            width={1500}
+            height={1000}
+            loading="lazy"
           />
         </div>
       </div>

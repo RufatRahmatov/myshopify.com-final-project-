@@ -5,8 +5,15 @@ import Layouts from "../_layouts/layout";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Spiner from "../_components/spiner";
+
 const Contact: React.FC = () => {
   const [loading, setLoading] = useState(true);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    comment: "",
+  });
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1500);
@@ -20,18 +27,49 @@ const Contact: React.FC = () => {
       </div>
     );
   }
-  const handleSubmit = (e: React.FormEvent) => {
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Message sent successfully!", {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "colored",
-    });
+
+    try {
+      const response = await fetch("http://localhost:3001/api/messages", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        toast.success("Message sent successfully!", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          comment: "",
+        });
+      } else {
+        toast.error("Failed to send the message. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
+      toast.error("An error occurred while sending the message.");
+    }
   };
 
   return (
@@ -41,27 +79,39 @@ const Contact: React.FC = () => {
           <div className="w-full md:w-1/2 mx-4">
             <h2 className="text-2xl font-medium mb-4">Leave Us a Message</h2>
             <form
-              className="flex flex-col gap-4 overflow-hiden "
+              className="flex flex-col gap-4 overflow-hidden"
               onSubmit={handleSubmit}
             >
               <input
+                name="name"
                 type="text"
                 placeholder="Name"
+                value={formData.name}
+                onChange={handleChange}
                 className="w-full p-3 border border-gray-300 rounded-md hover:border-2 focus:outline-none focus:ring-2 focus:ring-black"
               />
               <input
+                name="email"
                 type="email"
                 placeholder="Email *"
+                value={formData.email}
+                onChange={handleChange}
                 className="w-full p-3 border border-gray-300 rounded-md  hover:border-2 focus:outline-none focus:ring-2 focus:ring-black"
                 required
               />
               <input
+                name="phone"
                 type="text"
                 placeholder="Phone number"
+                value={formData.phone}
+                onChange={handleChange}
                 className="w-full p-3 border border-gray-300 rounded-md  hover:border-2 focus:outline-none focus:ring-2 focus:ring-black"
               />
               <textarea
+                name="comment"
                 placeholder="Comment"
+                value={formData.comment}
+                onChange={handleChange}
                 className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black hover:border-2"
                 rows={5}
               ></textarea>

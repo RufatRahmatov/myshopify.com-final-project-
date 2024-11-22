@@ -134,17 +134,14 @@ const Glass = () => {
             <p className="font-medium text-gray-600">Glass</p>
             <h1 className="text-3xl font-bold">{product.name}</h1>
             <div className="flex items-center space-x-2">
-              {/* Ürün fiyatı (Üzeri çizili) */}
               <p className="text-lg font-medium text-gray-500 line-through">
-                ${selectedColor.price + 50} {/* Örnek eski fiyat */}
+                ${selectedColor.price + 50}
               </p>
 
-              {/* İndirimli fiyat */}
               <p className="text-lg font-medium text-black">
                 ${selectedColor.price}
               </p>
 
-              {/* Sale etiketi */}
               {product.onSale && (
                 <span className="bg-green-500 text-white text-sm px-3 py-1 rounded-full">
                   Sale
@@ -248,7 +245,7 @@ const Glass = () => {
                   Experience the difference from the moment you slip on a pair
                   of our meticulously crafted frames. Each frame is meticulously
                   designed to not only enhance your vision but also complement
-                  your unique sense of style.{" "}
+                  your unique sense of style.
                   <p className="mt-2">
                     From sleek and sophisticated to bold and avant-garde, our
                     collection offers something for every taste and occasion.
@@ -256,7 +253,7 @@ const Glass = () => {
                     the finest optical experience possible. Our lenses are
                     crafted with precision and care, using advanced technology
                     to ensure crystal-clear vision with minimal distortion.
-                  </p>{" "}
+                  </p>
                   Say goodbye to eye strain and discomfort as you immerse
                   yourself in a world of unmatched clarity and precision. At
                   Eyewearlabs, we understand that your eyes are precious, which

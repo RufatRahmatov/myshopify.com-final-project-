@@ -2,7 +2,7 @@ import React from "react";
 
 const ScrollingText: React.FC = () => {
   return (
-    <div className="relative mt-32 overflow-hidden whitespace-nowrap mt-10 w-full">
+    <div className="relative mt-4 overflow-hidden whitespace-nowrap  w-full">
       <div
         className="text-4xl font-medium flex items-center"
         style={{

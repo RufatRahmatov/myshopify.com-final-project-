@@ -25,7 +25,6 @@ const Ultima: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate a loading delay
     const timer = setTimeout(() => {
       setLoading(false);
     }, 1500);

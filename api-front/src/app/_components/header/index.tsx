@@ -11,6 +11,8 @@ import { RiShoppingBag2Line } from "react-icons/ri";
 import { FaFacebook, FaYoutube } from "react-icons/fa";
 import { RiTwitterXLine } from "react-icons/ri";
 import { FaRegTrashCan } from "react-icons/fa6";
+
+import LogoutIcon from "../logoutIcon";
 interface User {
   firstname: string;
   lastname: string;
@@ -515,6 +517,7 @@ const Header = () => {
                 className="relative right-2 text-2xl cursor-pointer "
                 onClick={() => setIsCartOpen(true)}
               />
+              <LogoutIcon />
             </div>
 
             <Transition show={isCartOpen}>

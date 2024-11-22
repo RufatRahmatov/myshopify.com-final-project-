@@ -5,12 +5,19 @@ import { FiEye, FiEyeOff } from "react-icons/fi";
 import Spiner from "../_components/spiner";
 import Layouts from "../_layouts/layout";
 
+type UserData = {
+  name: string;
+  email: string;
+};
+
 const Login: React.FC = () => {
   const [isClient, setIsClient] = useState(false);
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [userData, setUserData] = useState<UserData | null>(null);
+  const [showModal, setShowModal] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -34,7 +41,8 @@ const Login: React.FC = () => {
       const data = await response.json();
 
       if (response.ok) {
-        router.push("/");
+        setUserData(data.user);
+        setShowModal(true);
       } else {
         alert(data.message || "Invalid email or password!");
       }
@@ -44,6 +52,11 @@ const Login: React.FC = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    setUserData(null);
   };
 
   const handleCreateAccountClick = () => {
@@ -127,6 +140,26 @@ const Login: React.FC = () => {
             </button>
           </form>
         </div>
+
+        {showModal && userData && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+              <h3 className="text-2xl font-bold mb-4 text-center">Welcome!</h3>
+              <p className="mb-4">
+                <strong>Name:</strong> {userData.name}
+              </p>
+              <p className="mb-4">
+                <strong>Email:</strong> {userData.email}
+              </p>
+              <button
+                onClick={closeModal}
+                className="w-full font-medium bg-black text-white py-3 rounded-full hover:bg-opacity-90"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        )}
       </main>
     </Layouts>
   );
