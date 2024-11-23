@@ -31,7 +31,7 @@ interface CartItem {
 const Header = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [selectedLanguage, setSelectedLanguage] = useState("English");
   const [selectedCurrency, setSelectedCurrency] = useState("USD");
@@ -49,6 +49,13 @@ const Header = () => {
     eyeframes: "Eyeframes",
   });
 
+  const handleClick = () => {
+    setIsLoading(true);
+
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+  };
   const [user, setUser] = useState<User | null>(null);
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -266,20 +273,44 @@ const Header = () => {
                       >
                         Search
                       </Link>
+                      <Link
+                        href="/faq"
+                        className="block font-medium text-[1.05rem] text-gray-600 hover:text-black transition ease-in-out duration-100 transform mt-2"
+                      >
+                        Faq
+                      </Link>
                     </div>
                     <div className="relative left-[300px]">
                       <h2 className="text-[1.05rem]  font-medium mb-2">
                         POLICY PAGES
                       </h2>
-                      <p className="block font-medium text-[1.05rem] text-gray-600 hover:text-black transition ease-in-out duration-100 transform cursor-pointer">
-                        Privacy Policy
-                      </p>
-                      <p className="block font-medium text-[1.05rem] text-gray-600 hover:text-black transition ease-in-out duration-100 transform mt-2 cursor-pointer">
-                        Refund Policy
-                      </p>
-                      <p className="block font-medium text-[1.05rem] text-gray-600 hover:text-black transition ease-in-out duration-100 transform mt-2 cursor-pointer">
-                        Terms of Service
-                      </p>
+
+                      <div>
+                        {isLoading && (
+                          <div className="fixed top-0 left-0 w-10 h-10 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
+                            <div className="text-white text-lg font-medium">
+                              Loading...
+                            </div>
+                          </div>
+                        )}
+
+                        <Link href="/error" onClick={handleClick}>
+                          <p className="block font-medium text-[1.05rem] text-gray-600 hover:text-black transition ease-in-out duration-100 transform cursor-pointer">
+                            Privacy Policy
+                          </p>
+                        </Link>
+                      </div>
+
+                      <Link href="/error">
+                        <p className="block font-medium text-[1.05rem] text-gray-600 hover:text-black transition ease-in-out duration-100 transform mt-2 cursor-pointer">
+                          Refund Policy
+                        </p>
+                      </Link>
+                      <Link href="/error">
+                        <p className="block font-medium text-[1.05rem] text-gray-600 hover:text-black transition ease-in-out duration-100 transform mt-2 cursor-pointer">
+                          Terms of Service
+                        </p>
+                      </Link>
                     </div>
                     <div className="relative left-[560px]">
                       <h2 className="text-[1.05rem]  font-medium mb-2 cursor-pointer">

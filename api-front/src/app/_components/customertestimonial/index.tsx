@@ -47,7 +47,7 @@ const testimonials: Testimonial[] = [
 
 const Testimonials: React.FC = () => {
   return (
-    <div className="container relative mx-auto overflow-hidden max-w-[1840px] px-4 py-10 -mt-32">
+    <div className="container relative mx-auto overflow-hidden max-w-[1840px] px-4 py-10 -mt-10">
       <div className="flex flex-wrap items-center justify-between mb-6 sm:mb-8">
         <h2 className="text-lg sm:text-2xl md:text-3xl font-medium">
           Our Customers Testimonial
