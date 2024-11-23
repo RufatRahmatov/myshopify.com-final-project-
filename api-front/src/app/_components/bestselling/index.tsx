@@ -222,7 +222,7 @@ const Bestselling: React.FC = () => {
           </div>
         ))}
       </div>
-      ;
+
       {selectedProduct && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white w-11/12 sm:w-2/3 lg:w-3/4 p-6 rounded-lg flex gap-8 relative">

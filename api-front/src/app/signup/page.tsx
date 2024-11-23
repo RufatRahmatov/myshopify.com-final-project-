@@ -33,14 +33,18 @@ const SignUp: React.FC = () => {
         body: JSON.stringify(form),
       });
 
+      const data = await res.json();
+
       if (res.ok) {
         alert("User successfully created!");
-        setForm({ name: "", email: "", password: "" });
 
-        router.push("/signin");
+        if (data.user?.isAdmin) {
+          router.push("/dashboard");
+        } else {
+          router.push("/home");
+        }
       } else {
-        const errorData = await res.json();
-        alert(`Error: ${errorData.message || "An unknown error occurred!"}`);
+        alert(`Error: ${data.message || "An unknown error occurred!"}`);
       }
     } catch (error) {
       console.error("Error:", error);

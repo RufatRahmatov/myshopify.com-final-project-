@@ -228,7 +228,6 @@ const Header = () => {
                 {textContent.home}
               </Link>
               <div className="relative dropdown">
-                {" "}
                 <button
                   onClick={() => toggleDropdown("Pages")}
                   className="border-b-2 border-transparent hover:border-black font-medium text-lg inline-flex items-center"

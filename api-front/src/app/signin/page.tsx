@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { FiEye, FiEyeOff } from "react-icons/fi";
@@ -23,6 +24,7 @@ const SignIn: React.FC = () => {
     }
 
     setLoading(true);
+
     try {
       const response = await fetch("http://localhost:3001/api/auth/login", {
         method: "POST",
@@ -33,7 +35,11 @@ const SignIn: React.FC = () => {
       const data = await response.json();
 
       if (response.ok) {
-        router.push("/home");
+        if (data.user?.isAdmin) {
+          router.push("/dashboard");
+        } else {
+          router.push("/home");
+        }
       } else {
         alert(data.message || "Invalid email or password!");
       }
@@ -55,13 +61,13 @@ const SignIn: React.FC = () => {
 
   return (
     <div
-      className="flex items-center justify-center min-h-screen bg-cover bg-center  "
+      className="flex items-center justify-center min-h-screen bg-cover bg-center"
       style={{
         backgroundImage:
           "url('https://s.tmimgcdn.com/scr/1200x750/297400/koyu-siyah-arka-plan-dokusu_297412-original.jpg')",
       }}
     >
-      <div className="bg-white p-8 rounded-lg  w-full max-w-lg ">
+      <div className="bg-white p-8 rounded-lg w-full max-w-lg shadow-md">
         <h2 className="text-4xl font-bold mb-4 text-center">Sign In</h2>
         <form
           onSubmit={(e) => {
