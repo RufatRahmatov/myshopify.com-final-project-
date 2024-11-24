@@ -100,7 +100,7 @@ const FeaturedCategory: React.FC = () => {
           ))}
         </div>
 
-        <div className="flex overflow-x-auto space-x-4 sm:hidden mt-4">
+        <div className=" flex overflow-x-auto space-x-2 sm:hidden mt-4">
           {categories.map((category) => (
             <div
               key={category.id}

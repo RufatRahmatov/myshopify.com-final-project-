@@ -56,7 +56,7 @@ const SignIn: React.FC = () => {
   };
 
   const handleForgotPasswordClick = () => {
-    router.push("/reset-password");
+    router.push("/resetpassword");
   };
 
   return (

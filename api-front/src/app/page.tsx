@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from "react";
 
 import Spiner from "./_components/spiner";
-import SignUp from "./signup/page";
+
+import SignIn from "./signin/page";
 
 export default function Page() {
   const [loading, setLoading] = useState(true);
@@ -20,5 +21,5 @@ export default function Page() {
     );
   }
 
-  return <SignUp />;
+  return <SignIn />;
 }

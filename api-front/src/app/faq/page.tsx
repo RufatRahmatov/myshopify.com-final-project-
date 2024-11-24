@@ -1,8 +1,16 @@
 "use client";
 
+import React, { useState, useEffect } from "react";
 import Layouts from "../_layouts/layout";
 
 const Faq: React.FC = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
   const faqItems = [
     {
       question: "How do I find the right glasses for me?",
@@ -39,47 +47,53 @@ const Faq: React.FC = () => {
   return (
     <Layouts>
       <main>
-        <div className="relative w-full bg-white px-6 pt-10 pb-8  mt-10 ring-1 ring-gray-900/5 border-gray-200 border sm:mx-auto sm:max-w-2xl sm:rounded-xl sm:px-10">
-          <div className="mx-auto px-5">
-            <div className="flex flex-col items-center">
-              <h2 className="mt-5 text-center text-3xl font-bold tracking-tight md:text-5xl">
-                FAQ
-              </h2>
-              <p className="mt-3 text-lg text-neutral-500 md:text-xl">
-                Frequently asked questions
-              </p>
-            </div>
-            <div className="mx-auto mt-8 grid max-w-xl divide-y divide-neutral-200">
-              {faqItems.map((item, index) => (
-                <div key={index} className="py-5">
-                  <details className="group">
-                    <summary className="flex cursor-pointer list-none items-center justify-between font-medium transition duration-300 ease-in-out">
-                      <span>{item.question}</span>
-                      <span className="transition-transform duration-300 ease-in-out group-open:rotate-180">
-                        <svg
-                          fill="none"
-                          height="24"
-                          shapeRendering="geometricPrecision"
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="1.5"
-                          viewBox="0 0 24 24"
-                          width="24"
-                        >
-                          <path d="M6 9l6 6 6-6"></path>
-                        </svg>
-                      </span>
-                    </summary>
-                    <p className="overflow-hidden transition-all  duration-300 ease-in-out max-h-0 group-open:max-h-[500px] mt-3 text-neutral-600 font-medium">
-                      {item.answer}
-                    </p>
-                  </details>
-                </div>
-              ))}
+        {loading ? (
+          <div className="flex items-center justify-center h-screen">
+            <div className="w-10 h-10 border-4 border-black border-t-transparent rounded-full animate-spin"></div>
+          </div>
+        ) : (
+          <div className="relative w-full bg-white px-6 pt-10 pb-8 mt-10 ring-1 ring-gray-900/5 border-gray-200 border sm:mx-auto sm:max-w-2xl sm:rounded-xl sm:px-10">
+            <div className="mx-auto px-5">
+              <div className="flex flex-col items-center">
+                <h2 className="mt-5 text-center text-3xl font-bold tracking-tight md:text-5xl">
+                  FAQ
+                </h2>
+                <p className="mt-3 text-lg text-neutral-500 md:text-xl">
+                  Frequently asked questions
+                </p>
+              </div>
+              <div className="mx-auto mt-8 grid max-w-xl divide-y divide-neutral-200">
+                {faqItems.map((item, index) => (
+                  <div key={index} className="py-5">
+                    <details className="group">
+                      <summary className="flex cursor-pointer list-none items-center justify-between font-medium transition duration-300 ease-in-out">
+                        <span>{item.question}</span>
+                        <span className="transition-transform duration-300 ease-in-out group-open:rotate-180">
+                          <svg
+                            fill="none"
+                            height="24"
+                            shapeRendering="geometricPrecision"
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="1.5"
+                            viewBox="0 0 24 24"
+                            width="24"
+                          >
+                            <path d="M6 9l6 6 6-6"></path>
+                          </svg>
+                        </span>
+                      </summary>
+                      <p className="overflow-hidden transition-all duration-300 ease-in-out max-h-0 group-open:max-h-[500px] mt-3 text-neutral-600 font-medium">
+                        {item.answer}
+                      </p>
+                    </details>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </main>
     </Layouts>
   );
