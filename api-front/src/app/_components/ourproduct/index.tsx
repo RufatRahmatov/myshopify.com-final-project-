@@ -308,14 +308,14 @@ const OurProducts: React.FC = () => {
 
               <div className="flex flex-col gap-4">
                 <button
-                  className="w-full bg-black text-white py-2 rounded-full hover:bg-gray-800"
+                  className="w-full font-medium border border-black bg-white text-black py-2 rounded-full hover:bg-black hover:text-white transition duration-300"
                   onClick={() =>
                     handleAddToCart(selectedProduct, selectedColor, quantity)
                   }
                 >
                   Add to Cart
                 </button>
-                <button className="w-full border border-black text-black py-2 rounded-full hover:bg-black hover:text-white">
+                <button className="w-full font-medium border border-black bg-black text-white py-2 rounded-full hover:bg-white hover:text-black transition duration-300">
                   Buy it Now
                 </button>
               </div>

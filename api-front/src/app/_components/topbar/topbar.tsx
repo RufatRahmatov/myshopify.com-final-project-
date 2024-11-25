@@ -7,9 +7,9 @@ import { useState } from "react";
 import Image from "next/image";
 const TopBar: React.FC = () => {
   const [user] = useState({
-    name: "Rufat",
+    name: "Admin",
     avatar:
-      "https://i.pinimg.com/736x/b5/de/05/b5de051d647f8292610d853dbe6002b9.jpg",
+      "https://i.pinimg.com/736x/5f/40/6a/5f406ab25e8942cbe0da6485afd26b71.jpg",
   });
 
   return (

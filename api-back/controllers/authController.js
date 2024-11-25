@@ -18,14 +18,18 @@ exports.register = async (req, res) => {
             }
         }
 
+
         const existingUser = await User.findOne({ email });
         if (existingUser) {
-            return res.status(400).json({ message: 'Email already registered' });
+            return res.status(400).json({ message: 'Email already registered.' });
         }
+
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
+
         const newUser = await User.create({ name, email, password: hashedPassword, isAdmin });
+
 
         const token = generateToken(newUser);
 
@@ -34,14 +38,11 @@ exports.register = async (req, res) => {
                 id: newUser._id,
                 name: newUser.name || null,
                 email: newUser.email,
-                isAdmin: newUser.isAdmin
+                isAdmin: newUser.isAdmin,
             },
-            token
+            token,
         });
     } catch (error) {
-        if (error.name === 'ValidationError') {
-            return res.status(400).json({ message: 'Validation Error', error: error.message });
-        }
         res.status(500).json({ message: 'Error registering user', error: error.message });
     }
 };
@@ -50,19 +51,28 @@ exports.login = async (req, res) => {
     try {
         const { email, password } = req.body;
 
+
         const user = await User.findOne({ email });
         if (!user || !(await bcrypt.compare(password, user.password))) {
             return res.status(401).json({ message: 'Invalid email or password' });
         }
 
+
         const token = generateToken(user);
 
 
-        if (user.isAdmin) {
-            res.json({ redirect: '/dashboard', user, token });
-        } else {
-            res.json({ redirect: '/home', user, token });
-        }
+        const redirect = user.isAdmin ? '/dashboard' : '/home';
+
+        res.status(200).json({
+            user: {
+                id: user._id,
+                email: user.email,
+                name: user.name || null,
+                isAdmin: user.isAdmin,
+            },
+            token,
+            redirect,
+        });
     } catch (error) {
         res.status(500).json({ message: 'Error logging in', error: error.message });
     }

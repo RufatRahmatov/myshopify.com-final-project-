@@ -1,17 +1,18 @@
-import express from 'express';
-import registerHandler from './handlers/registerHandler';
+// import express from 'express';
+// import registerHandler from './handlers/registerHandler';
 
-const app = express();
-
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// const app = express();
 
 
-app.post('/api/register', registerHandler);
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
 
 
-const PORT = process.env.PORT || 3002;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+// app.post('/api/register', registerHandler);
+
+
+// const PORT = process.env.PORT || 3002;
+// app.listen(PORT, () => {
+//     console.log(`Server is running on port ${PORT}`);
+// });
+

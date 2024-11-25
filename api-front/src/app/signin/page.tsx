@@ -35,11 +35,9 @@ const SignIn: React.FC = () => {
       const data = await response.json();
 
       if (response.ok) {
-        if (data.user?.isAdmin) {
-          router.push("/dashboard");
-        } else {
-          router.push("/home");
-        }
+        localStorage.setItem("token", data.token);
+
+        router.push(data.redirect);
       } else {
         alert(data.message || "Invalid email or password!");
       }

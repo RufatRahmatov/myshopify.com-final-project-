@@ -530,6 +530,7 @@ const Header = () => {
                     height={40}
                     className="rounded-full"
                   />
+
                   <IoPersonOutline className="text-2xl cursor-pointer" />
                   <span className="text-lg font-medium">
                     Hi, {user.firstname}
@@ -632,14 +633,25 @@ const Header = () => {
               <div className="-mr-2 flex md:hidden">
                 <button
                   onClick={() => setIsOpen(!isOpen)}
-                  className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-black focus:outline-none"
+                  className="flex justify-between items-center w-full p-2 rounded-md text-black hover:text-black focus:outline-none"
                 >
+                  <div className=" relative right-[260px] flex items-center ">
+                    {!isOpen ? (
+                      <BiMenu className="text-2xl cursor-pointer" />
+                    ) : (
+                      <BiX className="text-2xl cursor-pointer" />
+                    )}
+                  </div>
+
+                  <div className="flex items-center space-x-4">
+                    <RiSearchLine className="text-2xl cursor-pointer" />
+                    <RiShoppingBag2Line
+                      className="relative right-2 text-2xl cursor-pointer"
+                      onClick={() => setIsCartOpen(true)}
+                    />
+                  </div>
+
                   <span className="sr-only">Open main menu</span>
-                  {!isOpen ? (
-                    <BiMenu className="text-2xl" />
-                  ) : (
-                    <BiX className="text-2xl" />
-                  )}
                 </button>
               </div>
 
@@ -661,7 +673,7 @@ const Header = () => {
                     ].map((item) => (
                       <li key={item} className="hover:text-gray-700">
                         <a
-                          href="#"
+                          href="/eyeframes"
                           className="flex justify-between items-center"
                         >
                           {item}
