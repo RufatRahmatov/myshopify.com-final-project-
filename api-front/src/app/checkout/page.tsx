@@ -3,10 +3,11 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { RiShoppingBasketLine } from "react-icons/ri";
-import { IoIosSearch } from "react-icons/io";
+
 interface CartItem {
   id: number;
   title: string;
@@ -21,26 +22,58 @@ const Checkout: React.FC = () => {
   const [country, setCountry] = useState("United States");
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    const storedCart = localStorage.getItem("cart");
-    if (storedCart) {
-      const parsedCart: CartItem[] = JSON.parse(storedCart);
-      setCartItems(parsedCart);
+  const initializeCart = async () => {
+    try {
+      const storedCart = localStorage.getItem("cart");
+      if (storedCart) {
+        const parsedCart: CartItem[] = JSON.parse(storedCart);
+        const total = parsedCart.reduce(
+          (sum, item) => sum + item.price * item.quantity,
+          0
+        );
+        setCartItems(parsedCart);
+        setTotalPrice(total);
 
-      const total = parsedCart.reduce(
-        (sum, item) => sum + item.price * item.quantity,
-        0
-      );
-      setTotalPrice(total);
+        await axios.post("http://localhost:3001/api/payments", {
+          items: parsedCart,
+          totalPrice: total,
+        });
+      }
+    } catch (error) {
+      console.error("Error initializing cart:", error);
+      toast.error("Failed to initialize cart!");
     }
+  };
+
+  const clearCart = async () => {
+    try {
+      await axios.delete("http://localhost:3001/api/payments");
+      setCartItems([]);
+      setTotalPrice(0);
+      localStorage.removeItem("cart");
+      toast.success("Cart cleared successfully!");
+    } catch (error) {
+      console.error("Error clearing cart:", error);
+      toast.error("Failed to clear cart!");
+    }
+  };
+
+  useEffect(() => {
+    initializeCart();
   }, []);
 
-  const handlePayNow = () => {
+  const handlePayNow = async () => {
     setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       toast.success("Payment successful!");
-    }, 1000);
+      await clearCart();
+    } catch (error) {
+      console.error("Payment failed:", error);
+      toast.error("Payment failed!");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -52,7 +85,7 @@ const Checkout: React.FC = () => {
               <h2 className="text-2xl font-bold">Contact</h2>
               <Link
                 href="/login"
-                className="text-black font-medium text-[18px]  hover:text-blue-600  transition duration-400"
+                className="text-black font-medium text-[18px] hover:text-blue-600 transition duration-400"
               >
                 Log in
               </Link>
@@ -91,16 +124,11 @@ const Checkout: React.FC = () => {
                 className="w-full px-4 py-2 border border-gray-300 rounded-md"
               />
             </div>
-            <div className="relative">
-              <IoIosSearch className="absolute  left-[680px] text-[24px] top-[64%] transform -translate-y-1/2 text-gray-500" />
-
-              <input
-                type="text"
-                placeholder="Address"
-                className="w-full  mt-4 px-4 py-2 border border-gray-300 rounded-md"
-              />
-            </div>
-
+            <input
+              type="text"
+              placeholder="Address"
+              className="w-full mt-4 px-4 py-2 border border-gray-300 rounded-md"
+            />
             <input
               type="text"
               placeholder="Apartment, suite, etc. (optional)"
@@ -130,19 +158,6 @@ const Checkout: React.FC = () => {
 
             <h2 className="text-2xl font-bold mt-6 mb-4">Payment</h2>
             <div className="bg-white p-4 rounded-md shadow-md">
-              <div className="flex justify-between items-center border-b pb-2 mb-4">
-                <p className="text-lg font-medium">Credit card</p>
-                <div className="flex items-center">
-                  <Image
-                    src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/c1.en/assets/bogus.CIsYlO1z.svg"
-                    alt="Card Icon"
-                    width={24}
-                    height={24}
-                    className="mr-2"
-                  />
-                </div>
-              </div>
-
               <input
                 type="text"
                 placeholder="Card number"
@@ -165,17 +180,12 @@ const Checkout: React.FC = () => {
                   className="w-full px-4 py-2 border border-gray-300 rounded-md"
                 />
               </div>
-
-              <label className="flex items-center mt-4">
-                <input type="checkbox" className="mr-2" />
-                Use shipping address as billing address
-              </label>
             </div>
 
             <button
               onClick={handlePayNow}
-              className="w-full mt-6 px-4 py-3 bg-black border-2 border-black text-white font-bold rounded-md hover:bg-white hover:text-black transition duraction-300 flex items-center justify-center"
-              disabled={isLoading} // Loading sırasında buton devre dışı
+              className="w-full mt-6 px-4 py-3 bg-black border-2 border-black text-white font-bold rounded-md hover:bg-white hover:text-black transition duration-300 flex items-center justify-center"
+              disabled={isLoading}
             >
               {isLoading ? (
                 <svg
@@ -205,9 +215,9 @@ const Checkout: React.FC = () => {
           </div>
 
           <div>
-            <h2 className=" flex items-center justify-between text-2xl font-bold mb-4">
+            <h2 className="flex items-center justify-between text-2xl font-bold mb-4">
               Order Summary
-              <RiShoppingBasketLine className="cursor-pointer hover:text-blue-600  transition duration-400" />
+              <RiShoppingBasketLine className="cursor-pointer hover:text-blue-600 transition duration-400" />
             </h2>
             <div className="bg-white p-4 rounded-md shadow-md">
               {cartItems.map((item) => (

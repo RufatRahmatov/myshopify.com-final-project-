@@ -57,7 +57,7 @@ const Effectiv: React.FC = () => {
               </h1>
             </div>
 
-            <p className="flex items-start text-gray-500 text-sm">
+            <p className="flex items-start text-gray-500 text-sm ml-[120px]">
               April 18, 2024
             </p>
             <ShareButton />
